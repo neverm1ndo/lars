@@ -1,0 +1,9 @@
+{
+  "name": "lars-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/lars-e2e/src",
+  "implicitDependencies": ["lars"],
+  "// targets": "to see all targets run: nx show project lars-e2e --web",
+  "targets": {}
+}
