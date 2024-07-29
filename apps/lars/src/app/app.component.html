@@ -1,1 +1,4 @@
-<app-nx-welcome></app-nx-welcome> <router-outlet></router-outlet>
+@if (isElectron) {
+    <lars-topbar></lars-topbar>
+}
+<router-outlet></router-outlet>

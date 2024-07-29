@@ -1,0 +1,56 @@
+{
+  "productName": "LARS",
+  "copyright": "MIT © 2024 ${author}",
+  "appId": "ru.nmnd.lars",
+  "publish": {
+    "provider": "github",
+    "owner": "neverm1ndo"
+  },
+  "asar": true,
+  "directories": {
+    "output": "release/"
+  },
+  "files": [
+    "**/*",
+    "!**/*.ts",
+    "!*.map",
+    "!package.json",
+    "!package-lock.json",
+    {
+      "from": "../dist",
+      "filter": ["**/*"]
+    }
+  ],
+  "nsis": {
+    "installerIcon": "dist/lars/browser/assets/icons/favicon.ico",
+    "uninstallerIcon": "dist/lars/browser/assets/icons/favicon_u.ico",
+    "installerHeaderIcon": "dist/lars/browser/assets/icons/favicon.ico",
+    "installerSidebar": "build/installerSidebar.bmp",
+    "uninstallerSidebar": "build/uninstallerSidebar.bmp",
+    "uninstallDisplayName": "${productName} ${version}",
+    "license": "LICENSE.md",
+    "installerLanguages": ["ru_RU", "en_US"],
+    "allowToChangeInstallationDirectory": true,
+    "runAfterFinish": true,
+    "oneClick": false,
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true
+  },
+  "win": {
+    "icon": "dist/lars/browser/assets/icons/favicon.ico",
+    "target": [
+      "nsis"
+    ]
+  },
+  "linux": {
+    "synopsis": "Liberty Admin Remote Service",
+    "description": "GTA-Liberty admins control planel",
+    "maintainer": "neverm1ndo",
+    "vendor": "gta-liberty.ru",
+    "category": "Network",
+    "icon": "dist/lars/browser/assets/icons/favicon.ico",
+    "target": [
+      "tar.gz"
+    ]
+  }
+}

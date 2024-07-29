@@ -2,18 +2,23 @@
   "name": "lars",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "prefix": "app",
+  "prefix": "lars",
   "sourceRoot": "apps/lars/src",
   "tags": [],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/lars",
         "index": "apps/lars/src/index.html",
         "browser": "apps/lars/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": [
+          "zone.js",
+          "@angular/localize/init"
+        ],
         "tsConfig": "apps/lars/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
@@ -22,7 +27,10 @@
             "input": "apps/lars/public"
           }
         ],
-        "styles": ["apps/lars/src/styles.scss"],
+        "styles": [
+          "@angular/material/prebuilt-themes/azure-blue.css",
+          "apps/lars/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -72,7 +80,9 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "apps/lars/jest.config.ts"
       }

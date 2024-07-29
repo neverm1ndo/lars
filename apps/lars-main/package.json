@@ -1,0 +1,12 @@
+{
+    "name": "lars",
+    "version": "0.9.40",
+    "description": "GTA-Liberty Admin Remote Service",
+    "author": {
+        "name": "neverm1ndo",
+        "email": "it@nmnd.ru"
+    },
+    "main": "main.js",
+    "private": true,
+    "dependencies": {}
+}
