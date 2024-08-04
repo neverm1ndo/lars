@@ -1,0 +1,18 @@
+:host {
+    -webkit-app-region: drag;
+}
+
+.lars-logo {
+    width: var(--lars-topbar-icon-size);
+}
+
+nav {
+    height: var(--lars-topbar-height);
+    display: flex;
+    align-items: center;
+    padding: 0 var(--indent-size-m);
+}
+
+label {
+    padding: 0 var(--indent-size-m);
+}
