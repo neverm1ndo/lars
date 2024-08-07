@@ -4,4 +4,20 @@
         <span class="lars-logo-label">LARS</span>
     </div>
     <div class="lars-topbar-dragzone"></div>
+    <div class="lars-topbar-controls">
+        <button
+            mat-icon-button
+            (click)="minimize()"
+            role="button"
+            aria-label="Minimize window">
+            <mat-icon>minimize</mat-icon>
+        </button>
+        <button
+            mat-icon-button
+            (click)="close()"
+            role="button"
+            aria-label="Close window">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
 </nav>

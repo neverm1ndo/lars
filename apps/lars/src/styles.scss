@@ -40,6 +40,11 @@ $light-theme: mat.m2-define-light-theme((
 // @import '@angular/material/prebuilt-themes/azure-blue.css';
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { 
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  position: fixed;
+  inset: 0;
+}
 
 @import 'scss/variables';

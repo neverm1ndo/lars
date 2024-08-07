@@ -1,3 +1,7 @@
+:host {
+    user-select: none;
+}
+
 .lars-logo {
     width: var(--lars-topbar-icon-size);
     &-label {
@@ -13,7 +17,7 @@
         display: inherit;
         align-items: center;
         gap: var(--indent-size-m);
-        padding: var(--indent-size-xs) var(--indent-size-l);
+        padding: 0 var(--indent-size-l);
     }
 
     &-dragzone {
