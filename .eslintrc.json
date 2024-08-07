@@ -15,6 +15,14 @@
               {
                 "sourceTag": "*",
                 "onlyDependOnLibsWithTags": ["*"]
+              },
+              {
+                "sourceTag": "domain:login",
+                "onlyDependOnLibsWithTags": ["domain:login", "domain:shared"]
+              },
+              {
+                "sourceTag": "domain:login",
+                "onlyDependOnLibsWithTags": ["domain:login", "domain:shared"]
               }
             ]
           }
