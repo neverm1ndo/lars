@@ -10,7 +10,6 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 
 /** LARS modules */
@@ -24,7 +23,6 @@ const MAT_MODULES = [
   MatSidenavModule,
   MatToolbarModule,
   MatIconModule,
-  MatListModule,
   MatButtonModule
 ];
 

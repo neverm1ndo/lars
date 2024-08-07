@@ -4,6 +4,7 @@
 
 .lars-logo {
     width: var(--lars-topbar-icon-size);
+    pointer-events: none;
     &-label {
         font-size: small;
     }
@@ -26,8 +27,11 @@
         height: var(--lars-topbar-height);
         -webkit-app-region: drag;
     }
-}
+    &-controls {
+        display: flex;
 
-label {
-    padding: 0 var(--indent-size-m);
+        button mat-icon {
+            margin: 0;
+        }
+    }
 }

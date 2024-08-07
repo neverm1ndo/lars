@@ -28,8 +28,12 @@
           }
         ],
         "styles": [
-          "@angular/material/prebuilt-themes/azure-blue.css",
-          "apps/lars/src/styles.scss"
+          "apps/lars/src/styles.scss",
+          {
+            "bundleName": "dark-theme",
+            "inject": false,
+            "input": "apps/lars/src/scss/themes/_dark.scss"
+          }
         ],
         "scripts": []
       },

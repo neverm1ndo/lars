@@ -1,22 +1,35 @@
 <nav aria-label="Top Toolbar" class="lars-topbar">
-    <div class="lars-topbar-item">
-        <img class="lars-logo" src="lars://icons/favicon.ico" alt="LARS">
-        <span class="lars-logo-label">LARS</span>
+    <div class="lars-topbar-dragzone">
+        <div class="lars-topbar-item">
+            <img class="lars-logo" src="lars://icons/favicon.ico" alt="LARS">
+            <span class="lars-logo-label">LARS</span>
+        </div>
     </div>
-    <div class="lars-topbar-dragzone"></div>
     <div class="lars-topbar-controls">
+        <!-- <button
+            mat-button
+            (click)="change('dark')"
+            aria-label="Minimize window">
+            dark
+        </button>
         <button
-            mat-icon-button
+            mat-button
+            (click)="change('light')"
+            aria-label="Minimize window">
+            light
+        </button> -->
+        <button
+            mat-button
             (click)="minimize()"
             role="button"
-            aria-label="Minimize window">
+            aria-label="Minimize window button">
             <mat-icon>minimize</mat-icon>
         </button>
         <button
-            mat-icon-button
+            mat-button
             (click)="close()"
             role="button"
-            aria-label="Close window">
+            aria-label="Close window button">
             <mat-icon>close</mat-icon>
         </button>
     </div>

@@ -2,7 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import { inject, Injectable, signal } from '@angular/core';
 import { StorageService } from '@lars/core';
 
-type LarsTheme = 'dark' | 'light';
+type LarsTheme = 'dark' | 'light' | 'auto';
 
 const STORAGE_KEY = 'lars/theme';
 
@@ -107,22 +107,25 @@ export class ThemeManagerService {
 
 function getLinkElementForKey(key: string) {
     return getExistingLinkElementByKey(key) || createLinkElementWithKey(key);
-  }
+}
   
-  function getExistingLinkElementByKey(key: string) {
+function getExistingLinkElementByKey(key: string) {
     return document.head.querySelector(
-      `link[rel="stylesheet"].${getClassNameForKey(key)}`
+        `link[rel="stylesheet"].${getClassNameForKey(key)}`
     );
-  }
-  
-  function createLinkElementWithKey(key: string) {
+}
+
+function createLinkElementWithKey(key: string) {
     const linkEl = document.createElement('link');
+
     linkEl.setAttribute('rel', 'stylesheet');
     linkEl.classList.add(getClassNameForKey(key));
+
     document.head.appendChild(linkEl);
+
     return linkEl;
-  }
+}
   
-  function getClassNameForKey(key: string) {
+function getClassNameForKey(key: string) {
     return `style-manager-${key}`;
-  }
+}
