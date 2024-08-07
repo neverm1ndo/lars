@@ -1,16 +1,27 @@
-:host {
-    -webkit-app-region: drag;
-}
-
 .lars-logo {
     width: var(--lars-topbar-icon-size);
+    &-label {
+        font-size: small;
+    }
 }
 
-nav {
-    height: var(--lars-topbar-height);
+.lars-topbar {
     display: flex;
-    align-items: center;
-    padding: 0 var(--indent-size-m);
+    flex-wrap: wrap;
+    
+    &-item {
+        display: inherit;
+        align-items: center;
+        gap: var(--indent-size-m);
+        padding: var(--indent-size-xs) var(--indent-size-l);
+    }
+
+    &-dragzone {
+        display: flex;
+        flex: 1 1 auto;
+        height: var(--lars-topbar-height);
+        -webkit-app-region: drag;
+    }
 }
 
 label {

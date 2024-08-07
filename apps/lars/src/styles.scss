@@ -4,10 +4,12 @@
 
 // Define a dark theme
 $dark-theme: mat.m2-define-dark-theme((
- color: (
-   primary: mat.m2-define-palette(mat.$m2-pink-palette),
-   accent: mat.m2-define-palette(mat.$m2-blue-grey-palette),
- ),
+  color: (
+    theme-type: dark,
+    primary: mat.m2-define-palette(mat.$m2-pink-palette),
+    accent: mat.m2-define-palette(mat.$m2-blue-grey-palette),
+    use-system-variables: true,
+  ),
   // Only include `typography` and `density` in the default dark theme.
   typography: mat.m2-define-typography-config(),
   density: 0,
@@ -15,10 +17,12 @@ $dark-theme: mat.m2-define-dark-theme((
 
 // Define a light theme
 $light-theme: mat.m2-define-light-theme((
- color: (
-   primary: mat.m2-define-palette(mat.$m2-indigo-palette),
-   accent: mat.m2-define-palette(mat.$m2-pink-palette),
- ),
+  color: (
+    theme-type: light,
+    primary: mat.m2-define-palette(mat.$m2-indigo-palette),
+    accent: mat.m2-define-palette(mat.$m2-pink-palette),
+    use-system-variables: true,
+  ),
 ));
 
 // Apply the dark theme by default
@@ -32,6 +36,8 @@ $light-theme: mat.m2-define-light-theme((
  @include mat.core-color($light-theme);
  @include mat.button-color($light-theme);
 }
+
+// @import '@angular/material/prebuilt-themes/azure-blue.css';
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

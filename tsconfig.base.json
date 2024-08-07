@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@lars/core": ["libs/core/src/index.ts"]
+      "@lars/core": ["libs/core/src/index.ts"],
+      "@lars/utils": ["libs/utils/index.ts"],
     }
   },
   "exclude": ["node_modules", "tmp"]
