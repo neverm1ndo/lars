@@ -1,0 +1,27 @@
+@import './login-theme';
+
+:host {
+  position: absolute;
+  display: flex;
+  inset: 0;
+  z-index: 1;
+}
+
+canvas {
+  position: absolute;
+  inset: inherit;
+  z-index: 0;
+}
+
+.lars-login {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex: 1 1 auto;
+  justify-content: center;
+  align-items: center;
+  &-form {
+    position: inherit;
+    z-index: 1;
+  }
+}

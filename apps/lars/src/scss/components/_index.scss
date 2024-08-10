@@ -1,0 +1,7 @@
+@use '../../../../../libs/login/feature-login/src/lib/components/login-view/login-theme' as login;
+@use '../../../../../libs/login/feature-login/src/lib/components/login-form/login-form-theme' as login-form;
+
+@mixin theme($theme) {
+    @include login.theme($theme);
+    @include login-form.theme($theme);
+}

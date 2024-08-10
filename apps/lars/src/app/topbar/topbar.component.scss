@@ -1,5 +1,7 @@
 :host {
     user-select: none;
+    position: relative;
+    z-index: 2;
 }
 
 .lars-logo {

@@ -1,0 +1,13 @@
+@import './login-form-theme';
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--indent-size-s);
+    min-width: 400px;
+}
+
+.form-surface {
+    padding: var(--indent-size-xl);
+    border-radius: 20px;
+}

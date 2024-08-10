@@ -38,6 +38,6 @@ const MAT_MODULES = [
     provideHttpClient(withInterceptorsFromDi()), 
     provideAnimationsAsync()
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

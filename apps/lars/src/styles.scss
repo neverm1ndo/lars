@@ -1,13 +1,18 @@
 @use "@angular/material" as mat;
 @use "scss/themes/all" as themes;
+@use "scss/components";
 
 @include mat.core();
 
-// Default light theme definitions
-@include mat.core-color(themes.$light-theme);
-@include mat.button-color(themes.$light-theme);
-@include mat.icon-theme(themes.$light-theme);
-@include mat.menu-theme(themes.$light-theme);
+html {
+  // Default light theme definitions
+  @include mat.core-color(themes.$light-theme);
+  @include mat.button-color(themes.$light-theme);
+  @include mat.icon-theme(themes.$light-theme);
+  @include mat.menu-theme(themes.$light-theme);
+  @include mat.form-field-theme(themes.$light-theme);
+  @include components.theme(themes.$light-theme);
+}
 
 html, body { height: 100%; }
 body { 
