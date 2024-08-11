@@ -12,6 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginViewComponent } from './components/login-view/login.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
+import { provideTranslocoScope, TranslocoModule } from '@jsverse/transloco';
 
 const MAT_MODULES = [
     MatIconModule,
@@ -28,7 +29,11 @@ const MAT_MODULES = [
         ReactiveFormsModule,
         LoginRoutingModule,
         LoginDomainModule,
+        TranslocoModule,
         ...MAT_MODULES
+    ],
+    providers: [
+      provideTranslocoScope({ scope: 'login' })
     ]
 })
 export class LoginModule {}

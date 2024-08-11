@@ -7,7 +7,27 @@ form {
     min-width: 400px;
 }
 
-.form-surface {
-    padding: var(--indent-size-xl);
-    border-radius: 20px;
+.form {
+    &-logo {
+        display: flex;
+        gap: var(--indent-size-l);
+        align-items: center;
+
+        h1 {
+            margin: 0;
+        }
+    }
+
+    &-surface {
+        display: flex;
+        flex-direction: column;
+        padding: var(--indent-size-xl);
+        border-radius: 10px;
+        gap: var(--indent-size-m);
+    }
+}
+
+.lars-logo {
+    width: 40px;
+    height: 40px;
 }

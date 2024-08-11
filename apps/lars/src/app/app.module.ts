@@ -18,6 +18,7 @@ import { CoreModule } from '@lars/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TopbarComponent } from './topbar/topbar.component';
+import { TranslocoRootModule } from './transloco-root.module';
 
 const MAT_MODULES = [
   MatSidenavModule,
@@ -32,7 +33,8 @@ const MAT_MODULES = [
     BrowserModule,
     AppRoutingModule,
     CoreModule,
-    ...MAT_MODULES
+    ...MAT_MODULES,
+    TranslocoRootModule
   ],
   providers: [
     provideHttpClient(withInterceptorsFromDi()), 

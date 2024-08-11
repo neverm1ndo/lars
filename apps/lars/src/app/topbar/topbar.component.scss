@@ -32,8 +32,11 @@
     &-controls {
         display: flex;
 
-        button mat-icon {
-            margin: 0;
+        button {
+            border-radius: 0;
+            mat-icon {
+                margin: 0;
+            }
         }
     }
 }

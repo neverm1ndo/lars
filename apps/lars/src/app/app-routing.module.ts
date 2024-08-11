@@ -9,7 +9,7 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('@lars/login/feature-login').then(m => m.LoginModule)
+    loadChildren: () => import('@lars/login/feature-login').then(m => m.LoginModule),
   }
 ];
 

@@ -1,18 +1,19 @@
-<div class="form-surface">
-  <div class="form-logo">
-    
-    <h1>LARS</h1>
-  </div>
-  <small>Liberty Admin Remote Service</small>
-  <form>
-      <mat-form-field appearance="fill">
-          <mat-label>Адрес электронной почты</mat-label>
-          <input matInput type="text">
-        </mat-form-field>
+<ng-container *transloco="let i18n">
+  <div class="form-surface">
+    <div class="form-logo">
+      <img class="lars-logo" src="lars://icons/favicon.ico" alt="LARS">
+      <h1 class="mat-title-large">{{ i18n('login.Login.Form.Title') }}</h1>
+    </div>
+    <form>
         <mat-form-field appearance="fill">
-          <mat-label>Пароль</mat-label>
-          <input matInput type="password">
-        </mat-form-field>
-        <button mat-button>Войти</button>
-  </form>
-</div>
+            <mat-label>{{ i18n('login.Login.Form.Email') }}</mat-label>
+            <input matInput type="text">
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>{{ i18n('login.Login.Form.Password') }}</mat-label>
+            <input matInput type="password">
+          </mat-form-field>
+          <button mat-button>{{ i18n('login.Login.Form.Login') }}</button>
+    </form>
+  </div>
+</ng-container>
