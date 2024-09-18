@@ -1,5 +1,17 @@
-import { ChangeDetectionStrategy, Component, ElementRef, inject, NgZone, OnInit, ViewChild } from '@angular/core';
+import { 
+    ChangeDetectionStrategy,
+    Component,
+    computed,
+    ElementRef,
+    forwardRef,
+    inject,
+    NgZone,
+    OnInit,
+    Signal,
+    ViewChild
+} from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+// eslint-disable-next-line @nx/enforce-module-boundaries
 import { ThemeManagerService } from '@lars/app/services';
 
 import { themeColors } from '../../configs/colors';
@@ -14,14 +26,23 @@ const STEP = 3;
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginViewComponent implements OnInit {
-    private readonly theme = inject(ThemeManagerService);
+    private readonly theme = inject(forwardRef(() => ThemeManagerService));
     private readonly document = inject(DOCUMENT);
     private readonly zone = inject(NgZone);
     private readonly window = this.document.defaultView;
+    private readonly host = inject(ElementRef);
 
-    private colors = this.theme.isDark() ? themeColors.dark : themeColors.light;
+    private colors: Signal<readonly string[]> = computed(
+        () => this.theme.isDark() ? themeColors.dark 
+                                  : themeColors.light
+    );
 
     @ViewChild('background', { static: true }) canvas!: ElementRef<HTMLCanvasElement>;
+    
+    private resizeObserver = new ResizeObserver(() => {
+        this.canvas.nativeElement.width = window.innerWidth;
+        this.canvas.nativeElement.height = window.innerHeight;
+    });
 
     private animateBackground(): void {
         if (!this.canvas?.nativeElement) return;
@@ -29,16 +50,16 @@ export class LoginViewComponent implements OnInit {
         const ctx: CanvasRenderingContext2D | null = this.canvas.nativeElement.getContext('2d');
 
         if (!ctx) return;
-        
-        const { innerHeight } = this.window as Window;
-        
-        let fxH = 0;
 
+        let fxH = 0;
+        
         let then: number = Date.now();
         const interval: number = 1000 / FRAMERATE_LIMIT;
         let delta: number;
-
+        
         const draw = () => {
+            const { innerHeight } = this.window as Window;
+
             window.requestAnimationFrame(draw);
         
             const now = Date.now();
@@ -49,10 +70,12 @@ export class LoginViewComponent implements OnInit {
             then = now - (delta % interval);
             ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
             fxH += STEP;
+
+            const colors = this.colors();
         
             drawLayer(
                 ctx,
-                this.colors[0],
+                colors[0],
                 (path: Path2D): void => {
                     path.lineTo(sineEaseInOut(innerHeight + fxH + 100, 0, 600, 1000), innerHeight);
                     path.bezierCurveTo(sineEaseInOut(fxH, 0, 300, 800), 200,  sineEaseInOut(fxH, 0, 500, 1000), 60, 50, 0);
@@ -60,7 +83,7 @@ export class LoginViewComponent implements OnInit {
             );
             drawLayer(
                 ctx,
-                this.colors[1],
+                colors[1],
                 (path: Path2D): void => {
                     path.lineTo(sineEaseInOut(innerHeight + fxH + 200, 0, 600, 1000), innerHeight);
                     path.bezierCurveTo(sineEaseInOut(fxH, 0, 200, 900), 200,  sineEaseInOut(fxH, 0, 400, 1000), 60, 50, 0);
@@ -68,7 +91,7 @@ export class LoginViewComponent implements OnInit {
             );
             drawLayer(
                 ctx,
-                this.colors[2],
+                colors[2],
                 (path: Path2D): void => {
                     path.lineTo(sineEaseInOut(innerHeight + fxH, 0, 500, 800), innerHeight);
                     path.bezierCurveTo(sineEaseInOut(fxH, 0, 100, 1000), 200,  sineEaseInOut(fxH, 0, 300, 1000), 60, 50, 0);
@@ -81,6 +104,8 @@ export class LoginViewComponent implements OnInit {
 
     ngOnInit(): void {
         this.zone.runOutsideAngular(() => {
+            this.resizeObserver.observe(this.host.nativeElement);
+
             this.canvas.nativeElement.width = window.innerWidth;
             this.canvas.nativeElement.height = window.innerHeight;
 

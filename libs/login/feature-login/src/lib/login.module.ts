@@ -4,7 +4,7 @@ import { LoginDomainModule } from '@lars/login/domain';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
@@ -18,7 +18,7 @@ const MAT_MODULES = [
     MatIconModule,
     MatInputModule,
     MatButtonModule,
-    MatFormFieldModule
+    MatFormFieldModule,
 ];
 
 @NgModule({
@@ -33,7 +33,14 @@ const MAT_MODULES = [
         ...MAT_MODULES
     ],
     providers: [
-      provideTranslocoScope({ scope: 'login' })
+        provideTranslocoScope({ scope: 'login' }),
+        { 
+            provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+            useValue: {
+                appearance: 'outline',
+                floatLabel: 'always'
+            }
+        }
     ]
 })
 export class LoginModule {}

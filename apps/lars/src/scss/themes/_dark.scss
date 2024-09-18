@@ -3,11 +3,6 @@
 @use "../components";
 
 .dark-theme {
-    @include mat.core-color(themes.$dark-theme);
-    @include mat.button-color(themes.$dark-theme);
-    @include mat.icon-color(themes.$dark-theme);
-    @include mat.menu-color(themes.$dark-theme);
-    @include mat.input-color(themes.$dark-theme);
-    @include mat.form-field-theme(themes.$dark-theme);
+    @include mat.all-component-themes(themes.$dark-theme);
     @include components.theme(themes.$dark-theme);
 }

@@ -1,7 +1,10 @@
 {
     "Login.Form.Title": "LARS",
-    "Login.Form.Subtitle": "Используйте данные администратора для входа в панель",
+    "Login.Form.Subtitle": "Liberty Admin Remote Service",
+    "Login.Form.Tip": "Используйте данные администратора для входа в панель",
     "Login.Form.Email": "Адрес электронной почты",
-    "Login.Form.Password": "Адрес электронной почты",
-    "Login.Form.Login": "Войти"
+    "Login.Form.Password": "Пароль",
+    "Login.Form.Login": "Войти",
+    "Login.Form.PasswordRecoverQuestion": "Забыли пароль?",
+    "Login.Form.Creds": "gta-liberty.ru"
 }

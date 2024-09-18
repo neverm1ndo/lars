@@ -4,16 +4,39 @@
       <img class="lars-logo" src="lars://icons/favicon.ico" alt="LARS">
       <h1 class="mat-title-large">{{ i18n('login.Login.Form.Title') }}</h1>
     </div>
-    <form>
-        <mat-form-field appearance="fill">
-            <mat-label>{{ i18n('login.Login.Form.Email') }}</mat-label>
-            <input matInput type="text">
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>{{ i18n('login.Login.Form.Password') }}</mat-label>
-            <input matInput type="password">
-          </mat-form-field>
-          <button mat-button>{{ i18n('login.Login.Form.Login') }}</button>
+    <div class="form-subtitle">
+      <span class="text-muted">{{ i18n('login.Login.Form.Subtitle') }} </span>
+    </div>
+    <form class="form">
+      <mat-form-field>
+        <mat-label>{{ i18n('login.Login.Form.Email') }}</mat-label>
+        <input matInput type="text">
+      </mat-form-field>
+      <mat-form-field>
+        @let show = showPassword();
+
+        <mat-label>{{ i18n('login.Login.Form.Password') }}</mat-label>
+        <input matInput [type]="show ? 'text' : 'password'">
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="togglePasswordShow()"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="show"
+        >
+          <mat-icon>{{ show ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+      </mat-form-field>
+      <div class="form-tip">
+        <span>{{ i18n('login.Login.Form.Tip') }}</span>
+      </div>
+      <button mat-flat-button>{{ i18n('login.Login.Form.Login') }}</button>
     </form>
+    <div class="form-restore">
+      <a class="lars-link" role="link" href="" disabled>{{ i18n('login.Login.Form.PasswordRecoverQuestion') }}</a>
+    </div>
+    <div class="form-creds">
+      <u>{{ i18n('login.Login.Form.Creds') }}</u>
+    </div>
   </div>
 </ng-container>

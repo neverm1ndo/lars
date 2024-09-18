@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 
 @Component({
   selector: 'lars-login-form',
@@ -6,4 +6,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrl: './login-form.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LoginFormComponent {}
+export class LoginFormComponent {
+  showPassword = signal(false);
+
+  togglePasswordShow() {
+    this.showPassword.update((value) => !value);
+  }
+}
