@@ -3,7 +3,6 @@ import {
     Component,
     computed,
     ElementRef,
-    forwardRef,
     inject,
     NgZone,
     OnInit,
@@ -14,7 +13,7 @@ import { DOCUMENT } from '@angular/common';
 // eslint-disable-next-line @nx/enforce-module-boundaries
 import { ThemeManagerService } from '@lars/app/services';
 
-import { themeColors } from '../../configs/colors';
+import { themeColors } from './configs/colors';
 
 const FRAMERATE_LIMIT = 60;
 const STEP = 3;
@@ -26,7 +25,7 @@ const STEP = 3;
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginViewComponent implements OnInit {
-    private readonly theme = inject(forwardRef(() => ThemeManagerService));
+    private readonly theme = inject(ThemeManagerService);
     private readonly document = inject(DOCUMENT);
     private readonly zone = inject(NgZone);
     private readonly window = this.document.defaultView;
@@ -73,30 +72,28 @@ export class LoginViewComponent implements OnInit {
 
             const colors = this.colors();
         
-            drawLayer(
-                ctx,
-                colors[0],
-                (path: Path2D): void => {
-                    path.lineTo(sineEaseInOut(innerHeight + fxH + 100, 0, 600, 1000), innerHeight);
-                    path.bezierCurveTo(sineEaseInOut(fxH, 0, 300, 800), 200,  sineEaseInOut(fxH, 0, 500, 1000), 60, 50, 0);
-                }
-            );
-            drawLayer(
-                ctx,
-                colors[1],
-                (path: Path2D): void => {
-                    path.lineTo(sineEaseInOut(innerHeight + fxH + 200, 0, 600, 1000), innerHeight);
-                    path.bezierCurveTo(sineEaseInOut(fxH, 0, 200, 900), 200,  sineEaseInOut(fxH, 0, 400, 1000), 60, 50, 0);
-                }
-            );
-            drawLayer(
-                ctx,
-                colors[2],
-                (path: Path2D): void => {
-                    path.lineTo(sineEaseInOut(innerHeight + fxH, 0, 500, 800), innerHeight);
-                    path.bezierCurveTo(sineEaseInOut(fxH, 0, 100, 1000), 200,  sineEaseInOut(fxH, 0, 300, 1000), 60, 50, 0);
-                }
-            );
+            const layers = [
+                [
+                    [sineEaseInOut(innerHeight + fxH + 100, 0, 600, 1000), innerHeight],
+                    [sineEaseInOut(fxH, 0, 300, 800), 200,  sineEaseInOut(fxH, 0, 500, 1000), 60, 50, 0]
+                ],
+                [
+                    [sineEaseInOut(innerHeight + fxH + 200, 0, 600, 1000), innerHeight],
+                    [sineEaseInOut(fxH, 0, 200, 900), 200,  sineEaseInOut(fxH, 0, 400, 1000), 60, 50, 0]
+                ],
+                [
+                    [sineEaseInOut(innerHeight + fxH, 0, 500, 800), innerHeight],
+                    [sineEaseInOut(fxH, 0, 100, 1000), 200,  sineEaseInOut(fxH, 0, 300, 1000), 60, 50, 0]
+                ]
+            ];
+
+            for (let index = 0; index < layers.length; index++) {
+                const [[startX, startY], [cp1x, cp1y, cp2x, cp2y, cy, cx]] = layers[index];
+                drawLayer(ctx, colors[index], (path) => {
+                    path.lineTo(startX, startY);
+                    path.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, cx, cy);
+                });
+            }
         };
 
         draw();

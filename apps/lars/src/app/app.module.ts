@@ -1,8 +1,7 @@
-import { NgModule } from '@angular/core';
+import { importProvidersFrom, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {
   provideHttpClient,
-  withFetch,
   withInterceptorsFromDi,
 } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -14,12 +13,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
 /** LARS modules */
-import { CoreModule } from '@lars/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TopbarComponent } from './topbar/topbar.component';
 import { TranslocoRootModule } from './transloco-root.module';
+import { CoreModule } from '@lars/core';
 
 const MAT_MODULES = [
   MatSidenavModule,
@@ -33,13 +32,13 @@ const MAT_MODULES = [
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CoreModule,
     ...MAT_MODULES,
     TranslocoRootModule
   ],
   providers: [
     provideHttpClient(withInterceptorsFromDi()), 
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    importProvidersFrom(CoreModule)
   ],
   bootstrap: [AppComponent]
 })
