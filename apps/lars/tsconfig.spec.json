@@ -12,5 +12,5 @@
     "src/**/*.test.ts",
     "src/**/*.spec.ts",
     "src/**/*.d.ts"
-  ]
+, "../../libs/core/src/lib/services/theme/theme-manager.service.spec.ts"  ]
 }

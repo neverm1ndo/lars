@@ -1,0 +1,42 @@
+:host {
+    user-select: none;
+    position: relative;
+    z-index: 2;
+}
+
+.lars-logo {
+    width: var(--lars-topbar-icon-size);
+    pointer-events: none;
+    &-label {
+        font-size: small;
+    }
+}
+
+.lars-topbar {
+    display: flex;
+    flex-wrap: wrap;
+    
+    &-item {
+        display: inherit;
+        align-items: center;
+        gap: var(--indent-size-m);
+        padding: 0 var(--indent-size-l);
+    }
+
+    &-dragzone {
+        display: flex;
+        flex: 1 1 auto;
+        height: var(--lars-topbar-height);
+        -webkit-app-region: drag;
+    }
+    &-controls {
+        display: flex;
+
+        button {
+            border-radius: 0;
+            mat-icon {
+                margin: 0;
+            }
+        }
+    }
+}

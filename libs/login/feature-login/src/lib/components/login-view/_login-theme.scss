@@ -1,0 +1,24 @@
+@use "@angular/material" as mat;
+
+@mixin color($theme) {
+    // Get the color config from the theme.
+    $theme-type: mat.get-theme-type($theme);
+    $is-dark: $theme-type == 'dark';
+
+    @debug "#{$theme-type}";
+
+    $light-background: rgb(211,217,233);
+    $light-gradient-background: linear-gradient(164deg, rgba(211,217,233,1) 0%, rgba(195,202,255,1) 35%, rgba(127,177,255,1) 100%);
+
+    $dark-background: rgb(44,45,46);
+    $dark-gradient-background: linear-gradient(164deg, rgba(37,51,65,1) 0%, rgba(78,84,138,1) 36%, rgba(118,155,213,1) 100%);
+
+    .lars-login {
+        background: if($is-dark, $dark-background, $light-background);
+        background: if($is-dark, $dark-gradient-background, $light-gradient-background);
+    }
+}
+
+@mixin theme($theme) {
+    @include color($theme);
+}

@@ -7,6 +7,6 @@ export class MenuService {
     constructor(private readonly http: HttpClient) {}
 
     buildMenu(permitions: any) {
-        return {}
+        /** not implemented */
     }
 }

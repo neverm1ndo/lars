@@ -1,0 +1,67 @@
+@import './login-form-theme';
+
+form {
+    display: flex;
+    flex-direction: column;
+    min-width: 400px;
+}
+
+.form {
+    &-logo {
+        display: flex;
+        gap: var(--indent-size-m);
+        align-items: center;
+        justify-content: center;
+        
+        h1 {
+            font-weight: 500;
+            margin: 0;
+        }
+    }
+
+    &-subtitle, &-tip, &-creds {
+        font-size: small;
+        text-align: center;
+    }
+
+    &-subtitle {
+        margin-bottom: var(--indent-size-l);
+    }
+
+    &-tip {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: var(--indent-size-xl);
+        gap: var(--indent-size-m);
+    }
+
+    &-surface {
+        --surface-shadow-color: rgba(34, 60, 80, 0.2);
+
+        display: flex;
+        flex-direction: column;
+        padding: var(--indent-size-xl) var(--indent-size-3xl);
+        border-radius: 24px;
+        gap: var(--indent-size-m);
+        // -webkit-box-shadow: 0px 0px 28px -10px var(--surface-shadow-color);
+        // -moz-box-shadow: 0px 0px 28px -10px var(--surface-shadow-color);
+        // box-shadow: 0px 0px 28px -10px var(--surface-shadow-color);
+
+        & > .form-subtitle {
+            margin-bottom: var(--indent-size-sm);
+        }
+    }
+    
+    &-restore {
+        display: flex;
+        justify-content: end;
+        margin-bottom: var(--indent-size-l);
+    }
+}
+
+.lars-logo {
+    $size: 40px;
+
+    width: $size;
+    height: $size;
+}

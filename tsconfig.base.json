@@ -15,7 +15,11 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@lars/core": ["libs/core/src/index.ts"]
+      "@lars/app/services": ["apps/lars/src/app/services/index.ts"],
+      "@lars/core": ["libs/core/src/index.ts"],
+      "@lars/login/domain": ["libs/login/domain/src/index.ts"],
+      "@lars/login/feature-login": ["libs/login/feature-login/src/index.ts"],
+      "@lars/utils": ["libs/utils/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -4,7 +4,7 @@
   "sourceRoot": "libs/core/src",
   "prefix": "lib",
   "projectType": "library",
-  "tags": [],
+  "tags": ["domain:shared","type:api"],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
