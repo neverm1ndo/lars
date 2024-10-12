@@ -75,11 +75,11 @@ export class LoginViewComponent implements OnInit {
             const layers = [
                 [
                     [sineEaseInOut(innerHeight + fxH + 100, 0, 600, 1000), innerHeight],
-                    [sineEaseInOut(fxH, 0, 300, 800), 200,  sineEaseInOut(fxH, 0, 500, 1000), 60, 50, 0]
+                    [sineEaseInOut(fxH, 0, 300, 800), 200,  sineEaseInOut(fxH, 0, 500, 1000), 60, 0, 0]
                 ],
                 [
                     [sineEaseInOut(innerHeight + fxH + 200, 0, 600, 1000), innerHeight],
-                    [sineEaseInOut(fxH, 0, 200, 900), 200,  sineEaseInOut(fxH, 0, 400, 1000), 60, 50, 0]
+                    [sineEaseInOut(fxH, 0, 200, 900), 200,  sineEaseInOut(fxH, 0, 400, 1000), 60, 20, 0]
                 ],
                 [
                     [sineEaseInOut(innerHeight + fxH, 0, 500, 800), innerHeight],
@@ -89,6 +89,7 @@ export class LoginViewComponent implements OnInit {
 
             for (let index = 0; index < layers.length; index++) {
                 const [[startX, startY], [cp1x, cp1y, cp2x, cp2y, cy, cx]] = layers[index];
+
                 drawLayer(ctx, colors[index], (path) => {
                     path.lineTo(startX, startY);
                     path.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, cx, cy);
