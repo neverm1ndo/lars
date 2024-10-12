@@ -1,2 +1,2 @@
 export * from './menu.service';
-export * from './theme-manager.service';
+export * from '../../../../../libs/core/src/lib/services/theme/theme-manager.service';

@@ -4,7 +4,7 @@
   "sourceRoot": "libs/login/feature-login/src",
   "prefix": "lars-login",
   "projectType": "library",
-  "tags": ["domain:login", "type:feature"],
+  "tags": ["type:feature"],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",

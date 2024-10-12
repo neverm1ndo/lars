@@ -1,5 +1,5 @@
 import { InjectionToken, NgModule } from '@angular/core';
-import { ElectronService, StorageService } from './services';
+import { ElectronService, StorageService, ThemeManagerService } from './services';
 
 export const BROWSER_STORAGE = new InjectionToken<Storage>('Browser Storage');
 
@@ -9,6 +9,7 @@ export const BROWSER_STORAGE = new InjectionToken<Storage>('Browser Storage');
   providers: [
     ElectronService,
     StorageService,
+    ThemeManagerService,
     { provide: BROWSER_STORAGE, useFactory: () => localStorage }
   ]
 })

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ElectronService } from '@lars/core';
-import { ThemeManagerService } from '../services/theme-manager.service';
+import { ThemeManagerService } from '../../../../../libs/core/src/lib/services/theme/theme-manager.service';
 
 @Component({
     selector: 'lars-topbar',

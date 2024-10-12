@@ -32,8 +32,8 @@ const MAT_MODULES = [
   imports: [
     BrowserModule,
     AppRoutingModule,
+    TranslocoRootModule,
     ...MAT_MODULES,
-    TranslocoRootModule
   ],
   providers: [
     provideHttpClient(withInterceptorsFromDi()), 

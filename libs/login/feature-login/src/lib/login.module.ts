@@ -14,7 +14,7 @@ import { LoginViewComponent } from './components/login-view/login.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { provideTranslocoScope, TranslocoModule } from '@jsverse/transloco';
 
-const MAT_MODULES = [
+const MATERIAL_MODULES = [
     MatIconModule,
     MatInputModule,
     MatButtonModule,
@@ -30,7 +30,7 @@ const MAT_MODULES = [
         LoginRoutingModule,
         LoginDomainModule,
         TranslocoModule,
-        ...MAT_MODULES
+        ...MATERIAL_MODULES
     ],
     providers: [
         provideTranslocoScope({ scope: 'login' }),

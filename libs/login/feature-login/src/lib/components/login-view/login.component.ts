@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 // eslint-disable-next-line @nx/enforce-module-boundaries
-import { ThemeManagerService } from '@lars/app/services';
+import { ThemeManagerService } from '@lars/core';
 
 import { themeColors } from './configs/colors';
 

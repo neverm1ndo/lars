@@ -1,14 +1,12 @@
 import { DOCUMENT } from '@angular/common';
 import { inject, Injectable, signal } from '@angular/core';
-import { StorageService } from '@lars/core';
+import { StorageService } from '../storage/storage.service';
 
 type LarsTheme = 'dark' | 'light' | 'auto';
 
 const STORAGE_KEY = 'lars/theme';
 
-@Injectable({
-    providedIn: 'root'
-})
+@Injectable()
 export class ThemeManagerService {
     private readonly document = inject(DOCUMENT);
     private readonly storage = inject(StorageService);
