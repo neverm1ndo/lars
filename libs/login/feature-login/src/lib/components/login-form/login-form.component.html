@@ -7,33 +7,62 @@
     <div class="form-subtitle">
       <span class="text-muted">{{ i18n('login.Login.Form.Subtitle') }} </span>
     </div>
-    <form class="form">
+    <form [formGroup]="form" (submit)="login()" class="form">
       <mat-form-field>
+        @let emailControl = form.controls['email'];
+
         <mat-label>{{ i18n('login.Login.Form.Email') }}</mat-label>
-        <input matInput type="text">
+        <input matInput formControlName="email" type="text">
+        <mat-error *ngIf="emailControl.hasError('required')">
+          {{ i18n('login.Login.Form.Error.EmailIsRequired') }}
+        </mat-error>
+        <mat-error *ngIf="emailControl.hasError('email')">
+          {{ i18n('login.Login.Form.Error.EmailFormat') }}
+        </mat-error>
       </mat-form-field>
       <mat-form-field>
         @let show = showPassword();
 
         <mat-label>{{ i18n('login.Login.Form.Password') }}</mat-label>
-        <input matInput [type]="show ? 'text' : 'password'">
+        <input
+          matInput
+          formControlName="password"
+          [type]="show ? 'text' : 'password'">
         <button
           mat-icon-button
           matSuffix
           (click)="togglePasswordShow()"
           [attr.aria-label]="'Hide password'"
           [attr.aria-pressed]="show"
+          type="button"
         >
           <mat-icon>{{ show ? 'visibility_off' : 'visibility' }}</mat-icon>
         </button>
+
+        @let passwordControl = form.controls['password'];
+
+        <mat-error *ngIf="passwordControl.hasError('required')">
+          {{ i18n('login.Login.Form.Error.PasswordIsRequired') }}
+        </mat-error>
+        <mat-error *ngIf="passwordControl.hasError('minlength')">
+          {{ i18n('login.Login.Form.Error.PasswordLength', { length: passwordControl.errors?.['minlength']?.requiredLength }) }}
+        </mat-error>
       </mat-form-field>
       <div class="form-tip">
         <span>{{ i18n('login.Login.Form.Tip') }}</span>
       </div>
-      <button mat-flat-button>{{ i18n('login.Login.Form.Login') }}</button>
+      <button type="submit" mat-flat-button [disabled]="isLoading() || form.invalid">
+        @if (!isLoading()) {
+          {{ i18n('login.Login.Form.Login') }}
+        } @else {
+          <mat-icon>
+            <mat-spinner diameter="16"></mat-spinner>
+          </mat-icon>
+        }
+      </button>
     </form>
     <div class="form-restore">
-      <a class="lars-link" role="link" href="" disabled>{{ i18n('login.Login.Form.PasswordRecoverQuestion') }}</a>
+      <a class="lars-link" role="link" href="#" (click)="recoverPassword(); $event.preventDefault()">{{ i18n('login.Login.Form.PasswordRecoverQuestion') }}</a>
     </div>
     <div class="form-creds">
       <u>{{ i18n('login.Login.Form.Creds') }}</u>

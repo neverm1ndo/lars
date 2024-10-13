@@ -1,0 +1,15 @@
+{
+    "Login.Form.Title": "LARS",
+    "Login.Form.Subtitle": "Liberty Admin Remote Service",
+    "Login.Form.Tip": "Используйте данные администратора для входа в панель",
+    "Login.Form.Email": "Адрес электронной почты",
+    "Login.Form.Password": "Пароль",
+    "Login.Form.Login": "Войти",
+    "Login.Form.Error.EmailIsRequired": "Необходимо ввести e-mail",
+    "Login.Form.Error.EmailFormat": "Почта должна быть формата name@email.com",
+    "Login.Form.Error.PasswordIsRequired": "Необходимо ввести пароль",
+    "Login.Form.Error.PasswordLength": "Пароль дожен быть не менее {length, plural, =0 {} one {{length} символа} other {{length} символов}}",
+    "Login.Form.Error.Message": "{status, select, 500 { Сервер недоступен } 401 { Неверныая почта или пароль } other { Неизвестная ошибка }}",
+    "Login.Form.PasswordRecoverQuestion": "Забыли пароль?",
+    "Login.Form.Creds": "gta-liberty.ru"
+}

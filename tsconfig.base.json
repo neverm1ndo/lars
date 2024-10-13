@@ -17,6 +17,8 @@
     "paths": {
       "@lars/app/services": ["apps/lars/src/app/services/index.ts"],
       "@lars/core": ["libs/core/src/index.ts"],
+      "@lars/i18n": ["libs/i18n/src/index.ts"],
+      "@lars/i18n/testing": ["libs/i18n/src/lib/testing/index.ts"],
       "@lars/login/domain": ["libs/login/domain/src/index.ts"],
       "@lars/login/feature-login": ["libs/login/feature-login/src/index.ts"],
       "@lars/utils": ["libs/utils/index.ts"]

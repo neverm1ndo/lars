@@ -5,14 +5,20 @@ import { ElectronService } from '../electron/electron.service';
 export class ExternalLinksService {
   private readonly electron = inject(ElectronService);
 
-  openExternal(url: URL | string, params?: URLSearchParams): void {
+  openExternal(url: URL | string, params?: Record<string, string>): void {
+    if (typeof url === 'string') {
+      url = new URL(url);
+    }
+
     if (url instanceof URL) {
       if (params) {
-        url = this.applySearchParams(url, params);
+        const urlParams = new URLSearchParams(params);
+
+        url = this.applySearchParams(url, urlParams);
       }
-      
-      url = url.toString();
     }
+
+    url = url.toString();
 
     this.electron.shell?.openExternal(url);
   }

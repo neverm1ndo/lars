@@ -1,9 +1,9 @@
 /* eslint-disable */
 export default {
-  displayName: 'login-feature-login',
-  preset: '../../../jest.preset.js',
+  displayName: 'i18n',
+  preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: '../../../coverage/libs/login/feature-login',
+  coverageDirectory: '../../coverage/libs/i18n',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',
@@ -14,9 +14,6 @@ export default {
     ],
   },
   transformIgnorePatterns: ['node_modules/(?!.*\\.mjs$)'],
-  moduleNameMapper: {
-    '^flat': 'node_modules/flat/index.js'
-  },
   snapshotSerializers: [
     'jest-preset-angular/build/serializers/no-ng-attributes',
     'jest-preset-angular/build/serializers/ng-snapshot',

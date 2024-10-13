@@ -17,8 +17,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TopbarComponent } from './topbar/topbar.component';
-import { TranslocoRootModule } from './transloco-root.module';
+import { TranslocoRootModule } from '@lars/i18n';
 import { CoreModule } from '@lars/core';
+import { provideTranslocoMessageformat } from '@jsverse/transloco-messageformat';
 
 const MAT_MODULES = [
   MatSidenavModule,
@@ -38,6 +39,9 @@ const MAT_MODULES = [
   providers: [
     provideHttpClient(withInterceptorsFromDi()), 
     provideAnimationsAsync(),
+    provideTranslocoMessageformat({
+      locales: 'ru-RU'
+    }),
     importProvidersFrom(CoreModule)
   ],
   bootstrap: [AppComponent]

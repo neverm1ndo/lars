@@ -7,6 +7,8 @@ form {
 }
 
 .form {
+    gap: var(--indent-size-xs);
+
     &-logo {
         display: flex;
         gap: var(--indent-size-m);
@@ -31,7 +33,7 @@ form {
     &-tip {
         display: flex;
         flex-direction: column;
-        margin-bottom: var(--indent-size-xl);
+        margin: var(--indent-size-sm) 0 var(--indent-size-l) 0;
         gap: var(--indent-size-m);
     }
 
