@@ -8,6 +8,8 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule } from '@angular/mat
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginViewComponent } from './components/login-view/login.component';
@@ -18,7 +20,9 @@ const MATERIAL_MODULES = [
     MatIconModule,
     MatInputModule,
     MatButtonModule,
+    MatProgressSpinnerModule,
     MatFormFieldModule,
+    MatSnackBarModule
 ];
 
 @NgModule({

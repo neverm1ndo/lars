@@ -1,10 +1,6 @@
 @use "@angular/material" as mat;
 
 @mixin color($theme) {
-    // .form-surface {
-    //     background-color: mat.get-theme-color($theme, surface);
-    //     box-shadow: mat.get-theme-color($theme, shadow);
-    // }
     a {
         color: mat.get-theme-color($theme, primary);
     }

@@ -1,6 +1,6 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["src/**/*.ts", "../../libs/core/src/lib/services/theme/theme-manager.service.spec.ts", "../../libs/core/src/lib/services/theme/theme-manager.service.ts"],
+  "include": ["src/**/*.ts", "../../libs/core/src/lib/services/theme/theme-manager.service.spec.ts", "../../libs/core/src/lib/services/theme/theme-manager.service.ts", "../../libs/i18n/src/lib/transloco-loader.ts", "../../libs/i18n/src/lib/transloco-root.module.ts"],
   "compilerOptions": {},
   "exclude": ["jest.config.ts", "src/**/*.test.ts", "src/**/*.spec.ts"]
 }
