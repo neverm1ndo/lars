@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { HarnessLoader } from '@angular/cdk/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 
@@ -10,6 +11,7 @@ import { LoginFacade } from '@lars/login/domain';
 import { LoginFormComponent } from './login-form.component';
 import { of } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { LoginModule } from '../../login.module';
 
 describe('LoginFormComponent', () => {
   let component: LoginFormComponent;
@@ -18,7 +20,11 @@ describe('LoginFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [getTranslocoTestingModule()],
+      imports: [
+        LoginModule,
+        NoopAnimationsModule,
+        getTranslocoTestingModule()
+      ],
       declarations: [LoginFormComponent],
       providers: [
         { provide: ExternalLinksService, useClass: ExternalLinksServiceMock },

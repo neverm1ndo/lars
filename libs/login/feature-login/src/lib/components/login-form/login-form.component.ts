@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
 import { TranslocoService } from '@jsverse/transloco';
+
 import { ExternalLinksService, StorageService } from '@lars/core';
 import { LoginFacade, UserLoginCredentials } from '@lars/login/domain';
 
@@ -19,7 +19,6 @@ export class LoginFormComponent {
   private readonly storage = inject(StorageService);
   private readonly loginFacade = inject(LoginFacade);
   private readonly transloco = inject(TranslocoService);
-  private readonly router = inject(Router);
 
   private readonly snackbar = inject(MatSnackBar);
   
