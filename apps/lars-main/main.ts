@@ -133,11 +133,21 @@ function createWindow(): BrowserWindow {
     win.loadURL('https://libertyapp.nmnd.ru');
   }
 
+  //TODO: Необходимо разделить доступ до локальных ресурсов для dev и prod 
   protocol.handle('lars', (request) => {
     const filePath = request.url.slice('lars://'.length);
+    let dirUrl = [__dirname, '../lars/public', filePath];
+    const [root] = filePath.split('/');
+
+    if (root === 'i18n') {
+      dirUrl = [__dirname, '../../libs/i18n-langs', filePath.slice('i18n'.length)];
+    }
+
+    const sourcePath = path.join(...dirUrl);
+    const sourceUrl = url.pathToFileURL(sourcePath).toString();
     
-    return net.fetch(url.pathToFileURL(path.join(__dirname, '../lars/public', filePath)).toString());
-  })
+    return net.fetch(sourceUrl);
+  });
 
 
   win.on('show', (_event: any) => {
