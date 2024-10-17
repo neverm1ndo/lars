@@ -1,0 +1,21 @@
+<mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav
+        opened 
+        mode="side" 
+        class="example-sidenav">
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <mat-nav-list>
+            @for (link of list; track link) {
+                <!-- mat-list-item -->
+                <button 
+                    mat-icon-button
+                    [routerLink]="link.href">
+                    <mat-icon>favorite</mat-icon>
+                </button>
+                <!-- [activated]="link.isActive"> -->
+            }
+        </mat-nav-list>
+    </mat-sidenav-content>
+</mat-sidenav-container>
