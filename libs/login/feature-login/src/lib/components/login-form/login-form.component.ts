@@ -1,10 +1,12 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@jsverse/transloco';
 
 import { ExternalLinksService, StorageService } from '@lars/core';
 import { LoginFacade, UserLoginCredentials } from '@lars/login/domain';
+import { ProfileFacade } from '@lars/profile/domain';
 
 const MIN_PASSWORD_LENGTH = 4;
 
@@ -15,9 +17,11 @@ const MIN_PASSWORD_LENGTH = 4;
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginFormComponent {
+  private readonly router = inject(Router);
   private readonly externalLinks = inject(ExternalLinksService);
   private readonly storage = inject(StorageService);
   private readonly loginFacade = inject(LoginFacade);
+  private readonly profileFacade = inject(ProfileFacade);
   private readonly transloco = inject(TranslocoService);
 
   private readonly snackbar = inject(MatSnackBar);
@@ -55,15 +59,15 @@ export class LoginFormComponent {
 
     this.loginFacade.login(credentials)
       .subscribe({
-        next: () => {
+        next: (profile) => {
           this.isLoading.set(false);
+          this.profileFacade.setUserProfile(profile);
+
+          this.router.navigate(['/dashboard']);
         },
         error: ({ status }) => {
           this.isLoading.set(false);
-          this.snackbar.open(
-            this.transloco.translate('login.Login.Form.Error.Message', { status }),
-            'OK'
-          );
+          this.snackbar.open(this.transloco.translate('login.Login.Form.Error.Message', { status }), 'OK');
         }
       });
   }

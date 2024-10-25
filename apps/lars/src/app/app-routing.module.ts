@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RootShellComponent } from '@lars/root/shell';
+import { isLoggedInGuard } from './guards';
 
 const routes: Routes = [
   // { path: '', pathMatch: 'full', redirectTo: '/dashboard' },
@@ -11,10 +12,10 @@ const routes: Routes = [
   {
     path: '',
     component: RootShellComponent,
-    canActivateChild: [],
-    // children: [
-    //   { path: '', pathMatch: 'full', redirectTo: '/dashboard' },
-    // ]
+    canActivate: [isLoggedInGuard],
+    children: [
+      { path: '', pathMatch: 'full', redirectTo: '/dashboard' },
+    ]
   }
 ];
 

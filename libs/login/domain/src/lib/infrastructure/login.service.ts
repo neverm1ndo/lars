@@ -3,7 +3,7 @@ import { inject, Injectable } from '@angular/core';
 
 import { catchError, Observable, take, throwError } from 'rxjs';
 
-import { UseLoginrResponse, UserLoginCredentials } from '../entities';
+import { UseLoginResponse, UserLoginCredentials } from '../entities';
 
 @Injectable()
 export class LoginService {
@@ -12,8 +12,8 @@ export class LoginService {
     private urlLogin = '/v2/auth/login';
     private urlLogout = '/v2/auth/logout';
 
-    login(credentials: UserLoginCredentials): Observable<UseLoginrResponse> {
-        return this.http.post<UseLoginrResponse>(this.urlLogin, credentials)
+    login(credentials: UserLoginCredentials): Observable<UseLoginResponse> {
+        return this.http.post<UseLoginResponse>(this.urlLogin, credentials)
             .pipe(
                 catchError(({ status, statusText }) => throwError(() => ({ status, statusText }))),
                 take(1)

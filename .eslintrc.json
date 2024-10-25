@@ -14,11 +14,11 @@
             "depConstraints": [
               {
                 "sourceTag": "domain:login",
-                "onlyDependOnLibsWithTags": ["domain:login", "domain:shared"]
-              },
-              {
-                "sourceTag": "domain:login",
-                "onlyDependOnLibsWithTags": ["domain:login", "domain:shared"]
+                "onlyDependOnLibsWithTags": [
+                  "domain:login",
+                  "domain:profile",
+                  "domain:shared"
+                ]
               },
               {
                 "sourceTag": "type:app",
@@ -52,7 +52,7 @@
               },
               {
                 "sourceTag": "type:domain-logic",
-                "onlyDependOnLibsWithTags": ["type:util"]
+                "onlyDependOnLibsWithTags": ["type:domain-logic", "type:util"]
               },
               {
                 "sourceTag": "domain:shared",
@@ -61,6 +61,10 @@
               {
                 "sourceTag": "domain:profile",
                 "onlyDependOnLibsWithTags": ["domain:profile", "domain:shared"]
+              },
+              {
+                "sourceTag": "domain:dasboard",
+                "onlyDependOnLibsWithTags": ["domain:dasboard", "domain:shared"]
               }
             ]
           }

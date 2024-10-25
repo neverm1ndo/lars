@@ -34,8 +34,11 @@
 
         button {
             border-radius: 0;
-            mat-icon {
-                margin: 0;
+
+            &.no-content-gap {
+                mat-icon {
+                    margin: 0;
+                }
             }
         }
     }

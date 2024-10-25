@@ -15,6 +15,7 @@ import { LoginRoutingModule } from './login-routing.module';
 import { LoginViewComponent } from './components/login-view/login.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { provideTranslocoScope, TranslocoModule } from '@jsverse/transloco';
+import { ProfileDomainModule } from '@lars/profile/domain';
 
 const MATERIAL_MODULES = [
     MatIconModule,
@@ -33,6 +34,7 @@ const MATERIAL_MODULES = [
         ReactiveFormsModule,
         LoginRoutingModule,
         LoginDomainModule,
+        ProfileDomainModule,
         TranslocoModule,
         ...MATERIAL_MODULES
     ],
