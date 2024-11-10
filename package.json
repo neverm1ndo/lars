@@ -43,14 +43,15 @@
     "@angular/router": "~18.1.0",
     "@jsverse/transloco": "^7.4.3",
     "@jsverse/transloco-messageformat": "^7.0.1",
+    "@ngrx/effects": "^18.1.0",
     "@ngrx/router-store": "^18.1.0",
     "@ngrx/store": "^18.1.0",
     "@nx/angular": "19.5.3",
     "@popperjs/core": "^2.11.8",
+    "lodash-es": "^4.17.21",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.14.3",
-    "@ngrx/effects": "^18.1.0"
+    "zone.js": "~0.14.3"
   },
   "devDependencies": {
     "@angular-architects/ddd": "^19.0.1",
@@ -79,6 +80,7 @@
     "@swc/core": "~1.5.7",
     "@swc/helpers": "~0.5.11",
     "@types/jest": "^29.4.0",
+    "@types/lodash-es": "^4.17.12",
     "@types/node": "18.16.9",
     "@typescript-eslint/eslint-plugin": "^7.16.0",
     "@typescript-eslint/parser": "^7.16.0",

@@ -13,14 +13,6 @@
             "allow": [],
             "depConstraints": [
               {
-                "sourceTag": "domain:login",
-                "onlyDependOnLibsWithTags": [
-                  "domain:login",
-                  "domain:profile",
-                  "domain:shared"
-                ]
-              },
-              {
                 "sourceTag": "type:app",
                 "onlyDependOnLibsWithTags": [
                   "type:api",
@@ -39,6 +31,14 @@
                 ]
               },
               {
+                "sourceTag": "type:domain-logic",
+                "onlyDependOnLibsWithTags": [
+                  "type:api",
+                  "type:domain-logic",
+                  "type:util"
+                ]
+              },
+              {
                 "sourceTag": "type:feature",
                 "onlyDependOnLibsWithTags": [
                   "type:ui",
@@ -49,22 +49,6 @@
               {
                 "sourceTag": "type:ui",
                 "onlyDependOnLibsWithTags": ["type:domain-logic", "type:util"]
-              },
-              {
-                "sourceTag": "type:domain-logic",
-                "onlyDependOnLibsWithTags": ["type:domain-logic", "type:util"]
-              },
-              {
-                "sourceTag": "domain:shared",
-                "onlyDependOnLibsWithTags": ["domain:shared"]
-              },
-              {
-                "sourceTag": "domain:profile",
-                "onlyDependOnLibsWithTags": ["domain:profile", "domain:shared"]
-              },
-              {
-                "sourceTag": "domain:dasboard",
-                "onlyDependOnLibsWithTags": ["domain:dasboard", "domain:shared"]
               }
             ]
           }
@@ -72,9 +56,29 @@
       }
     },
     {
-      "files": ["*.ts", "*.tsx"],
-      "extends": ["plugin:@nx/typescript"],
-      "rules": {}
+      "files": ["*.ts"],
+      "extends": [
+        "plugin:@nx/angular",
+        "plugin:@angular-eslint/template/process-inline-templates"
+      ],
+      "rules": {
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "lars",
+            "style": "camelCase"
+          }
+        ],
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "lars",
+            "style": "kebab-case"
+          }
+        ]
+      }
     },
     {
       "files": ["*.js", "*.jsx"],

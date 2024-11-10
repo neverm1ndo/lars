@@ -1,8 +1,9 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 
-import { ProfileFacade } from '@lars/profile/domain';
 import { tap } from 'rxjs';
+
+import { ProfileFacade } from '@lars/profile/domain';
 
 export const isLoggedInGuard: CanActivateFn = () => {
   const router = inject(Router);

@@ -53,7 +53,7 @@ export class TopbarComponent {
         },
         {
             textContent: 'dashboard',
-            action: () => this.router.navigate(['/dashboard'])
+            action: () => this.router.navigate(['/app/dashboard'])
         },
     ];
     

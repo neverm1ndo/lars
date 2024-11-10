@@ -5,9 +5,13 @@
     height: calc(100% - var(--lars-topbar-height));
 }
 
-// mat-drawer {
-//     width: 64px;
-// }
+mat-drawer-container {
+    width: 100%;
+
+    mat-drawer {
+        width: 64px;
+    }
+}
 
 main {
     display: flex;

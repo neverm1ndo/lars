@@ -1,6 +1,6 @@
 import { Route } from '@angular/router';
-import { RootShellComponent } from './root-shell/root-shell.component';
+import { LarsRootShellComponent } from './root-shell/root-shell.component';
 
 export const rootShellRoutes: Route[] = [
-  { path: '', component: RootShellComponent },
+  { path: '', pathMatch: 'full', component: LarsRootShellComponent },
 ];

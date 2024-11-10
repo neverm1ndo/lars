@@ -1,10 +1,10 @@
 {
-  "name": "profile-domain",
+  "name": "lars-profile-domain",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/profile/domain/src",
-  "prefix": "profile",
+  "prefix": "lars-profile",
   "projectType": "library",
-  "tags": ["domain:profile", "domain:login", "type:domain-logic"],
+  "tags": ["type:domain-logic"],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",

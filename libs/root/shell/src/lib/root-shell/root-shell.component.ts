@@ -20,4 +20,4 @@ const MATERIAL_MODULES = [
   templateUrl: './root-shell.component.html',
   styleUrl: './root-shell.component.scss',
 })
-export class RootShellComponent {}
+export class LarsRootShellComponent {}

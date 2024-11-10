@@ -4,7 +4,7 @@
   "sourceRoot": "libs/login/domain/src",
   "prefix": "login",
   "projectType": "library",
-  "tags": ["domain:login", "type:domain-logic"],
+  "tags": ["type:domain-logic"],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",

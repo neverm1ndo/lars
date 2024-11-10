@@ -1,5 +1,6 @@
-import { createReducer } from "@ngrx/store";
-import { ProfileData } from "../entities";
+import { createReducer, on } from '@ngrx/store';
+import { ProfileData } from '../entities';
+import { actions as ProfileActions } from './profile.actions';
 
 export interface ProfileState {
     profileData: ProfileData;
@@ -14,5 +15,7 @@ const initialState: ProfileState = {
 };
 
 export const userReducer = createReducer(
-    initialState
+    initialState,
+    on(ProfileActions.setProfile, (state, { profile }) => ({ ...state, profileData: profile })),
+    on(ProfileActions.setIsAuthenticatedState, (state, { isAuthenticated }) => ({ ...state, isAuthenticated }))
 );
