@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@jsverse/transloco';
 
-import { filter, take } from 'rxjs';
+import { filter, take, tap } from 'rxjs';
 
 import { ExternalLinksService, StorageService } from '@lars/core';
 import { LoginFacade, UserLoginCredentials } from '@lars/login/domain';
@@ -70,6 +70,7 @@ export class LoginFormComponent implements OnInit {
       },
       error: ({ status }) => {
         this.snackbar.open(this.transloco.translate('login.Login.Form.Error.Message', { status }), 'OK');
+        this.isLoading.set(false);
       },
       complete: () => {
         this.isLoading.set(false);
@@ -80,7 +81,8 @@ export class LoginFormComponent implements OnInit {
   ngOnInit(): void {
       this.profileFacade.isAuthenticated().pipe(
         takeUntilDestroyed(this.destroyRef),
-        filter((isAuthenticated) => isAuthenticated)
+        tap(console.log),
+        filter((isAuthenticated) => isAuthenticated),
       ).subscribe({
         next: async () => void this.router.navigate(['/app'])
       });

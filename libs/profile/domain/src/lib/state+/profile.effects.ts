@@ -2,7 +2,7 @@ import { inject, Injectable } from "@angular/core";
 import { Action } from "@ngrx/store";
 import { Actions, createEffect, ofType, OnInitEffects } from "@ngrx/effects";
 
-import { map, switchMap, tap } from "rxjs";
+import { filter, map, switchMap, tap } from "rxjs";
 
 import { StorageService } from '@lars/core';
 
@@ -17,14 +17,12 @@ export class ProfileEffects implements OnInitEffects {
     getStoredProfile$ = createEffect(() =>
         this.actions$.pipe(
             ofType(actions.getStoredProfile),
-            switchMap(() => {
-                const profile = this.localStorageService.get(LOCALSTORAGE_USER_PROFILE_DATA_KEY);
-
-                return [
-                    actions.setIsAuthenticatedState({ isAuthenticated: profile ? true : false }),
-                    actions.setProfile({ profile })
-                ];
-            })
+            map(() => this.localStorageService.get(LOCALSTORAGE_USER_PROFILE_DATA_KEY)),
+            filter((profile) => profile),
+            switchMap((profile) => [
+                actions.setIsAuthenticatedState({ isAuthenticated: profile ? true : false }),
+                actions.setProfile({ profile })
+            ])
         )
     );
 
@@ -33,9 +31,10 @@ export class ProfileEffects implements OnInitEffects {
             ofType(actions.setProfile),
             tap(({ profile }) => {
                 this.localStorageService.set(LOCALSTORAGE_USER_PROFILE_DATA_KEY, profile);
-            })
+            }),
+            map(() => actions.setIsAuthenticatedState({ isAuthenticated: true }))
         ),
-        { dispatch: false }
+        // { dispatch: false }
     );
 
     ngrxOnInitEffects(): Action {
