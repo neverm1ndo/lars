@@ -15,12 +15,18 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@lars/app/services": ["apps/lars/src/app/services/index.ts"],
       "@lars/core": ["libs/core/src/index.ts"],
+      "@lars/dashboard/feature-dashboard": [
+        "libs/dashboard/feature-dashboard/src/index.ts"
+      ],
+      "@lars/dashboard/shell": ["libs/dashboard/shell/src/index.ts"],
       "@lars/i18n": ["libs/i18n/src/index.ts"],
       "@lars/i18n/testing": ["libs/i18n/src/lib/testing/index.ts"],
       "@lars/login/domain": ["libs/login/domain/src/index.ts"],
       "@lars/login/feature-login": ["libs/login/feature-login/src/index.ts"],
+      "@lars/profile/domain": ["libs/profile/domain/src/index.ts"],
+      "@lars/root/domain": ["libs/root/domain/src/index.ts"],
+      "@lars/root/shell": ["libs/root/shell/src/index.ts"],
       "@lars/utils": ["libs/utils/index.ts"]
     }
   },

@@ -1,0 +1,13 @@
+<div class="sidepanel-list">
+    @for (link of list; track link) {
+        <button
+            mat-button
+            [routerLink]="link.href"
+            routerLinkActive="mat-mdc-unelevated-button" 
+            [matTooltip]="link.title" 
+            matTooltipPosition="right"
+            role="navigation">
+            <mat-icon>{{ link.icon }}</mat-icon>
+        </button>
+    }
+</div>

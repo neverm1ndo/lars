@@ -1,19 +1,10 @@
 {
   "root": true,
-  "ignorePatterns": [
-    "**/*"
-  ],
-  "plugins": [
-    "@nx"
-  ],
+  "ignorePatterns": ["**/*"],
+  "plugins": ["@nx"],
   "overrides": [
     {
-      "files": [
-        "*.ts",
-        "*.tsx",
-        "*.js",
-        "*.jsx"
-      ],
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
         "@nx/enforce-module-boundaries": [
           "error",
@@ -21,20 +12,6 @@
             "enforceBuildableLibDependency": true,
             "allow": [],
             "depConstraints": [
-              {
-                "sourceTag": "domain:login",
-                "onlyDependOnLibsWithTags": [
-                  "domain:login",
-                  "domain:shared"
-                ]
-              },
-              {
-                "sourceTag": "domain:login",
-                "onlyDependOnLibsWithTags": [
-                  "domain:login",
-                  "domain:shared"
-                ]
-              },
               {
                 "sourceTag": "type:app",
                 "onlyDependOnLibsWithTags": [
@@ -54,6 +31,14 @@
                 ]
               },
               {
+                "sourceTag": "type:domain-logic",
+                "onlyDependOnLibsWithTags": [
+                  "type:api",
+                  "type:domain-logic",
+                  "type:util"
+                ]
+              },
+              {
                 "sourceTag": "type:feature",
                 "onlyDependOnLibsWithTags": [
                   "type:ui",
@@ -63,22 +48,7 @@
               },
               {
                 "sourceTag": "type:ui",
-                "onlyDependOnLibsWithTags": [
-                  "type:domain-logic",
-                  "type:util"
-                ]
-              },
-              {
-                "sourceTag": "type:domain-logic",
-                "onlyDependOnLibsWithTags": [
-                  "type:util"
-                ]
-              },
-              {
-                "sourceTag": "domain:shared",
-                "onlyDependOnLibsWithTags": [
-                  "domain:shared"
-                ]
+                "onlyDependOnLibsWithTags": ["type:domain-logic", "type:util"]
               }
             ]
           }
@@ -86,32 +56,37 @@
       }
     },
     {
-      "files": [
-        "*.ts",
-        "*.tsx"
-      ],
+      "files": ["*.ts"],
       "extends": [
-        "plugin:@nx/typescript"
+        "plugin:@nx/angular",
+        "plugin:@angular-eslint/template/process-inline-templates"
       ],
+      "rules": {
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "lars",
+            "style": "camelCase"
+          }
+        ],
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "lars",
+            "style": "kebab-case"
+          }
+        ]
+      }
+    },
+    {
+      "files": ["*.js", "*.jsx"],
+      "extends": ["plugin:@nx/javascript"],
       "rules": {}
     },
     {
-      "files": [
-        "*.js",
-        "*.jsx"
-      ],
-      "extends": [
-        "plugin:@nx/javascript"
-      ],
-      "rules": {}
-    },
-    {
-      "files": [
-        "*.spec.ts",
-        "*.spec.tsx",
-        "*.spec.js",
-        "*.spec.jsx"
-      ],
+      "files": ["*.spec.ts", "*.spec.tsx", "*.spec.js", "*.spec.jsx"],
       "env": {
         "jest": true
       },

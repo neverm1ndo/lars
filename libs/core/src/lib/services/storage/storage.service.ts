@@ -1,6 +1,8 @@
 import { Inject, Injectable } from '@angular/core';
 import { BROWSER_STORAGE } from '../../core.module';
 
+import { isString, toString } from 'lodash-es';
+
 type StorageDataType = 'json' | 'text';
 
 @Injectable()
@@ -20,12 +22,16 @@ export class StorageService {
         return raw;
     }
 
-    set(key: string, value: string, dataType: StorageDataType = 'json') {
+    set(key: string, value: unknown, dataType: StorageDataType = 'json') {
         if (dataType === 'json') {
             value = JSON.stringify(value)
         }
 
-        this.storage.setItem(key, value);
+        if (!isString(value)) {
+            value = toString(value);
+        }
+
+        this.storage.setItem(key, value as string);
     }
 
     remove(key: string) {

@@ -1,18 +1,11 @@
-export enum Workgroup {
-    CHALLENGER = 9,
-    DEVELOPER,
-    ADMIN,
-    MAPPER,
-    CONFIGURATOR,
-    BACKUPER
-}
+import { Workgroup } from '@lars/profile/domain';
 
 export type UserLoginCredentials = {
     email: string;
     password: string;
 }
 
-export interface UseLoginrResponse {
+export interface UseLoginResponse {
     id: number;
     username: string;
     avatar: string;

@@ -6,31 +6,30 @@
         </div>
     </div>
     <div class="lars-topbar-controls">
-        <button
-            mat-button
-            (click)="change('dark')"
-            aria-label="Minimize window">
-            dark
-        </button>
-        <button
-            mat-button
-            (click)="change('light')"
-            aria-label="Minimize window">
-            light
-        </button>
-        <button
-            mat-button
-            (click)="minimize()"
-            role="button"
-            aria-label="Minimize window button">
-            <mat-icon>minimize</mat-icon>
-        </button>
-        <button
-            mat-button
-            (click)="close()"
-            role="button"
-            aria-label="Close window button">
-            <mat-icon>close</mat-icon>
-        </button>
+        @for (extra of extraButtons; track $index) {
+            <button
+                mat-button
+                [class.no-content-gap]="!extra.textContent"
+                (click)="extra.action()"
+                [attr.aria-label]="extra.ariaLabel"
+            >
+                @if (extra.icon) {
+                    <mat-icon>{{ extra.icon }}</mat-icon>
+                }
+                @if (extra.textContent; as text) {
+                    <span>{{ text }}</span>
+                }
+            </button>
+        }
+        @for (button of windowControlButtons; track $index) {
+            <button
+                mat-button
+                (click)="button.action()"
+                class="no-content-gap"
+                role="button"
+                [attr.aria-label]="button.ariaLabel">
+                <mat-icon>{{ button.icon }}</mat-icon>
+            </button>
+        }
     </div>
 </nav>

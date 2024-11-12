@@ -1,0 +1,22 @@
+
+@if (dashboard.length) {
+    <gridster [options]="options">
+        @for (item of dashboard; track item) {
+            <gridster-item [item]="item">
+            <!-- your content here -->1
+            </gridster-item>
+        }
+    </gridster>
+} @else {
+    <div class="dashboard-empty-state-wrapper">
+        <div class="dashboard-empty-state">
+            <h1>Нет доступных дашбордов</h1>
+            <small>Добавьте дашборд, чтобы разместить на нем виджеты</small>
+            <button mat-button disabled>
+                <mat-icon>add</mat-icon>
+                Создать дашборд
+            </button>
+        </div>
+    </div>
+}
+

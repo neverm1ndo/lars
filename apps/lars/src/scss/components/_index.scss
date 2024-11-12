@@ -1,7 +1,9 @@
 @use '../../../../../libs/login/feature-login/src/lib/components/login-view/login-theme' as login;
 @use '../../../../../libs/login/feature-login/src/lib/components/login-form/login-form-theme' as login-form;
+@use '../../../../../libs/root/shell/src/lib/root-shell/root-shell-theme' as root-shell;
 
 @mixin theme($theme) {
     @include login.theme($theme);
     @include login-form.theme($theme);
+    @include root-shell.theme($theme);
 }

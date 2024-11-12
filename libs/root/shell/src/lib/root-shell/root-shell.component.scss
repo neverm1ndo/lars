@@ -1,0 +1,13 @@
+@use './root-shell-theme';
+
+:host {
+    display: flex;
+    flex: 1 1 auto;
+    width: 100%;
+    height: calc(100% - var(--lars-topbar-height));
+}
+
+main {
+    display: flex;
+    flex: 1 1 auto;
+}
