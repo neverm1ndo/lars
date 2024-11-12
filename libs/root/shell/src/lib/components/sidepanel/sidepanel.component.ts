@@ -31,50 +31,42 @@ export class SidepanelComponent {
     {
       title: 'Дашборды',
       icon: 'dashboard',
-      href: './dashboard',
-      isActive: false,
+      href: './dashboard'
     },
     {
       title: 'Логи',
       icon: 'search',
-      href: './logs',
-      isActive: false,
+      href: './logs'
     },
     {
       title: 'Файлы',
       icon: 'code',
-      href: './logs',
-      isActive: false,
+      href: './logs'
     },
     {
       title: 'Инспектор карт',
       icon: 'map',
-      href: './logs',
-      isActive: false,
+      href: './logs'
     },
     {
       title: 'Банлист',
       icon: 'person_off',
-      href: './logs',
-      isActive: false,
+      href: './logs'
     },
     {
       title: 'Админы',
-      icon: 'shield_person',
-      href: './logs',
-      isActive: false,
+      icon: 'admin_panel_settings',
+      href: './logs'
     },
     {
       title: 'Бэкапы',
       icon: 'shelves',
-      href: './logs',
-      isActive: false,
+      href: './logs'
     },
     {
       title: 'Мониторинг',
-      icon: 'monitoring',
-      href: './logs',
-      isActive: false,
+      icon: 'analytics',
+      href: './logs'
     }
   ]
 }
