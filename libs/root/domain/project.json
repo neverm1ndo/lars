@@ -1,7 +1,7 @@
 {
   "name": "root-domain",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/root/root-domain/src",
+  "sourceRoot": "libs/root/domain/src",
   "prefix": "lars",
   "projectType": "library",
   "tags": ["type:domain-logic"],
@@ -10,7 +10,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/root/root-domain/jest.config.ts"
+        "jestConfig": "libs/root/domain/jest.config.ts"
       }
     },
     "lint": {
