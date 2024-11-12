@@ -4,7 +4,7 @@
 $dark-theme: mat.define-theme((
   color: (
     theme-type: dark,
-    primary: mat.$blue-palette
+    primary: mat.$azure-palette
   ),
   // Only include `typography` and `density` in the default dark theme.
 ));
@@ -13,7 +13,7 @@ $dark-theme: mat.define-theme((
 $light-theme: mat.define-theme((
   color: (
     theme-type: light,
-    primary: mat.$blue-palette,
+    primary: mat.$azure-palette,
   ),
   typography: (
     use-system-variables: true

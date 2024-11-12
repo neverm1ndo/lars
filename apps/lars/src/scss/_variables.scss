@@ -5,6 +5,9 @@ $variables: (
     'topbar-height': 40px,
     'topbar-icon-size': 20px,
     'topbar-controls-icon-size': 20px,
+    'sidepanel-width': 64px,
+    'sidepanel-height': 100%,
+    'sidepanel-nav-button-size': 42px
 );
 
 $sizes: 
@@ -23,7 +26,6 @@ $sizes:
     '7xl' 72px,
     '9xl' 96px,
     '8xl' 128px;
-
 
 :root {
     @each $token, $value in $variables {

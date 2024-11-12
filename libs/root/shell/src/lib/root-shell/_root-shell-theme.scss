@@ -1,0 +1,13 @@
+@use '@angular/material' as mat;
+
+@mixin color($theme) {
+    $theme-type: mat.get-theme-type($theme);
+
+    main {
+        background: mat.get-theme-color($theme, surface-container);
+    }
+}
+
+@mixin theme($theme) {
+    @include color($theme);
+}

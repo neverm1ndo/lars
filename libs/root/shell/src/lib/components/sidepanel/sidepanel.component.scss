@@ -1,7 +1,29 @@
 :host {
-    width: 64px;
+    width: var(--lars-sidepanel-width);
+    height: var(--lars-sidepanel-height);
 }
 
-mat-sidenav {
-    width: 64px;
+.sidepanel-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding-top: var(--indent-size-xs);
+    gap: var(--indent-size-sm);
+
+    button {
+        padding: 0;
+        min-width: var(--lars-sidepanel-nav-button-size);
+        height: var(--lars-sidepanel-nav-button-size);
+        border-radius: 8px;
+        font-size: large;
+
+        mat-icon {
+            margin: 0;
+            font-size: 20px;
+            height: 1.225rem;
+            width: 1.225rem;
+        }
+    }
 }

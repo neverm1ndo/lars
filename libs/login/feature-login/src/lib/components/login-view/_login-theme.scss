@@ -5,8 +5,6 @@
     $theme-type: mat.get-theme-type($theme);
     $is-dark: $theme-type == 'dark';
 
-    @debug "#{$theme-type}";
-
     $light-background: rgb(211,217,233);
     $light-gradient-background: linear-gradient(164deg, rgba(211,217,233,1) 0%, rgba(195,202,255,1) 35%, rgba(127,177,255,1) 100%);
 

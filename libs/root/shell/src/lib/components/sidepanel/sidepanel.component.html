@@ -1,21 +1,13 @@
-<mat-sidenav-container class="example-container">
-    <mat-sidenav #sidenav
-        opened 
-        mode="side" 
-        class="example-sidenav">
-    </mat-sidenav>
-
-    <mat-sidenav-content>
-        <mat-nav-list>
-            @for (link of list; track link) {
-                <!-- mat-list-item -->
-                <button 
-                    mat-icon-button
-                    [routerLink]="link.href">
-                    <mat-icon>favorite</mat-icon>
-                </button>
-                <!-- [activated]="link.isActive"> -->
-            }
-        </mat-nav-list>
-    </mat-sidenav-content>
-</mat-sidenav-container>
+<div class="sidepanel-list">
+    @for (link of list; track link) {
+        <button
+            mat-button
+            [routerLink]="link.href"
+            routerLinkActive="mat-mdc-unelevated-button" 
+            [matTooltip]="link.title" 
+            matTooltipPosition="right"
+            role="navigation">
+            <mat-icon>{{ link.icon }}</mat-icon>
+        </button>
+    }
+</div>

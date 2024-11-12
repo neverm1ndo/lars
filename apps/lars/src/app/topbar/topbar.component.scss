@@ -6,6 +6,7 @@
 
 .lars-logo {
     width: var(--lars-topbar-icon-size);
+    padding: 0 var(--indent-size-xs);
     pointer-events: none;
     &-label {
         font-size: small;
