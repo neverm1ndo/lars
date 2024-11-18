@@ -3,13 +3,20 @@
     height: var(--lars-sidepanel-height);
 }
 
-.sidepanel-list {
+nav {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: space-between;
     height: 100%;
+}
+
+.sidepanel-list {
+    display: flex;
+    flex-direction: inherit;
+    align-items: center;
+    justify-content: flex-start;
     width: 100%;
-    padding-top: var(--indent-size-xs);
+    padding: var(--indent-size-xs) 0;
     gap: var(--indent-size-sm);
 
     button {
@@ -25,5 +32,10 @@
             height: 1.225rem;
             width: 1.225rem;
         }
+    }
+
+    &-item-end {
+        display: flex;
+        margin-bottom: var(--indent-size-sm);
     }
 }

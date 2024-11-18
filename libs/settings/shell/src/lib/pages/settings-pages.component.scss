@@ -1,0 +1,106 @@
+@use '@angular/material' as mat;
+
+.lars-settings {
+    --lars-settings-sidenav-max-width: 218px;
+    --lars-settings-sidenav-navs-title: 18px;
+    --lars-settings-sidenav-navs-label-text-size: 12px;
+    --lars-settings-sidenav-navs-label-shape: 8px;
+    --lars-settings-sidenav-navs-item-height: 38px;
+    --lars-settings-sidenav-scrollbar-width: 5px;
+    --lars-settings-sidenav-scrollbar-shape: 1rem;
+
+    display: flex;
+    height: 100%;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+
+    &-sidenav {
+        display: flex;
+        -webkit-box-flex: 1;
+        -webkit-box-pack: end;
+        justify-content: flex-end;
+        flex: 1 0 var(--lars-settings-sidenav-max-width);
+        overflow: hidden scroll;
+        user-select: none;
+
+        &-side-navs-title {
+            display: flex;
+            gap: var(--indent-size-m);
+            align-items: center;
+            font-size: var(--lars-settings-sidenav-navs-title);
+
+            mat-icon {
+                font-size: inherit;
+                height: var(--lars-settings-sidenav-navs-title);
+                width: var(--lars-settings-sidenav-navs-title);
+            }
+
+            h5 {
+                margin: var(--indent-size-sm) 0;
+                font-weight: 500;
+            }
+        }
+
+        &-side {
+            display: flex;
+            flex-direction: row;
+            width: var(--lars-settings-sidenav-max-width);
+            padding: var(--indent-size-m) var(--indent-size-l);
+            box-sizing: border-box;
+            align-items: flex-start;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -webkit-box-align: start;
+
+            &-navs {
+                --mdc-list-list-item-label-text-size: var(--lars-settings-sidenav-navs-label-text-size);
+                --mat-list-active-indicator-shape: var(--lars-settings-sidenav-navs-label-shape);
+                --mdc-list-list-item-one-line-container-height: var(--lars-settings-sidenav-navs-item-height);
+
+                display: inherit;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            &-version {
+                display: inherit;
+                flex-direction: column;
+                font-size: 11px;
+                gap: var(--indent-size-xs);
+                margin-top: var(--indent-size-l);
+
+                img {
+                  display: inline;
+                  position: relative;
+                  top: 1px;
+                  width: var(--lars-settings-sidenav-navs-label-text-size);
+                  height: var(--lars-settings-sidenav-navs-label-text-size);
+                  line-height: var(--lars-settings-sidenav-navs-label-text-size);
+                  margin: 0 var(--indent-size-xs) 0 0;
+                  filter: grayscale(100%) opacity(70%);
+                }
+            }
+        }
+
+        &-search {
+            --mat-form-field-container-height: 10px;
+            --mat-form-field-container-vertical-padding: var(--indent-size-xs);
+            font-size: small;
+            margin-bottom: var(--indent-size-m);
+        }
+
+        &::-webkit-scrollbar {
+            background: none;
+            width: var(--lars-settings-sidenav-scrollbar-width);
+        }
+
+        &::-webkit-scrollbar-thumb {
+            border-radius: var(--lars-settings-sidenav-scrollbar-shape);
+        }
+    }
+
+    &-main {
+
+    }
+}

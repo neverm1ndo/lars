@@ -4,16 +4,18 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { MatRippleModule } from '@angular/material/core';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
 
 import { LarsMenuService } from '@lars/core'
 
 const MATERIAL_MODULES = [
   MatIconModule,
-  MatRippleModule,
   MatButtonModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatDividerModule,
+  MatListModule
 ];
 
 @Component({

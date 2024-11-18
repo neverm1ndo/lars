@@ -17,9 +17,13 @@ const routes: Routes = [
     ],
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
-      { 
+      {
         path: 'dashboard',
         loadChildren: () => import('@lars/dashboard/shell').then(m => m.DashboardShellModule)
+      },
+      {
+        path: 'settings',
+        loadChildren: () => import('@lars/settings/shell').then(m => m.SettingsShellModule)
       }
     ]
   }
