@@ -1,0 +1,65 @@
+<div *transloco="let i18n" class="profile-settings">
+    <h1>Профиль</h1>
+    @let user = userProfile$ | async;
+    @if (user) {
+        <mat-card class="profile-settings-head">
+            <mat-card-content>
+                <div class="profile-settings-head-info">
+                    <img class="profile-settings-head-info-avatar" [src]="user.avatar" [alt]="user.username">
+                    <div class="profile-settings-head-info-credentials">
+                        <h4>{{ user.username }}</h4>
+                        <div class="profile-settings-head-info-roles">
+                            <mat-chip-set>
+                                @for (role of user.roles; track role) {
+                                    <mat-chip>{{ i18n('profile.ProfileWorkgroup.WorkgroupName', { workgroup: role }) }}</mat-chip>
+                                }
+                            </mat-chip-set>
+                        </div>
+                    </div>
+                    <div class="profile-settings-head-external">
+                        <button mat-button (click)="profileSettings()">Настройки профиля</button>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    }
+    <mat-divider></mat-divider>
+    <section>
+        <h2>Пароль</h2>
+        <button mat-flat-button (click)="changePassword()">Сменить пароль</button>
+        <div class="profile-settings-annotation">
+            <strong>2FA Аутентификация</strong>
+            <small>Защитите свой аккаунт с помощью двухфакторной аутентификации</small>
+        </div>
+        <button mat-flat-button disabled>Добавить Google Authenticator</button>
+    </section>
+    <section>
+        <h3>Токен авторизации</h3>
+        @if (isShowToken()) {
+            <mat-form-field
+                appearance="outline"
+                class="profile-settings-token">
+                <input
+                    matInput
+                    [value]="user?.token"
+                    type="text"
+                    readonly
+                />
+                <button
+                    mat-icon-button
+                    matSuffix
+                    (click)="copy(user?.token)"
+                    [attr.aria-label]="'Copy token'"
+                  >
+                    <mat-icon>content_copy</mat-icon>
+                  </button>
+                <mat-hint>Копируйте эту строку на свой страх и риск</mat-hint>
+            </mat-form-field>
+        } @else { 
+            <button mat-flat-button (click)="showToken()">Показать токен</button>
+        }
+        <div class="profile-settings-annotation">
+            <small>Токен авторизации нужен, чтобы авторизаироваться в других приложениях инфраструктуры LARS</small>
+        </div>
+    </section>
+</div>

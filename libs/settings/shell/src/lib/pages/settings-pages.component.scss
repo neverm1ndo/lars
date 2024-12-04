@@ -1,7 +1,11 @@
-@use '@angular/material' as mat;
+:host {
+    width: 100%;
+}
 
 .lars-settings {
     --lars-settings-sidenav-max-width: 218px;
+    --lars-settings-main-max-width: 680px;
+    --lars-settings-main-min-width: 660px;
     --lars-settings-sidenav-navs-title: 18px;
     --lars-settings-sidenav-navs-label-text-size: 12px;
     --lars-settings-sidenav-navs-label-shape: 8px;
@@ -11,6 +15,7 @@
 
     display: flex;
     height: 100%;
+    width: 100%;
     overflow: hidden;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -101,6 +106,38 @@
     }
 
     &-main {
+        position: relative;
+        display: flex;
+        align-items: flex-start;
+        flex: 1 1 var(--lars-settings-main-max-width);
+        box-sizing: border-box;
+        
+        &-scrollable {
+            height: 100%;
+            position: static;
+            display: flex;
+            align-items: flex-start;
+            overflow: hidden scroll;
+            justify-content: flex-start;
 
+            &::-webkit-scrollbar {
+                background: none;
+                width: var(--lars-settings-sidenav-scrollbar-width);
+            }
+    
+            &::-webkit-scrollbar-thumb {
+                border-radius: var(--lars-settings-sidenav-scrollbar-shape);
+            }
+        }
+
+        &-container {
+            flex: 1 1 auto;
+            position: relative;
+            max-width: var(--lars-settings-main-max-width);
+            min-width: var(--lars-settings-main-min-width);
+            padding: 0 var(--indent-size-xxl);
+            min-height: 100%;
+            box-sizing: border-box;
+        }
     }
 }

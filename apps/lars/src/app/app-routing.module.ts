@@ -19,6 +19,7 @@ const routes: Routes = [
       { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
       {
         path: 'dashboard',
+        pathMatch: 'full',
         loadChildren: () => import('@lars/dashboard/shell').then(m => m.DashboardShellModule)
       },
       {

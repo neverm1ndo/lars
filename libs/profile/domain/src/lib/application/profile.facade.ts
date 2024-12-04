@@ -5,11 +5,13 @@ import { Observable } from "rxjs";
 
 import { selectors as ProfileSelectors } from "../state+/profile.selectors";
 import { actions as ProfileActions } from "../state+/profile.actions";
-import { ProfileData } from "../entities";
+import { ProfileData, Workgroup } from "../entities";
+import { ProfileService } from "../infrastructure/profile.service";
 
 @Injectable()
 export class ProfileFacade {
     private readonly store = inject(Store);
+    private readonly profileService = inject(ProfileService);
 
     /**
      * Возвращает данные профиля текущего пользователя
@@ -24,5 +26,9 @@ export class ProfileFacade {
 
     isAuthenticated(): Observable<boolean> {
         return this.store.select(ProfileSelectors.selectIsAuthenticated);
+    }
+
+    getWorkgroupName(workgroup: Workgroup): string {
+        return this.profileService.getWorkgroupName(workgroup);
     }
 }

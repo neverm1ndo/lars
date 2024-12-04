@@ -1,0 +1,14 @@
+<h2 mat-dialog-title>Внимание</h2>
+<mat-dialog-content>
+    Токен авторизации дает полный доступ к действиям от Вашего имени. Если вы решитесь его применить, то <strong>НЕ ПУБЛИКУЙТЕ</strong> и не сохраняйте в открытых источниках!
+    <p>Вы точно знаете, что делаете?</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button
+        mat-flat-button
+        cdkFocusInitial
+        (click)="abort()">Отмена</button>
+    <button
+        mat-button
+        (click)="confirm()">Да, я знаю, что делаю</button>
+  </mat-dialog-actions>

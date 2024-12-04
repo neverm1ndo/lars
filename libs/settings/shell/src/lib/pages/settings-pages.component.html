@@ -21,7 +21,7 @@
                         Профиль
                     </mat-list-item>
                 </mat-nav-list>
-                <div class="lars-settings-sidenav-side-navs-title">
+                <!-- <div class="lars-settings-sidenav-side-navs-title">
                     <mat-icon>receipt_long</mat-icon>
                     <h5>Мониторинг логов</h5>
                 </div>
@@ -32,7 +32,7 @@
                     <mat-list-item>
                         Фильтр
                     </mat-list-item>
-                </mat-nav-list>
+                </mat-nav-list> -->
                 <mat-divider></mat-divider>
                 <div class="lars-settings-sidenav-side-version">
                     <span>
@@ -49,7 +49,11 @@
         </div>
     </div>
     <div class="lars-settings-main">
-        <router-outlet></router-outlet>
+        <div class="lars-settings-main-scrollable">
+            <div class="lars-settings-main-container">
+                <router-outlet/>
+            </div>
+        </div>
     </div>
 </div>
 

@@ -1,0 +1,50 @@
+.profile-settings {
+    display: flex;
+    flex-direction: column;
+    padding: var(--indent-size-xxl) 0;
+    gap: var(--indent-size-l);
+
+    --lars-profile-settings-avatar-size: 120px;
+
+    &-head {
+        width: 100%;
+        &-info {
+            display: flex;
+            gap: var(--indent-size-l)
+        }
+        &-info-avatar {
+            border-radius: 100%;
+            width: var(--lars-profile-settings-avatar-size);
+        }
+        &-external {
+            display: flex;
+            flex: 1 1 auto;
+            justify-content: end;
+        }
+    }
+    &-annotation {
+        display: inherit;
+        flex-direction: inherit;
+        gap: var(--indent-size-l);
+        margin-top: var(--indent-size-l);
+    }
+
+    &-token {
+        width: 100%;
+
+        input {
+            border-radius: var(--indent-size-xs);
+        }
+    }
+
+    section {
+        display: flex;
+        flex-direction: column;
+        gap: var(--indent-size-m);
+        align-items: start;
+
+        h2, h3 {
+            margin-bottom: var(--indent-size-xxs);
+        }
+    }
+}
