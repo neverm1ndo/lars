@@ -5,6 +5,6 @@ export interface ProfileData {
     username?: string;
     avatar?: string;
     main_group?: Workgroup;
-    secondary_group?: Workgroup;
+    permissions?: Workgroup[];
     token?: string;
 };

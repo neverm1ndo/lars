@@ -1,0 +1,60 @@
+<div class="lars-settings">
+    <div class="lars-settings-sidenav">
+        <div class="lars-settings-sidenav-side">
+            <div class="lars-settings-sidenav-side-navs">
+                <mat-form-field
+                    appearance="outline" 
+                    class="lars-settings-sidenav-search">
+                    <mat-icon matIconPrefix>search</mat-icon>
+                    <input
+                        matInput
+                        type="text"
+                        placeholder="Поиск"
+                    >
+                </mat-form-field>
+                <div class="lars-settings-sidenav-side-navs-title">
+                    <mat-icon>person</mat-icon>
+                    <h5>Аккаунт</h5>
+                </div>
+                <mat-nav-list>
+                    <mat-list-item>
+                        Профиль
+                    </mat-list-item>
+                </mat-nav-list>
+                <!-- <div class="lars-settings-sidenav-side-navs-title">
+                    <mat-icon>receipt_long</mat-icon>
+                    <h5>Мониторинг логов</h5>
+                </div>
+                <mat-nav-list>
+                    <mat-list-item>
+                        Отображение
+                    </mat-list-item>
+                    <mat-list-item>
+                        Фильтр
+                    </mat-list-item>
+                </mat-nav-list> -->
+                <mat-divider></mat-divider>
+                <div class="lars-settings-sidenav-side-version">
+                    <span>
+                        <img src="lars://icons/favicon.ico">
+                        <span>Liberty Admin Remote Service</span>
+                    </span>
+                    @if ($version | async; as version) {
+                        <span>Build: {{ version.version }} ({{ version.platform }})</span>
+                        <span>{{ version.host }} ({{ version.release }})</span>
+                        <span class="text-muted">gta-liberty.ru</span>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="lars-settings-main">
+        <div class="lars-settings-main-scrollable">
+            <div class="lars-settings-main-container">
+                <router-outlet/>
+            </div>
+        </div>
+    </div>
+</div>
+
+

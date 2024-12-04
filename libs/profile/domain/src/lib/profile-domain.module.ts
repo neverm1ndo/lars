@@ -4,9 +4,10 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
 import * as fromProfile from './state+/profile.reducer';
-// import { UserFacade } from './application';
+
 import { ProfileEffects } from './state+/profile.effects';
 import { ProfileFacade } from './application/profile.facade';
+import { ProfileService } from './infrastructure/profile.service';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { ProfileFacade } from './application/profile.facade';
     EffectsModule.forFeature([ProfileEffects])
   ],
   providers: [
-    ProfileFacade
+    ProfileFacade,
+    ProfileService
   ]
 })
 export class ProfileDomainModule {}

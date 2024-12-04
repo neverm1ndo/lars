@@ -1,13 +1,28 @@
-<div class="sidepanel-list">
-    @for (link of list; track link) {
+<nav>
+    <div class="sidepanel-list">
+        @for (link of list; track link) {
+            <button
+                mat-button
+                [routerLink]="link.href"
+                routerLinkActive="mat-mdc-unelevated-button" 
+                [matTooltip]="link.title" 
+                matTooltipPosition="right"
+                role="navigation">
+                <mat-icon>{{ link.icon }}</mat-icon>
+            </button>
+        }
+        <ng-container #extraSidepanelButtons></ng-container>
+    </div>
+    <div class="sidepanel-list">
         <button
             mat-button
-            [routerLink]="link.href"
+            [routerLink]="['./settings']"
             routerLinkActive="mat-mdc-unelevated-button" 
-            [matTooltip]="link.title" 
+            [matTooltip]="'Настройки'" 
             matTooltipPosition="right"
+            class="sidepanel-list-item-end"
             role="navigation">
-            <mat-icon>{{ link.icon }}</mat-icon>
+            <mat-icon>settings</mat-icon>
         </button>
-    }
-</div>
+    </div>
+</nav>

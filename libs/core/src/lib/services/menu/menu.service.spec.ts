@@ -1,11 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 
-import { MenuService } from './menu.service';
+import { LarsMenuService } from './menu.service';
 import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('MenuService', () => {
-  let service: MenuService;
+  let service: LarsMenuService;
   let httpClient: HttpClient;
   let httpTestingController: HttpTestingController;
 
@@ -14,11 +14,11 @@ describe('MenuService', () => {
       providers: [
         provideHttpClient(withInterceptorsFromDi()),
         provideHttpClientTesting(),
-        MenuService
+        LarsMenuService
       ]
     });
 
-    service = TestBed.inject(MenuService);
+    service = TestBed.inject(LarsMenuService);
     httpClient = TestBed.inject(HttpClient);
     httpTestingController = TestBed.inject(HttpTestingController);
   });

@@ -1,0 +1,22 @@
+@use '@angular/material' as mat;
+
+@mixin color($theme) {
+    .lars-settings-sidenav {
+        background: mat.get-theme-color($theme, surface);
+
+        &-side-version {
+            color: mat.get-theme-color($theme, outline);
+        }
+    }
+
+    .lars-settings-sidenav, 
+    .lars-settings-main-scrollable {
+        &::-webkit-scrollbar-thumb {
+            background: mat.get-theme-color($theme, surface-variant);
+        }
+    }
+}
+
+@mixin theme($theme) {
+    @include color($theme);
+}

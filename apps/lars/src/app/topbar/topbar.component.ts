@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
+// import { Router } from '@angular/router';
 import { ElectronService, ThemeManagerService } from '@lars/core';
 
 interface TopbarButton {
@@ -21,7 +21,7 @@ interface ExtraTopbarButton extends TopbarButton {
 export class TopbarComponent {
     private readonly electron = inject(ElectronService);
     private readonly theme = inject(ThemeManagerService);
-    private readonly router = inject(Router);
+    // private readonly router = inject(Router);
 
     readonly windowControlButtons: TopbarButton[] = [
         {
@@ -47,14 +47,14 @@ export class TopbarComponent {
             ariaLabel: 'Change theme to light',
             action: this.change.bind(this, 'light')
         },
-        {
-            textContent: 'login',
-            action: () => this.router.navigate(['/login'])
-        },
-        {
-            textContent: 'dashboard',
-            action: () => this.router.navigate(['/app/dashboard'])
-        },
+        // {
+        //     textContent: 'login',
+        //     action: () => this.router.navigate(['/login'])
+        // },
+        // {
+        //     textContent: 'dashboard',
+        //     action: () => this.router.navigate(['/app/dashboard'])
+        // },
     ];
     
     close(): void {
