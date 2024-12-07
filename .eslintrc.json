@@ -19,7 +19,8 @@
                   "type:feature",
                   "type:ui",
                   "type:domain-logic",
-                  "type:util"
+                  "type:util",
+                  "tyoe:shell"
                 ]
               },
               {
@@ -28,6 +29,15 @@
                   "type:ui",
                   "type:domain-logic",
                   "type:util"
+                ]
+              },
+              {
+                "sourceTag": "type:shell",
+                "onlyDependOnLibsWithTags": [
+                  "type:api",
+                  "type:feature",
+                  "type:util",
+                  "type:ui"
                 ]
               },
               {

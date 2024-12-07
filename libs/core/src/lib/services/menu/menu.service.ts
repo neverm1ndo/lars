@@ -19,32 +19,32 @@ export class LarsMenuService {
         {
           title: 'Файлы',
           icon: 'code',
-          href: './logs'
+          href: './files'
         },
         {
           title: 'Инспектор карт',
           icon: 'map',
-          href: './logs'
+          href: './maps'
         },
         {
           title: 'Банлист',
           icon: 'person_off',
-          href: './logs'
+          href: './bans'
         },
         {
           title: 'Админы',
           icon: 'admin_panel_settings',
-          href: './logs'
+          href: './admins'
         },
         {
           title: 'Бэкапы',
           icon: 'shelves',
-          href: './logs'
+          href: './backups'
         },
         {
           title: 'Мониторинг',
           icon: 'analytics',
-          href: './logs'
+          href: './monitoring'
         }
     ]
 
