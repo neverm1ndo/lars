@@ -24,6 +24,7 @@
       "@lars/i18n/testing": ["libs/i18n/src/lib/testing/index.ts"],
       "@lars/login/domain": ["libs/login/domain/src/index.ts"],
       "@lars/login/feature-login": ["libs/login/feature-login/src/index.ts"],
+      "@lars/logs/domain": ["libs/logs/domain/src/index.ts"],
       "@lars/profile/domain": ["libs/profile/domain/src/index.ts"],
       "@lars/profile/profile-settings": [
         "libs/profile/profile-settings/src/index.ts"
