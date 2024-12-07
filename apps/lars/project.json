@@ -28,7 +28,7 @@
           },
           {
             "glob": "**/*",
-            "input": "libs/i18n-langs",
+            "input": "libs/i18n-lib",
             "output": "i18n"
           }
         ],
