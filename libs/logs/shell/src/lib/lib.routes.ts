@@ -1,11 +1,10 @@
 import { Route } from '@angular/router';
+import { LogsPagesComponent } from './pages/logs-pages.component';
 
 export const logsShellRoutes: Route[] = [
   { 
     path: '',
     pathMatch: 'full',
-    loadComponent: () => import('@lars/logs/list').then(
-      (c) => c.LogsListComponent
-    )
+    component: LogsPagesComponent
   }
 ];

@@ -2,10 +2,14 @@
 @use '../../../../../libs/login/feature-login/src/lib/components/login-form/login-form-theme' as login-form;
 @use '../../../../../libs/root/shell/src/lib/root-shell/root-shell-theme' as root-shell;
 @use '../../../../../libs/settings/shell/src/lib/pages/settings-page-theme' as settings-pages;
+@use '../../../../../libs/logs/filter/src/lib/filter/filter.component.theme' as logs-filter;
+@use '../../../../../libs/logs/list/src/lib/containers/logs-list.theme' as logs-list;
 
 @mixin theme($theme) {
     @include login.theme($theme);
     @include login-form.theme($theme);
     @include root-shell.theme($theme);
     @include settings-pages.theme($theme);
+    @include logs-filter.theme($theme);
+    @include logs-list.theme($theme);
 }
