@@ -1,9 +1,10 @@
-// import { ProfileData } from '../entities';
+import { LogLine, LogsRequestParams } from "../entities/logs";
 
-// export interface ProfileDataProps {
-//   profile: ProfileData;
-// }
+export interface LogsFetchParamsProps {
+    requestType: 'last' | 'search';
+    queryParams: LogsRequestParams;
+}
 
-// export interface ProfileAuthenticated {
-//   isAuthenticated: boolean;
-// }
+export interface LogsListProps {
+    lines: LogLine[];
+}

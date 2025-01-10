@@ -1,21 +1,30 @@
 import { createReducer, on } from '@ngrx/store';
-// import { ProfileData } from '../entities';
-// import { actions as ProfileActions } from './profile.actions';
+import { actions as LogsActions } from './logs.actions';
+import { LogLine } from '../entities/logs';
 
-export interface ProfileState {
-    // profileData: ProfileData;
-    // isAuthenticated: boolean;
-};
+export interface LogsState {
+  listItems: LogLine[];
+  filter: string[];
+  isLoading: boolean;
+  currentPage: number;
+}
 
 export const featureKey = 'Logs';
 
-const initialState: ProfileState = {
-    profileData: {},
-    isAuthenticated: false
+const initialState: LogsState = {
+  listItems: [],
+  filter: [],
+  isLoading: true,
+  currentPage: 0
 };
 
-export const userReducer = createReducer(
-    initialState,
-    // on(ProfileActions.setProfile, (state, { profile }) => ({ ...state, profileData: profile })),
-    // on(ProfileActions.setIsAuthenticatedState, (state, { isAuthenticated }) => ({ ...state, isAuthenticated }))
+export const logsReducer = createReducer(
+  initialState,
+  on(
+    LogsActions.fetchLogsListSuccess,
+    (state, { lines }): LogsState => ({
+      ...state,
+      listItems: [...state.listItems, ...lines]
+    })
+  )
 );

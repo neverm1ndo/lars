@@ -1,3 +1,13 @@
-<div class="logs-list-surface">
+@if (list$; as list) {
+    <div class="logs-list-surface">
+        <ag-grid-angular></ag-grid-angular>
+    </div>
+}
 
-</div>
+@if (list$.length === 0) {
+    empty
+}
+
+<ng-template #spinner>
+    <mat-progress-spinner></mat-progress-spinner>
+</ng-template>

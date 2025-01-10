@@ -1,11 +1,11 @@
 @use '@angular/material' as mat;
 
 @mixin color($theme) {
-    // .logs-list {
-    //     &-surface {
-    //         background: mat.get-theme-color($theme, surface);
-    //     }
-    // }
+    .logs-list {
+        &-surface {
+            // border-top: 1px solid mat.get-theme-color($theme, surface);
+        }
+    }
 }
 
 @mixin theme($theme) {
