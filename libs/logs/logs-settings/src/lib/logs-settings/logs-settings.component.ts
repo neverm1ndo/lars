@@ -10,7 +10,6 @@ import { provideTranslocoScope, TranslocoModule } from '@jsverse/transloco';
 import { LogsDomainModule, LogsFacade } from '@lars/logs/domain';
 
 import { LOGS_CHUNK_CONTROL_OPTIONS, LOGS_CHUNK_SIZE } from '../config/default-logs-settings';
-import { switchMap } from 'rxjs';
 
 
 const MATERIAL_MODULES = [

@@ -1,0 +1,11 @@
+@use '@angular/material' as mat;
+
+@mixin color($theme) {
+    .profile-settings-head {
+        background: mat.get-theme-color($theme, surface-container-high);
+    }
+}
+
+@mixin theme($theme) {
+    @include color($theme);
+}

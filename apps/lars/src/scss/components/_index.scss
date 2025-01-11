@@ -4,6 +4,7 @@
 @use '../../../../../libs/settings/shell/src/lib/pages/settings-page-theme' as settings-pages;
 @use '../../../../../libs/logs/filter/src/lib/filter/filter.component.theme' as logs-filter;
 @use '../../../../../libs/logs/list/src/lib/containers/logs-list.theme' as logs-list;
+@use '../../../../../libs/profile/profile-settings/src/lib/profile-settings/profile-settings.theme' as settings-profile;
 
 @mixin theme($theme) {
     @include login.theme($theme);
@@ -12,4 +13,5 @@
     @include settings-pages.theme($theme);
     @include logs-filter.theme($theme);
     @include logs-list.theme($theme);
+    @include settings-profile.theme($theme);
 }
