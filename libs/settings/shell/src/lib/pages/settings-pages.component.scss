@@ -1,7 +1,3 @@
-:host {
-    width: 100%;
-}
-
 .lars-settings {
     --lars-settings-sidenav-max-width: 218px;
     --lars-settings-main-max-width: 680px;
@@ -28,6 +24,17 @@
         flex: 1 0 var(--lars-settings-sidenav-max-width);
         overflow: hidden scroll;
         user-select: none;
+
+        &-subheader {
+            display: flex;
+            align-items: center;
+            gap: var(--indent-size-xs);
+            margin: 0px!important;
+        }
+
+        .mat-divider {
+            margin: var(--indent-size-xs) 0;
+        }
 
         &-side-navs-title {
             display: flex;
@@ -114,6 +121,7 @@
         
         &-scrollable {
             height: 100%;
+            width: 100%;
             position: static;
             display: flex;
             align-items: flex-start;
@@ -138,6 +146,44 @@
             padding: 0 var(--indent-size-xxl);
             min-height: 100%;
             box-sizing: border-box;
+        }
+    }
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--indent-size-m);
+    align-items: start;
+
+    h2, h3 {
+        margin-bottom: var(--indent-size-xxs);
+    }
+}
+
+.page-settings {
+    display: flex;
+    flex-direction: column;
+    padding: var(--indent-size-xxl) 0;
+    gap: var(--indent-size-l);
+
+    &-head {
+        width: 100%;
+    }
+    &-annotation {
+        display: inherit;
+        flex-direction: inherit;
+        gap: var(--indent-size-l);
+        margin-top: var(--indent-size-l);
+    }
+    &-setting-control {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        &-grid {
+            display: inherit;
+            width: inherit;
+            justify-content: space-between;
         }
     }
 }

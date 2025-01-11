@@ -1,4 +1,4 @@
-<div *transloco="let i18n" class="profile-settings">
+<div *transloco="let i18n" class="profile-settings page-settings">
     <h1>Профиль</h1>
     @let user = userProfile$ | async;
     @if (user) {
@@ -27,7 +27,7 @@
     <section>
         <h2>Пароль</h2>
         <button mat-flat-button (click)="changePassword()">Сменить пароль</button>
-        <div class="profile-settings-annotation">
+        <div class="page-settings-annotation">
             <strong>2FA Аутентификация</strong>
             <small>Защитите свой аккаунт с помощью двухфакторной аутентификации</small>
         </div>
@@ -58,7 +58,7 @@
         } @else { 
             <button mat-flat-button (click)="showToken()">Показать токен</button>
         }
-        <div class="profile-settings-annotation">
+        <div class="page-settings-annotation">
             <small>Токен авторизации нужен, чтобы авторизаироваться в других приложениях инфраструктуры LARS</small>
         </div>
     </section>

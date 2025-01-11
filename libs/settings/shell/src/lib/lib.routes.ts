@@ -8,12 +8,32 @@ export const settingsShellRoutes: Route[] = [
     component: SettingsPagesComponent,
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'profile' },
-      { 
+      {
         path: 'profile',
         pathMatch: 'full',
         loadComponent: () => import('@lars/profile/profile-settings').then(
           (c) => c.ProfileSettingsComponent
         )
+      },
+      {
+        path: 'logs',
+        children: [
+          { path: '', pathMatch: 'full', redirectTo: 'appearance' },
+          {
+            path: 'appearance',
+            pathMatch: 'full',
+            loadComponent: () => import('@lars/logs/logs-settings').then(
+              (c) => c.LogsSettingsComponent
+            )
+          },
+          {
+            path: 'filter',
+            pathMatch: 'full',
+            loadComponent: () => import('@lars/logs/logs-settings').then(
+              (c) => c.LogsSettingsComponent
+            )
+          }
+        ]
       }
     ]
   }

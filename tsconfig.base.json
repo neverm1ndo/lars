@@ -27,6 +27,7 @@
       "@lars/logs/domain": ["libs/logs/domain/src/index.ts"],
       "@lars/logs/filter": ["libs/logs/filter/src/index.ts"],
       "@lars/logs/list": ["libs/logs/list/src/index.ts"],
+      "@lars/logs/logs-settings": ["libs/logs/logs-settings/src/index.ts"],
       "@lars/logs/shell": ["libs/logs/shell/src/index.ts"],
       "@lars/profile/domain": ["libs/profile/domain/src/index.ts"],
       "@lars/profile/profile-settings": [

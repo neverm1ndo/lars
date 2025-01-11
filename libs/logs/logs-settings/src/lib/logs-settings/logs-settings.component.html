@@ -1,0 +1,30 @@
+<div *transloco="let i18n" class="logs-settings page-settings">
+    <h1>Отображение логов</h1>
+    <form [formGroup]="logsSettingsForm">
+        <section>
+            <div class="page-settings-setting-control">
+                <h4>Кол-во подгружаемых строк</h4>
+                <div class="page-settings-setting-control-grid">
+                    <div class="page-settings-annotation">
+                        <small>Определяет размер загружаемого чанка со строками</small>
+                    </div>
+                    <mat-form-field>
+                        <mat-select formControlName="chunkSize">
+                            @for (size of chunkSizes; track size) {
+                                <mat-option [value]="size">{{ size }}</mat-option>
+                            }
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="page-settings-setting-control">
+                <h4>Настройки колонок таблицы</h4>
+                <div class="page-settings-annotation">
+                    <small>Выберите нужные колонки таблицы из доступных</small>
+                </div>
+                <div class="page-settings-setting-control-grid">
+                </div>
+            </div>
+        </section>
+    </form>
+</div>

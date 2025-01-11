@@ -1,0 +1,2 @@
+export const LOGS_CHUNK_SIZE = 500;
+export const LOGS_CHUNK_CONTROL_OPTIONS = [100, 200, 300, 400, 500];
