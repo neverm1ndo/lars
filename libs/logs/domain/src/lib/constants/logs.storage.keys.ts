@@ -1,0 +1,1 @@
+export const LOCALSTORAGE_LOGS_APPEARANCE_SETTINGS_KEY = 'lars/settings/logs/appearamce';

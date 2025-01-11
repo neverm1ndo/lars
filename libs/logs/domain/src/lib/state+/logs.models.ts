@@ -8,3 +8,7 @@ export interface LogsFetchParamsProps {
 export interface LogsListProps {
     lines: LogLine[];
 }
+
+export interface LogsAppearanceSettingsProps {
+    chunkSize: number;
+}

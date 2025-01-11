@@ -61,3 +61,7 @@ export interface LogsGeoData {
   org?: string;
   cli?: string;
 }
+
+export interface LogsAppearanceSettings {
+  chunkSize: number;
+}
