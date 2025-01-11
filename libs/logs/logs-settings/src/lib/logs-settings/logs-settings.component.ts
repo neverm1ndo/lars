@@ -52,13 +52,8 @@ export class LogsSettingsComponent implements OnInit {
 
   chunkSizes = LOGS_CHUNK_CONTROL_OPTIONS;
 
-  changeLogsAppearanceSettings() {
-    console.log(this.logsAppearanceSettingsForm.value);
-    this.logsFacade.setLogsAppearamceSettings(this.logsAppearanceSettingsForm.value);
-  }
-
   ngOnInit(): void {
-    this.logsFacade.getLogsAppearamceSettings()
+    this.logsFacade.getLogsAppearanceSettings()
       .pipe(
         takeUntilDestroyed(this.desroyRef)
       )

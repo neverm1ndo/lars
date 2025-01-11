@@ -12,7 +12,7 @@ export class LogsFacade {
         this.store.dispatch(LogsActions.setLogsAppearanceSettings(settings));
     }
 
-    getLogsAppearamceSettings() {
+    getLogsAppearanceSettings() {
         return this.store.select(LogsSelectors.selectLogsAppearanceSettings);
     }
 }
