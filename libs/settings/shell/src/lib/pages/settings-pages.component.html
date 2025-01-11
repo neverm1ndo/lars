@@ -12,11 +12,11 @@
                         placeholder="Поиск"
                     >
                 </mat-form-field>
-                <mat-nav-list>
+                <mat-nav-list *transloco="let i18n">
                     @for (item of menu$ | async; track $index; let isLast = $last) {
                         <div class="lars-settings-sidenav-subheader" mat-subheader>
                             <mat-icon>{{ item.icon }}</mat-icon>
-                            <h5>{{ item.title }}</h5>
+                            <h5>{{ i18n(item.title) }}</h5>
                         </div>
                         @for (child of item.items; track $index) {
                             <mat-list-item
@@ -25,7 +25,7 @@
                                 [routerLink]="child.link"
                                 [routerLinkActiveOptions]="{ exact: true }"
                                 [activated]="routerLink.isActive">
-                                <div matListItemTitle>{{ child.title }}</div>
+                                <div matListItemTitle>{{ i18n(child.title) }}</div>
                             </mat-list-item>
                         }
                         @if (!isLast) {

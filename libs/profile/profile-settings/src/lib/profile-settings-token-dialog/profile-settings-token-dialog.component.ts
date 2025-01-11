@@ -9,7 +9,7 @@ import {
   MatDialogTitle
 } from '@angular/material/dialog';
 
-import { provideTranslocoScope } from '@jsverse/transloco';
+import { provideTranslocoScope, TranslocoModule } from '@jsverse/transloco';
 
 type ProfileSettingsTokenConfirmationDialogData = { 
   title: string;
@@ -26,7 +26,10 @@ const MATERIAL_MODULES = [
 @Component({
   selector: 'lars-profile-settings-token-dialog',
   standalone: true,
-  imports: [...MATERIAL_MODULES],
+  imports: [
+    TranslocoModule,
+    ...MATERIAL_MODULES
+  ],
   providers: [
     provideTranslocoScope('profile')
   ],

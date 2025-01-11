@@ -10,6 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { settingsShellRoutes } from './lib.routes';
 import { SettingsPagesComponent } from './pages/settings-pages.component';
 import { MatIconModule } from '@angular/material/icon';
+import { provideTranslocoScope, TranslocoModule } from '@jsverse/transloco';
 
 const MATERIAL_MODULES = [
   MatListModule,
@@ -21,10 +22,14 @@ const MATERIAL_MODULES = [
 
 @NgModule({
   imports: [
-    CommonModule, 
+    CommonModule,
+    TranslocoModule,
     RouterModule.forChild(settingsShellRoutes),
     ...MATERIAL_MODULES
   ],
   declarations: [SettingsPagesComponent],
+  providers: [
+    provideTranslocoScope({ scope: 'settings' })
+  ]
 })
 export class SettingsShellModule {}

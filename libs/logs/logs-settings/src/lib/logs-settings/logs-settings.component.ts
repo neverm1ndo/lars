@@ -4,15 +4,13 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 
-import { TranslocoModule } from '@jsverse/transloco';
+import { provideTranslocoScope, TranslocoModule } from '@jsverse/transloco';
 
 import { LOGS_CHUNK_CONTROL_OPTIONS, LOGS_CHUNK_SIZE } from '../config/default-logs-settings';
-import { MatDivider } from '@angular/material/divider';
 
 const MATERIAL_MODULES = [
   MatSelectModule,
-  MatFormFieldModule,
-  MatDivider
+  MatFormFieldModule
 ];
 
 @Component({
@@ -25,6 +23,7 @@ const MATERIAL_MODULES = [
     ...MATERIAL_MODULES
   ],
   providers: [
+    provideTranslocoScope({ scope: 'logs' }),
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: { 

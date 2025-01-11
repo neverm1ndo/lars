@@ -20,25 +20,25 @@ export class SettingsPagesComponent {
 
   menu$ = of([
     {
-      title: 'Аккаунт',
+      title: 'settings.Sidepanel.Account.AccountTitle',
       icon: 'person',
       items: [
         { 
-          title: 'Профиль',
+          title: 'settings.Sidepanel.Account.Profile',
           link: './profile'
         }
       ]
     },
     {
-      title: 'Мониторинг логов',
+      title: 'settings.Sidepanel.Logs.LogsMonitoringTitle',
       icon: 'receipt_long',
       items: [
         { 
-          title: 'Отображение',
+          title: 'settings.Sidepanel.Logs.Appearance',
           link: './logs/appearance'
         },
         { 
-          title: 'Фильтр строк',
+          title: 'settings.Sidepanel.Logs.Filter',
           link: './logs/filter'
         }
       ]

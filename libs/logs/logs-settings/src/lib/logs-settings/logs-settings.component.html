@@ -1,12 +1,12 @@
 <div *transloco="let i18n" class="logs-settings page-settings">
-    <h1>Отображение логов</h1>
+    <h1>{{ i18n('logs.Logs.Settings.Title') }}</h1>
     <form [formGroup]="logsSettingsForm">
         <section>
             <div class="page-settings-setting-control">
-                <h4>Кол-во подгружаемых строк</h4>
+                <h4>{{ i18n('logs.Logs.Settings.ChunkSize.Title') }}</h4>
                 <div class="page-settings-setting-control-grid">
                     <div class="page-settings-annotation">
-                        <small>Определяет размер загружаемого чанка со строками</small>
+                        <small>{{ i18n('logs.Logs.Settings.ChunkSize.Description') }}</small>
                     </div>
                     <mat-form-field>
                         <mat-select formControlName="chunkSize">
@@ -18,9 +18,9 @@
                 </div>
             </div>
             <div class="page-settings-setting-control">
-                <h4>Настройки колонок таблицы</h4>
+                <h4>{{ i18n('logs.Logs.Settings.Table.Title') }}</h4>
                 <div class="page-settings-annotation">
-                    <small>Выберите нужные колонки таблицы из доступных</small>
+                    <small>{{ i18n('logs.Logs.Settings.Table.Description') }}</small>
                 </div>
                 <div class="page-settings-setting-control-grid">
                 </div>
