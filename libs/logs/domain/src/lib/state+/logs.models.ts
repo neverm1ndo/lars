@@ -12,3 +12,7 @@ export interface LogsListProps {
 export interface LogsAppearanceSettingsProps {
     chunkSize: number;
 }
+
+export interface LogsListIsLoadingProps {
+    isLoading: boolean;
+}

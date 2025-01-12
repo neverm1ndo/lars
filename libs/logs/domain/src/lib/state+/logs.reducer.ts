@@ -25,6 +25,12 @@ const initialState: LogsState = {
 
 export const logsReducer = createReducer(
   initialState,
+  on(LogsActions.setIsLogsListLoading,
+    (state, { isLoading }) => ({
+      ...state,
+      isLoading
+    })
+  ),
   on(
     LogsActions.fetchLogsListSuccess,
     (state, { lines }): LogsState => ({

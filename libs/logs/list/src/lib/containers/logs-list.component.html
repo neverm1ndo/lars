@@ -1,13 +1,13 @@
-@if (list$; as list) {
-    <div class="logs-list-surface">
-        <ag-grid-angular></ag-grid-angular>
+@if (isLoading$ | async) {
+    <div class="lars-list-loader">
+        <mat-spinner [diameter]="20"></mat-spinner>
     </div>
+} @else {
+    @if (list$ | async; as list) {
+        <ag-grid-angular
+            class="lars-logs-grid"
+            [rowData]="list"
+            [columnDefs]="colDefs">
+        </ag-grid-angular>
+    }
 }
-
-@if (list$.length === 0) {
-    empty
-}
-
-<ng-template #spinner>
-    <mat-progress-spinner></mat-progress-spinner>
-</ng-template>

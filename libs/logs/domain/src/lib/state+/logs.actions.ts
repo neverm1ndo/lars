@@ -1,8 +1,10 @@
-import { createAction, props } from "@ngrx/store";
+import { createAction, props } from '@ngrx/store';
 
-import { LogsAppearanceSettingsProps, LogsListProps } from "./logs.models";
+import { LogsAppearanceSettingsProps, LogsListIsLoadingProps, LogsListProps } from './logs.models';
 
-const fetchLogs = createAction('[Logs] Fetch logs', props<LogsListProps>());
+const setIsLogsListLoading = createAction('[Logs] Set isLoading state', props<LogsListIsLoadingProps>())
+
+const fetchLogs = createAction('[Logs] Fetch logs');
 const fetchLogsListSuccess = createAction('[Logs] Fetch logs success', props<LogsListProps>());
 const fetchLogsListError = createAction('[Logs] Fetch logs error', props<any>());
 
@@ -10,6 +12,7 @@ const getLogsAppearanceSettingsFromStorage = createAction('[Logs] Get logs appea
 const setLogsAppearanceSettings = createAction('[Logs] Set logs appearance settings', props<LogsAppearanceSettingsProps>());
 
 export const actions = {
+    setIsLogsListLoading,
     fetchLogs,
     fetchLogsListSuccess,
     fetchLogsListError,

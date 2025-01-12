@@ -9,3 +9,15 @@
         flex: inherit;
     }
 }
+
+.lars-list-loader {
+    display: flex;
+    flex: 1 1 auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.lars-logs-grid {
+    width: 100%;
+    height: 100%;
+}

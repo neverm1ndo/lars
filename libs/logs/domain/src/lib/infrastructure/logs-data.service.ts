@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { LogsRequestDateInterval, LogsRequestParams, LogsRequestType } from '../entities/logs';
+import { LogLine, LogsRequestDateInterval, LogsRequestParams, LogsRequestType } from '../entities/logs';
 
 
 
@@ -9,9 +9,9 @@ import { LogsRequestDateInterval, LogsRequestParams, LogsRequestType } from '../
 export class LogsDataService {
   private readonly http = inject(HttpClient);
 
-  private readonly url = '/api/logs';
+  private readonly url = '/v2/lars/logs';
 
-  fetchLogs(requestType: LogsRequestType, queryParams?: LogsRequestParams): Observable<unknown> {
+  fetchLogs(requestType: LogsRequestType, queryParams?: LogsRequestParams): Observable<LogLine[]> {
     let params: HttpParams = new HttpParams();
 
     if (queryParams) {
@@ -36,6 +36,6 @@ export class LogsDataService {
       }
     }
 
-    return this.http.get(`${this.url}/${requestType}`, { params });
+    return this.http.get<LogLine[]>(`${this.url}/${requestType}`, { params });
   }
 }
