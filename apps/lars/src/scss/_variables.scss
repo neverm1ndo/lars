@@ -33,6 +33,6 @@ $sizes:
         --#{$prefix}-#{$token}: #{$value}; 
     }
     @each $size, $value in $sizes {
-        --indent-size-#{$size}: #{$value}; 
+        --lars-size-#{$size}: #{$value}; 
     }
 }

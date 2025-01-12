@@ -89,7 +89,7 @@ function createWindow(): BrowserWindow {
     width: state.width,
     height: state.height,
     minHeight: 580,
-    minWidth: 950,
+    minWidth: 956,
     title: 'LARS',
     show: false,
     frame: false,

@@ -42,6 +42,16 @@ export class SettingsPagesComponent {
           link: './logs/filter'
         }
       ]
+    },
+    {
+      title: 'settings.Sidepanel.App.AppSettingsTitle',
+      icon: 'settings_applications',
+      items: [
+        { 
+          title: 'settings.Sidepanel.App.Appearance',
+          link: './app/appearance'
+        }
+      ]
     }
   ]);
 }

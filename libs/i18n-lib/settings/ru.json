@@ -8,6 +8,10 @@
             "LogsMonitoringTitle": "Мониторинг логов",
             "Appearance": "Отображение",
             "Filter": "Фильтр строк"
+        },
+        "App": {
+            "AppSettingsTitle": "Настройки приложения",
+            "Appearance": "Внешний вид"
         }
     }
 }

@@ -37,24 +37,16 @@ export class TopbarComponent {
     ];
 
     readonly extraButtons: ExtraTopbarButton[] = [
-        {
-            icon: 'dark_mode',
-            ariaLabel: 'Change theme to dark',
-            action: this.change.bind(this, 'dark')
-        },
-        {
-            icon: 'light_mode',
-            ariaLabel: 'Change theme to light',
-            action: this.change.bind(this, 'light')
-        },
         // {
-        //     textContent: 'login',
-        //     action: () => this.router.navigate(['/login'])
+        //     icon: 'dark_mode',
+        //     ariaLabel: 'Change theme to dark',
+        //     action: this.change.bind(this, 'dark')
         // },
         // {
-        //     textContent: 'dashboard',
-        //     action: () => this.router.navigate(['/app/dashboard'])
-        // },
+        //     icon: 'light_mode',
+        //     ariaLabel: 'Change theme to light',
+        //     action: this.change.bind(this, 'light')
+        // }
     ];
     
     close(): void {

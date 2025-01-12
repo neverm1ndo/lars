@@ -10,8 +10,8 @@
         display: flex;
         align-items: center;
         border-radius: var(--lars-container-shape);
-        gap: var(--indent-size-m);
-        padding: var(--indent-size-xxs) var(--indent-size-m);
+        gap: var(--lars-size-m);
+        padding: var(--lars-size-xxs) var(--lars-size-m);
         height: var(--lars-logs-filter-container-height);
 
         mat-icon {
@@ -24,7 +24,7 @@
     &-search {
         flex: 1 1 auto;
         --mat-form-field-container-height: 16px;
-        --mat-form-field-container-vertical-padding: var(--indent-size-sm);
+        --mat-form-field-container-vertical-padding: var(--lars-size-sm);
         font-size: small;
     }
 }

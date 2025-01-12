@@ -4,7 +4,7 @@
     &-head {
         &-info {
             display: flex;
-            gap: var(--indent-size-l)
+            gap: var(--lars-size-l)
         }
         &-info-avatar {
             border-radius: 100%;
@@ -21,7 +21,7 @@
         width: 100%;
 
         input {
-            border-radius: var(--indent-size-xs);
+            border-radius: var(--lars-size-xs);
         }
     }
 }
