@@ -3,12 +3,13 @@ import { ICellRendererParams } from 'ag-grid-community';
 import { ICellRendererAngularComp } from 'ag-grid-angular';
 
 import { LogsContentData } from '@lars/logs/domain';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'lars-content-cell',
   standalone: true,
-  imports: [],
-  template: '',
+  imports: [JsonPipe],
+  template: '{{ value?.message }}',
   styleUrl: './content-cell.component.scss',
 })
 export class ContentCellComponent implements ICellRendererAngularComp {
