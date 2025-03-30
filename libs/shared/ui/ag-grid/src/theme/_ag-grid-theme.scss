@@ -1,0 +1,10 @@
+@use "@angular/material" as mat;
+
+body {
+    /* override value of backgroundColor, foregroundColor and spacing parameters */
+    --ag-background-color: mat.get-theme-color();
+    --ag-foreground-color: lightpink;
+    --ag-spacing: 4px;
+    /* use dark scrollbars */
+    --ag-browser-color-scheme: dark;
+}

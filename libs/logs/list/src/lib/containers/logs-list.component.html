@@ -6,6 +6,7 @@
     @if (list$ | async; as list) {
         <ag-grid-angular
             class="lars-logs-grid"
+            [theme]="gridOptions.theme"
             [rowData]="list"
             [columnDefs]="colDefs">
         </ag-grid-angular>

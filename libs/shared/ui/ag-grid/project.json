@@ -1,16 +1,16 @@
 {
-  "name": "lars-core",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/core/src",
-  "prefix": "lars",
+  "name": "ag-grid",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shared/ui/ag-grid/src",
+  "prefix": "lib",
   "projectType": "library",
-  "tags": ["type:core-domain"],
+  "tags": ["type:ui"],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/core/jest.config.ts"
+        "jestConfig": "libs/shared/ui/ag-grid/jest.config.ts"
       }
     },
     "lint": {

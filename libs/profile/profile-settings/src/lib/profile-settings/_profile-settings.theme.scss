@@ -3,6 +3,10 @@
 @mixin color($theme) {
     .profile-settings-head {
         background: mat.get-theme-color($theme, surface-container-high);
+        
+        &-info-avatar {
+            background: mat.get-theme-color($theme, surface-container-low);
+        }
     }
 }
 

@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@lars/ag-grid": ["libs/shared/ui/ag-grid/src/index.ts"],
       "@lars/core": ["libs/core/src/index.ts"],
       "@lars/dashboard/feature-dashboard": [
         "libs/dashboard/feature-dashboard/src/index.ts"

@@ -1,3 +1,5 @@
+import { LogsGeoData } from "./geodata";
+
 export type LogsRequestType = 'last' | 'search';
 export type LogsRequestDateInterval = { from: string; to: string };
 export type LogsRequestParams = {
@@ -52,15 +54,6 @@ export interface LogLine {
   multiplier?: number;
 }
 
-export interface LogsGeoData {
-  country?: string;
-  cc?: string;
-  ip?: string;
-  as?: number;
-  ss?: string;
-  org?: string;
-  cli?: string;
-}
 
 export interface LogsAppearanceSettings {
   chunkSize: number;

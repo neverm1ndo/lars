@@ -18,6 +18,7 @@
                   "type:api",
                   "type:feature",
                   "type:ui",
+                  "type:core-domain",
                   "type:domain-logic",
                   "type:util",
                   "tyoe:shell"
@@ -45,6 +46,7 @@
                 "onlyDependOnLibsWithTags": [
                   "type:api",
                   "type:domain-logic",
+                  "type:core-domain",
                   "type:util"
                 ]
               },
@@ -53,12 +55,17 @@
                 "onlyDependOnLibsWithTags": [
                   "type:ui",
                   "type:domain-logic",
+                  "type:core-domain",
                   "type:util"
                 ]
               },
               {
                 "sourceTag": "type:ui",
                 "onlyDependOnLibsWithTags": ["type:domain-logic", "type:util"]
+              },
+              {
+                "sourceTag": "type:core-domain",
+                "onlyDependOnLibsWithTags": ["type:util"]
               }
             ]
           }

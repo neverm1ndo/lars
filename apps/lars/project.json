@@ -38,6 +38,11 @@
             "bundleName": "dark-theme",
             "inject": false,
             "input": "apps/lars/src/scss/themes/_dark.scss"
+          },
+          {
+            "bundleName": "ag-grid-theme",
+            "inject": false,
+            "input": "libs/shared/ui/ag-grid/src/theme/_ag-grid-theme.scss"
           }
         ],
         "scripts": []

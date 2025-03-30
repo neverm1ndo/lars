@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatIconModule } from '@angular/material/icon';
@@ -9,6 +9,11 @@ import { AllCommunityModule, ModuleRegistry } from 'ag-grid-community';
 import { AgGridAngular } from 'ag-grid-angular';
 
 import { LogsDomainModule, LogsFacade } from '@lars/logs/domain';
+import { LogsGridService } from './logs-grid.service';
+import { logsColDefs } from '../components/column-definitions';
+import { gridOptions } from '../components/grid-options';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { map } from 'rxjs';
 
 ModuleRegistry.registerModules([AllCommunityModule]);
 
@@ -30,20 +35,28 @@ const MATERIAL_MODULES = [
     AgGridAngular,
     ...CDK_MODULES,
     ...MATERIAL_MODULES
-],
+  ],
+  providers: [LogsGridService],
   templateUrl: './logs-list.component.html',
   styleUrl: './logs-list.component.scss',
 })
 export class LogsListComponent implements OnInit {
   private readonly logsFacade = inject(LogsFacade);
+  private readonly gridService = inject(LogsGridService);
+  private readonly destroyRef = inject(DestroyRef);
 
   list$ = this.logsFacade.getLogsList();
   isLoading$ = this.logsFacade.getIsLoadingState();
 
+  gridOptions = gridOptions;
+
   colDefs: ColDef[] = [
-    { field: 'date' },
-    { field: 'process' }
+    ...logsColDefs
   ];
+
+  refresh() {
+    this.logsFacade.fetchLogsList();
+  }
 
   ngOnInit(): void {
     this.logsFacade.fetchLogsList();

@@ -1,6 +1,6 @@
 {
     "/v2/**": {
-        "target": "https://localhost:8443",
+        "target": "https://svr.gta-liberty.ru",
         "secure": false,
         "logLevel": "debug"
     }

@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatButton, MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule } from '@angular/material/form-field';
+import { LogsDomainModule, LogsFacade } from '@lars/logs/domain';
+import { AsyncPipe } from '@angular/common';
 
 const MATERIAL_MODULES = [
   MatIcon,
@@ -15,6 +17,8 @@ const MATERIAL_MODULES = [
   selector: 'lars-logs-filter',
   standalone: true,
   imports: [
+    LogsDomainModule,
+    AsyncPipe,
     ...MATERIAL_MODULES
   ],
   providers: [
@@ -29,4 +33,12 @@ const MATERIAL_MODULES = [
   templateUrl: './filter.component.html',
   styleUrl: './filter.component.scss',
 })
-export class LogsFilterComponent {}
+export class LogsFilterComponent {
+  private readonly logsFacade = inject(LogsFacade);
+
+  isListLoading$ = this.logsFacade.getIsLoadingState();
+
+  refresh() {
+    this.logsFacade.fetchLogsList();
+  }
+}

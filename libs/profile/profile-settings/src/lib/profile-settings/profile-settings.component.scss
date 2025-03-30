@@ -9,6 +9,12 @@
         &-info-avatar {
             border-radius: 100%;
             width: var(--lars-profile-settings-avatar-size);
+            height: var(--lars-profile-settings-avatar-size);
+            overflow: hidden;
+
+            img {
+                width: 100%;
+            }
         }
         &-external {
             display: flex;

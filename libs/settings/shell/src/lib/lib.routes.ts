@@ -35,19 +35,19 @@ export const settingsShellRoutes: Route[] = [
           }
         ]
       },
-      {
-        path: 'app',
-        children: [
-          { path: '', pathMatch: 'full', redirectTo: 'appearance' },
-          {
-            path: 'appearance',
-            pathMatch: 'full',
-            loadComponent: () => import('@lars/logs/logs-settings').then(
-              (c) => c.LogsSettingsComponent
-            )
-          },
-        ]
-      }
+      // {
+      //   path: 'app',
+      //   children: [
+      //     { path: '', pathMatch: 'full', redirectTo: 'appearance' },
+      //     {
+      //       path: 'appearance',
+      //       pathMatch: 'full',
+      //       loadComponent: () => import('@lars/logs/logs-settings').then(
+      //         (c) => c.LogsSettingsComponent
+      //       )
+      //     },
+      //   ]
+      // }
     ]
   }
 ];

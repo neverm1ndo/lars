@@ -23,7 +23,6 @@ describe('StorageService', () => {
 });
 
 class LocalStorageMock {
-
   store: Record<string, unknown> = {};
 
   getItem(key: string): unknown {

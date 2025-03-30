@@ -17,7 +17,7 @@
     <button mat-icon-button>
         <mat-icon>filter_list</mat-icon>
     </button>
-    <button mat-icon-button>
+    <button mat-icon-button (click)="refresh()" [disabled]="isListLoading$ | async">
         <mat-icon>refresh</mat-icon>
     </button>
 </div>

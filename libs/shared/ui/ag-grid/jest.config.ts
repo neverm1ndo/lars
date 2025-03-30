@@ -1,9 +1,9 @@
 /* eslint-disable */
 export default {
-  displayName: 'lars-core',
-  preset: '../../jest.preset.js',
+  displayName: 'ag-grid',
+  preset: '../../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: '../../coverage/libs/core',
+  coverageDirectory: '../../../../coverage/libs/shared/ui/ag-grid',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',
@@ -13,10 +13,7 @@ export default {
       },
     ],
   },
-  transformIgnorePatterns: [
-    'node_modules/(?!.*\\.mjs$)',
-    "/!node_modules\\/lodash-es/"
-  ],
+  transformIgnorePatterns: ['node_modules/(?!.*\\.mjs$)'],
   snapshotSerializers: [
     'jest-preset-angular/build/serializers/no-ng-attributes',
     'jest-preset-angular/build/serializers/ng-snapshot',
