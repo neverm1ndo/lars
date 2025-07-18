@@ -45,7 +45,10 @@ export class LogsListComponent implements OnInit {
   private readonly gridService = inject(LogsGridService);
   private readonly destroyRef = inject(DestroyRef);
 
-  list$ = this.logsFacade.getLogsList();
+  list$ = this.logsFacade.getLogsList().pipe(
+    map((lines) => lines.map((line) => this.gridService.flatColumns(line)))
+  );
+
   isLoading$ = this.logsFacade.getIsLoadingState();
 
   gridOptions = gridOptions;

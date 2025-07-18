@@ -1,3 +1,4 @@
+import { Type } from "@angular/core";
 import { LogsGeoData } from "./geodata";
 
 export type LogsRequestType = 'last' | 'search';
@@ -50,10 +51,11 @@ export interface LogLine {
   nickname?: string;
   id: number;
   geo?: LogsGeoData;
-  content?: ContentData;
+  content?: LogsContentData;
   multiplier?: number;
 }
 
+export type FlatLogLine = Omit<LogLine, 'geo' | 'content'> & LogsGeoData & { cn?: string; content?: Type<unknown> };
 
 export interface LogsAppearanceSettings {
   chunkSize: number;

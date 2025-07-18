@@ -4,25 +4,24 @@ import { ICellRendererAngularComp } from 'ag-grid-angular';
 
 import { LogsContentData } from '@lars/logs/domain';
 import { JsonPipe } from '@angular/common';
+import { MatChipsModule } from '@angular/material/chips';
+
+const MATERIAL_MODULES = [
+    MatChipsModule
+];
 
 @Component({
   selector: 'lars-content-cell',
   standalone: true,
-  imports: [JsonPipe],
-  template: '{{ value?.message }}',
+  imports: [...MATERIAL_MODULES],
+  templateUrl: './content-cell.component.html',
   styleUrl: './content-cell.component.scss',
 })
 export class ContentCellComponent implements ICellRendererAngularComp {
-    private readonly viewContainerRef = inject(ViewContainerRef);
-
     value?: LogsContentData | null;
   
     agInit(params: ICellRendererParams<any, LogsContentData, any>): void {
         this.value = params.value;
-
-        if (this.value) {}
-
-        // const component = this.viewContainerRef.createComponent();
     }
   
     refresh(params: ICellRendererParams<any, LogsContentData, any>): boolean {
