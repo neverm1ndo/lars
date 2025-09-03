@@ -46,7 +46,7 @@
     "@ngrx/effects": "^18.1.0",
     "@ngrx/router-store": "^18.1.0",
     "@ngrx/store": "^18.1.0",
-    "@nx/angular": "19.5.3",
+    "@nx/angular": "19.8.14",
     "@popperjs/core": "^2.11.8",
     "angular-gridster2": "^18.0.1",
     "lodash-es": "^4.17.21",
