@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component, inject, ViewEncapsulation } from '@angular/core';
 
-import { ElectronService } from '@lars/core';
 import { of } from 'rxjs';
+
+import { ElectronService } from '@lars/core';
 
 @Component({
   selector: 'lars-settings-pages',
@@ -23,7 +24,7 @@ export class SettingsPagesComponent {
       title: 'settings.Sidepanel.Account.AccountTitle',
       icon: 'person',
       items: [
-        { 
+        {
           title: 'settings.Sidepanel.Account.Profile',
           link: './profile'
         }
@@ -33,11 +34,11 @@ export class SettingsPagesComponent {
       title: 'settings.Sidepanel.Logs.LogsMonitoringTitle',
       icon: 'receipt_long',
       items: [
-        { 
+        {
           title: 'settings.Sidepanel.Logs.Appearance',
           link: './logs/appearance'
         },
-        { 
+        {
           title: 'settings.Sidepanel.Logs.Filter',
           link: './logs/filter'
         }
@@ -47,7 +48,7 @@ export class SettingsPagesComponent {
       title: 'settings.Sidepanel.App.AppSettingsTitle',
       icon: 'settings_applications',
       items: [
-        { 
+        {
           title: 'settings.Sidepanel.App.Appearance',
           link: './app/appearance'
         }

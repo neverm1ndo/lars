@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 
@@ -9,14 +10,7 @@ import { LogsDataService } from './infrastructure/logs-data.service';
 import { LogsGridService } from './infrastructure/logs-grid.service';
 
 @NgModule({
-  imports: [
-    StoreModule.forFeature(fromLogs.featureKey, fromLogs.logsReducer),
-    EffectsModule.forFeature([LogsEffects])
-  ],
-  providers: [
-    LogsFacade,
-    LogsDataService,
-    LogsGridService
-  ]
+  imports: [StoreModule.forFeature(fromLogs.featureKey, fromLogs.logsReducer), EffectsModule.forFeature([LogsEffects])],
+  providers: [LogsFacade, LogsDataService, LogsGridService]
 })
 export class LogsDomainModule {}

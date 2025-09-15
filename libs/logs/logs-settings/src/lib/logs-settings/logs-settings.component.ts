@@ -6,32 +6,21 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule } from '@angular/mat
 import { MatSelectModule } from '@angular/material/select';
 
 import { provideTranslocoScope, TranslocoModule } from '@jsverse/transloco';
-
 import { LogsDomainModule, LogsFacade } from '@lars/logs/domain';
 
 import { LOGS_CHUNK_CONTROL_OPTIONS, LOGS_CHUNK_SIZE } from '../config/default-logs-settings';
 
-
-const MATERIAL_MODULES = [
-  MatSelectModule,
-  MatFormFieldModule
-];
+const MATERIAL_MODULES = [MatSelectModule, MatFormFieldModule];
 
 @Component({
   selector: 'lars-logs-settings',
   standalone: true,
-  imports: [
-    CommonModule,
-    LogsDomainModule,
-    TranslocoModule,
-    ReactiveFormsModule,
-    ...MATERIAL_MODULES
-  ],
+  imports: [CommonModule, LogsDomainModule, TranslocoModule, ReactiveFormsModule, ...MATERIAL_MODULES],
   providers: [
     provideTranslocoScope({ scope: 'logs' }),
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
-      useValue: { 
+      useValue: {
         appearance: 'outline',
         subscriptSizing: 'dynamic'
       }
@@ -52,20 +41,15 @@ export class LogsSettingsComponent implements OnInit {
   chunkSizes = LOGS_CHUNK_CONTROL_OPTIONS;
 
   ngOnInit(): void {
-    this.logsFacade.getLogsAppearanceSettings()
-      .pipe(
-        takeUntilDestroyed(this.desroyRef)
-      )
+    this.logsFacade
+      .getLogsAppearanceSettings()
+      .pipe(takeUntilDestroyed(this.desroyRef))
       .subscribe({
         next: (settings) => this.logsAppearanceSettingsForm.patchValue(settings, { emitEvent: false })
       });
-    
-    this.logsAppearanceSettingsForm.valueChanges
-      .pipe(
-        takeUntilDestroyed(this.desroyRef)
-      )
-      .subscribe({
-        next: (settings) => this.logsFacade.setLogsAppearamceSettings(settings) 
-      });
+
+    this.logsAppearanceSettingsForm.valueChanges.pipe(takeUntilDestroyed(this.desroyRef)).subscribe({
+      next: (settings) => this.logsFacade.setLogsAppearamceSettings(settings)
+    });
   }
 }

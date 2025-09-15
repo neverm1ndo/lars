@@ -7,7 +7,7 @@ import { LogsContentData } from '@lars/logs/domain';
   standalone: true,
   imports: [],
   template: '',
-  styles: '',
+  styles: ''
 })
 export class ConnectionContentCellComponent {
   @Input() content!: LogsContentData;

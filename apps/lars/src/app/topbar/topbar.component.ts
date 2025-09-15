@@ -1,60 +1,61 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+
 import { ElectronService, ThemeManagerService } from '@lars/core';
 
 interface TopbarButton {
-    ariaLabel?: string;
-    icon?: string;
-    action: <T>(...args: T[]) => void;
-};
+  ariaLabel?: string;
+  icon?: string;
+  action: <T>(...args: T[]) => void;
+}
 
 interface ExtraTopbarButton extends TopbarButton {
-    textContent?: string;
+  textContent?: string;
 }
 
 @Component({
-    selector: 'lars-topbar',
-    templateUrl: './topbar.component.html',
-    styleUrl: './topbar.component.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'lars-topbar',
+  templateUrl: './topbar.component.html',
+  styleUrl: './topbar.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TopbarComponent {
-    private readonly electron = inject(ElectronService);
-    private readonly theme = inject(ThemeManagerService);
+  private readonly electron = inject(ElectronService);
+  private readonly theme = inject(ThemeManagerService);
 
-    readonly windowControlButtons: TopbarButton[] = [
-        {
-            ariaLabel: 'Minimize window button',
-            icon: 'minimize',
-            action: this.minimize.bind(this)
-        },
-        {
-            ariaLabel: 'Close window button',
-            icon: 'close',
-            action: this.close.bind(this)
-        }
-    ];
+  readonly windowControlButtons: TopbarButton[] = [
+    {
+      ariaLabel: 'Minimize window button',
+      icon: 'minimize',
+      action: this.minimize.bind(this)
+    },
+    {
+      ariaLabel: 'Close window button',
+      icon: 'close',
+      action: this.close.bind(this)
+    }
+  ];
 
-    readonly extraButtons: ExtraTopbarButton[] = [
-        // {
-        //     icon: 'dark_mode',
-        //     ariaLabel: 'Change theme to dark',
-        //     action: this.change.bind(this, 'dark')
-        // },
-        // {
-        //     icon: 'light_mode',
-        //     ariaLabel: 'Change theme to light',
-        //     action: this.change.bind(this, 'light')
-        // }
-    ];
-    
-    close(): void {
-        void this.electron.ipcRenderer?.send('close');
-    }
-    minimize(): void {
-        void this.electron.ipcRenderer?.send('minimize');
-    }
+  readonly extraButtons: ExtraTopbarButton[] = [
+    // {
+    //     icon: 'dark_mode',
+    //     ariaLabel: 'Change theme to dark',
+    //     action: this.change.bind(this, 'dark')
+    // },
+    // {
+    //     icon: 'light_mode',
+    //     ariaLabel: 'Change theme to light',
+    //     action: this.change.bind(this, 'light')
+    // }
+  ];
 
-    change(theme: 'dark' | 'light') {
-        this.theme.changeTheme(theme);
-    }
+  close(): void {
+    void this.electron.ipcRenderer?.send('close');
+  }
+  minimize(): void {
+    void this.electron.ipcRenderer?.send('minimize');
+  }
+
+  change(theme: 'dark' | 'light') {
+    this.theme.changeTheme(theme);
+  }
 }

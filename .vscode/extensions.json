@@ -3,6 +3,9 @@
     "nrwl.angular-console",
     "esbenp.prettier-vscode",
     "firsttris.vscode-jest-runner",
-    "ms-playwright.playwright"
+    "ms-playwright.playwright",
+    "dbaeumer.vscode-eslint",
+    "Angular.ng-template",
+    "stylelint.vscode-stylelint"
   ]
 }

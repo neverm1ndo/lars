@@ -1,8 +1,8 @@
 export enum Workgroup {
-    Challenger = 9,
-    Developer,
-    Admin,
-    Mapper,
-    ConfigManager,
-    Backuper
+  Challenger = 9,
+  Developer,
+  Admin,
+  Mapper,
+  ConfigManager,
+  Backuper
 }

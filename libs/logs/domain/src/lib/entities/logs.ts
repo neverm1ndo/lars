@@ -3,9 +3,8 @@ export type LogsRequestParams = {
   query: string;
   last?: string;
   limit: number;
-  date?: Partial<LogsRequestDateInterval>; 
+  date?: Partial<LogsRequestDateInterval>;
 };
-
 
 export type ContentDataTarget = {
   username: string;
@@ -19,13 +18,13 @@ export type ContentDataProps = {
 export type LogPlayer = {
   nickname: string;
   id: string;
-}
+};
 
 export type LogTime = {
   hours?: number;
   minutes?: number;
   seconds?: number;
-}
+};
 
 export type LogSerialNumbers = {
   country: string;
@@ -35,21 +34,21 @@ export type LogSerialNumbers = {
   ss: string;
   org: string;
   cli: string;
-}
+};
 
 export type LogSubject = {
   admin?: {
     id: number;
     name: string;
-  },
-  role: 'Администратор' | 'Игрок' | 'Разработчик'
-}
+  };
+  role: 'Администратор' | 'Игрок' | 'Разработчик';
+};
 
 export type EditorAction = {
   [x: string]: number | string;
   editor_id: number;
-  group: 'owner' | 'guest'
-}
+  group: 'owner' | 'guest';
+};
 
 export type LogLine = {
   _id: string;
@@ -65,7 +64,7 @@ export type LogLine = {
   serials?: LogSerialNumbers;
   editor?: EditorAction;
   multi?: number;
-}
+};
 
 export interface LogsAppearanceSettings {
   chunkSize: number;

@@ -1,9 +1,9 @@
 import { Route } from '@angular/router';
+
 import { SettingsPagesComponent } from './pages/settings-pages.component';
 
-
 export const settingsShellRoutes: Route[] = [
-  { 
+  {
     path: '',
     component: SettingsPagesComponent,
     children: [
@@ -11,9 +11,7 @@ export const settingsShellRoutes: Route[] = [
       {
         path: 'profile',
         pathMatch: 'full',
-        loadComponent: () => import('@lars/profile/profile-settings').then(
-          (c) => c.ProfileSettingsComponent
-        )
+        loadComponent: () => import('@lars/profile/profile-settings').then((c) => c.ProfileSettingsComponent)
       },
       {
         path: 'logs',
@@ -22,19 +20,15 @@ export const settingsShellRoutes: Route[] = [
           {
             path: 'appearance',
             pathMatch: 'full',
-            loadComponent: () => import('@lars/logs/logs-settings').then(
-              (c) => c.LogsSettingsComponent
-            )
+            loadComponent: () => import('@lars/logs/logs-settings').then((c) => c.LogsSettingsComponent)
           },
           {
             path: 'filter',
             pathMatch: 'full',
-            loadComponent: () => import('@lars/logs/logs-settings').then(
-              (c) => c.LogsSettingsComponent
-            )
+            loadComponent: () => import('@lars/logs/logs-settings').then((c) => c.LogsSettingsComponent)
           }
         ]
-      },
+      }
       // {
       //   path: 'app',
       //   children: [

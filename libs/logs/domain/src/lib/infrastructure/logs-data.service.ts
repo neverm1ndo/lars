@@ -1,9 +1,9 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+
 import { Observable } from 'rxjs';
+
 import { LogLine, LogsRequestDateInterval, LogsRequestParams } from '../entities/logs';
-
-
 
 @Injectable()
 export class LogsDataService {

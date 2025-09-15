@@ -4,7 +4,7 @@ import { Component, Input } from '@angular/core';
   selector: 'lars-string-cell',
   standalone: true,
   imports: [],
-  template: `<span>{{ value }}</span>`,
+  template: '<span>{{ value }}</span>'
 })
 export class StringCellComponent {
   @Input() value?: string;

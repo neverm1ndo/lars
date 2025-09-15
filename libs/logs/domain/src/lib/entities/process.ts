@@ -5,19 +5,19 @@ export interface Process {
 }
 
 type ProcessTypeColor =
-  | "dark"
-  | "danger"
-  | "success"
-  | "primary"
-  | "info"
-  | "usual"
-  | "pickup"
-  | "secondary"
-  | "warning"
-  | "light"
-  | "adm"
-  | "dev"
-  | "dm"
-  | "tdm"
-  | "derby"
-  | "clothes";
+  | 'dark'
+  | 'danger'
+  | 'success'
+  | 'primary'
+  | 'info'
+  | 'usual'
+  | 'pickup'
+  | 'secondary'
+  | 'warning'
+  | 'light'
+  | 'adm'
+  | 'dev'
+  | 'dm'
+  | 'tdm'
+  | 'derby'
+  | 'clothes';

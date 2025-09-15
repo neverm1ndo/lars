@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 
 @NgModule({
-  imports: [],
+  imports: []
 })
 export class LarsIconsModule {
   constructor(private registry: MatIconRegistry) {

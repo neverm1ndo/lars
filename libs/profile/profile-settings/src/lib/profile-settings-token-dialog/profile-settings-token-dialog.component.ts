@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { MatButton } from '@angular/material/button';
-
-import { 
+import {
   MAT_DIALOG_DATA,
   MatDialogActions,
   MatDialogContent,
@@ -11,28 +10,18 @@ import {
 
 import { provideTranslocoScope, TranslocoModule } from '@jsverse/transloco';
 
-type ProfileSettingsTokenConfirmationDialogData = { 
+type ProfileSettingsTokenConfirmationDialogData = {
   title: string;
-  message: string
+  message: string;
 };
 
-const MATERIAL_MODULES = [
-  MatButton,
-  MatDialogContent,
-  MatDialogTitle,
-  MatDialogActions
-];
+const MATERIAL_MODULES = [MatButton, MatDialogContent, MatDialogTitle, MatDialogActions];
 
 @Component({
   selector: 'lars-profile-settings-token-dialog',
   standalone: true,
-  imports: [
-    TranslocoModule,
-    ...MATERIAL_MODULES
-  ],
-  providers: [
-    provideTranslocoScope('profile')
-  ],
+  imports: [TranslocoModule, ...MATERIAL_MODULES],
+  providers: [provideTranslocoScope('profile')],
   templateUrl: './profile-settings-token-dialog.component.html'
 })
 export class ProfileSettingsTokenDialogComponent {

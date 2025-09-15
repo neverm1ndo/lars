@@ -1,10 +1,8 @@
-import {
-  provideTransloco,
-  TranslocoModule
-} from '@jsverse/transloco';
 import { isDevMode, NgModule } from '@angular/core';
-import { TranslocoHttpLoader } from './transloco-loader';
 
+import { provideTransloco, TranslocoModule } from '@jsverse/transloco';
+
+import { TranslocoHttpLoader } from './transloco-loader';
 
 @NgModule({
   exports: [TranslocoModule],
@@ -15,10 +13,10 @@ import { TranslocoHttpLoader } from './transloco-loader';
         defaultLang: 'ru',
         // Remove this option if your application doesn't support changing language in runtime.
         reRenderOnLangChange: true,
-        prodMode: !isDevMode(),
+        prodMode: !isDevMode()
       },
       loader: TranslocoHttpLoader
-    }),
-  ],
+    })
+  ]
 })
 export class TranslocoRootModule {}

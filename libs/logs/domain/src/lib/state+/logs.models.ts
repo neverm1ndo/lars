@@ -1,18 +1,18 @@
-import { LogLine, LogsRequestParams } from "../entities/logs";
+import { LogLine, LogsRequestParams } from '../entities/logs';
 
 export interface LogsFetchParamsProps {
-    requestType: 'last' | 'search';
-    queryParams: LogsRequestParams;
+  requestType: 'last' | 'search';
+  queryParams: LogsRequestParams;
 }
 
 export interface LogsListProps {
-    lines: LogLine[];
+  lines: LogLine[];
 }
 
 export interface LogsAppearanceSettingsProps {
-    chunkSize: number;
+  chunkSize: number;
 }
 
 export interface LogsListIsLoadingProps {
-    isLoading: boolean;
+  isLoading: boolean;
 }

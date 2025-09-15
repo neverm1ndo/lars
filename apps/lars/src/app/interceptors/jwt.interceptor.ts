@@ -1,8 +1,9 @@
 import { HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
 
-import { ProfileFacade } from '@lars/profile/domain';
 import { iif, map, switchMap } from 'rxjs';
+
+import { ProfileFacade } from '@lars/profile/domain';
 
 const bearer = (token?: string) => `Bearer ${token}` || 'noop';
 
@@ -14,12 +15,15 @@ export const jwtInterceptor: HttpInterceptorFn = (req, next) => {
 
   const profileFacade = inject(ProfileFacade);
   const authorizedRequest$ = profileFacade.getUserProfile().pipe(
-    map(({ token }) => req.clone({
-      setHeaders: { Authorization: bearer(token) }
-    })),
+    map(({ token }) =>
+      req.clone({
+        setHeaders: { Authorization: bearer(token) }
+      })
+    ),
     switchMap((req) => next(req))
   );
 
-  return profileFacade.isAuthenticated()
+  return profileFacade
+    .isAuthenticated()
     .pipe(switchMap((isAuthenticated) => iif(() => isAuthenticated, authorizedRequest$, next(req))));
 };

@@ -1,4 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
+
 import { actions as LogsActions } from './logs.actions';
 import { LogLine, LogsAppearanceSettings } from '../entities/logs';
 import { DEFAULT_CHUNK_SIZE } from '../config/logs-default-settings';
@@ -25,12 +26,10 @@ const initialState: LogsState = {
 
 export const logsReducer = createReducer(
   initialState,
-  on(LogsActions.setIsLogsListLoading,
-    (state, { isLoading }) => ({
-      ...state,
-      isLoading
-    })
-  ),
+  on(LogsActions.setIsLogsListLoading, (state, { isLoading }) => ({
+    ...state,
+    isLoading
+  })),
   on(
     LogsActions.fetchLogsListSuccess,
     (state, { lines }): LogsState => ({
@@ -38,8 +37,5 @@ export const logsReducer = createReducer(
       listItems: [...state.listItems, ...lines]
     })
   ),
-  on(
-    LogsActions.setLogsAppearanceSettings,
-    (state, settings) => ({ ...state, settings })
-  )
+  on(LogsActions.setLogsAppearanceSettings, (state, settings) => ({ ...state, settings }))
 );
