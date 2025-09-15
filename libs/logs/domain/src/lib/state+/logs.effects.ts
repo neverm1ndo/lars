@@ -22,10 +22,10 @@ export class LogsEffects implements OnInitEffects {
         ofType(actions.fetchLogs),
         switchMap(() => combineLatest([
             this.logsFacade.getLogsAppearanceSettings(),
-            this.logsFacade.currentLogsPageIndex$
+            this.logsFacade.last$
         ])),
         tap(() => this.logsFacade.setIsLoadingState(true)),
-        switchMap(([settings, page]) => this.logsDataService.fetchLogs('last', { query: '', limit: settings.chunkSize, page }).pipe(
+        switchMap(([settings, last]) => this.logsDataService.fetchLogs({ query: '', last, limit: settings.chunkSize }).pipe(
             map((lines) => actions.fetchLogsListSuccess({ lines })),
             catchError(({ message }) => of(actions.fetchLogsListError({ message }))),
             tap(() => this.logsFacade.setIsLoadingState(false))

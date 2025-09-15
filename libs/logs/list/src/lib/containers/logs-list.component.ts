@@ -46,7 +46,7 @@ export class LogsListComponent implements OnInit {
   private readonly destroyRef = inject(DestroyRef);
 
   list$ = this.logsFacade.getLogsList().pipe(
-    map((lines) => lines.map((line) => this.gridService.flatColumns(line)))
+    // map((lines) => lines.map((line) => this.gridService.flatColumns(line)))
   );
 
   isLoading$ = this.logsFacade.getIsLoadingState();

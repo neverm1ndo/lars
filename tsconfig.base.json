@@ -8,9 +8,9 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "target": "es2015",
+    "target": "es2024",
     "module": "esnext",
-    "lib": ["es2020", "dom"],
+    "lib": ["es2024", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
@@ -37,6 +37,7 @@
       "@lars/root/domain": ["libs/root/domain/src/index.ts"],
       "@lars/root/shell": ["libs/root/shell/src/index.ts"],
       "@lars/settings/shell": ["libs/settings/shell/src/index.ts"],
+      "@lars/shared/icons": ["libs/shared/icons/src/index.ts"],
       "@lars/utils": ["libs/utils/index.ts"]
     }
   },

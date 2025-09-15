@@ -10,7 +10,7 @@ import { LogLine, LogsAppearanceSettings } from "../entities";
 export class LogsFacade {
     private readonly store = inject(Store);
 
-    readonly currentLogsPageIndex$ = this.store.select(LogsSelectors.selectCurrentLogsPageIndex);
+    readonly last$ = this.store.select(LogsSelectors.selectLastLineId);
 
     setLogsAppearamceSettings(settings: any): void {
         this.store.dispatch(LogsActions.setLogsAppearanceSettings(settings));

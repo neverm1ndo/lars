@@ -5,7 +5,7 @@ const logsSelectFeature = createFeatureSelector<LogsState>(featureKey);
 
 const selectLogsFilter = createSelector(logsSelectFeature, ({ filter }) => filter);
 const selectLogsList = createSelector(logsSelectFeature, ({ listItems }) => listItems);
-const selectCurrentLogsPageIndex = createSelector(logsSelectFeature, ({ currentPage }) => currentPage);
+const selectLastLineId = createSelector(logsSelectFeature, ({ listItems }) => listItems.at(-1)?._id);
 const selectIsLoadingLogs = createSelector(logsSelectFeature, ({ isLoading }) => isLoading);
 
 const selectLogsAppearanceSettings = createSelector(logsSelectFeature, ({ settings }) => settings);
@@ -13,7 +13,7 @@ const selectLogsAppearanceSettings = createSelector(logsSelectFeature, ({ settin
 export const selectors = {
   selectLogsFilter,
   selectLogsList,
-  selectCurrentLogsPageIndex,
+  selectLastLineId,
   selectIsLoadingLogs,
   selectLogsAppearanceSettings
 };

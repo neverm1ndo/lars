@@ -12,6 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 /** LARS modules */
 import { ProfileDomainModule } from '@lars/profile/domain';
 import { CoreModule } from '@lars/core';
+import { LarsIconsModule } from '@lars/shared/icons';
 
 /** Transloco modules */
 import { TranslocoRootModule } from '@lars/i18n';
@@ -47,6 +48,7 @@ const NGRX_MODULES = [
     AppRoutingModule,
     TranslocoRootModule,
     ProfileDomainModule,
+    LarsIconsModule,
     ...NGRX_MODULES,
     ...MATERIAL_MODULES,
   ],

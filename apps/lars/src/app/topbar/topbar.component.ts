@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-// import { Router } from '@angular/router';
 import { ElectronService, ThemeManagerService } from '@lars/core';
 
 interface TopbarButton {
@@ -21,7 +20,6 @@ interface ExtraTopbarButton extends TopbarButton {
 export class TopbarComponent {
     private readonly electron = inject(ElectronService);
     private readonly theme = inject(ThemeManagerService);
-    // private readonly router = inject(Router);
 
     readonly windowControlButtons: TopbarButton[] = [
         {

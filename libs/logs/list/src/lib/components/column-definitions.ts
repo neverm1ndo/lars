@@ -18,48 +18,48 @@ export const logsColDefs: ColDef[] = [
         cellRenderer: ProcessCellComponent
     },
     { 
-        field: 'nickname',
+        field: 'user.nickname',
         headerName: 'Никнейм'
     },
     {
-        field: 'content',
+        field: 'message',
         headerName: 'Сообщение',
         cellRenderer: ContentCellComponent
     },
     {
-        field: 'ip',
+        field: 'serials.ip',
         headerName: 'IP',
         minWidth: 100,
         maxWidth: 130,
         cellRenderer: IpCellComponent
     },
     {
-        field: 'org',
+        field: 'serials.org',
         headerName: 'Провайдер',
         minWidth: 100
     },
     {
-        field: 'as',
+        field: 'serials.as',
         headerName: 'AS',
         maxWidth: 70
     },
     {
-        field: 'ss',
+        field: 'serials.ss',
         headerName: 'SS',
         minWidth: 100
     },
     {
-        field: 'cn',
+        field: 'serials.cn',
         headerName: 'CN',
         minWidth: 100
     },
     {
-        field: 'cc',
+        field: 'serials.cc',
         headerName: 'CC',
         maxWidth: 50
     },
     {
-        field: 'cli',
+        field: 'serials.cli',
         headerName: 'Клиент',
         maxWidth: 80
     }

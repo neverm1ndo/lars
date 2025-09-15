@@ -1,39 +1,11 @@
-import { Type } from "@angular/core";
-import { LogsGeoData } from "./geodata";
-
-export type LogsRequestType = 'last' | 'search';
 export type LogsRequestDateInterval = { from: string; to: string };
 export type LogsRequestParams = {
   query: string;
-  page: number;
+  last?: string;
   limit: number;
-  filter?: string[];
   date?: Partial<LogsRequestDateInterval>; 
 };
 
-interface ContentData {
-  time: string;
-  oid: number;
-  auth: any;
-  dm_id: string;
-  op: string;
-  weapon: string;
-  message: string;
-  target: ContentDataTarget;
-  props: ContentDataProps;
-  action: string;
-  targetType: string;
-  numbers: number[];
-  cn: string;
-  editor: {
-    editor_id: number;
-    g: string;
-    players: number;
-    visitors: number;
-  };
-}
-
-export type LogsContentData = Partial<ContentData>;
 
 export type ContentDataTarget = {
   username: string;
@@ -44,18 +16,56 @@ export type ContentDataProps = {
   [key: string]: any;
 };
 
-export interface LogLine {
+export type LogPlayer = {
+  nickname: string;
+  id: string;
+}
+
+export type LogTime = {
+  hours?: number;
+  minutes?: number;
+  seconds?: number;
+}
+
+export type LogSerialNumbers = {
+  country: string;
+  cc: string;
+  ip: string;
+  as: number;
+  ss: string;
+  org: string;
+  cli: string;
+}
+
+export type LogSubject = {
+  admin?: {
+    id: number;
+    name: string;
+  },
+  role: 'Администратор' | 'Игрок' | 'Разработчик'
+}
+
+export type EditorAction = {
+  [x: string]: number | string;
+  editor_id: number;
+  group: 'owner' | 'guest'
+}
+
+export type LogLine = {
+  _id: string;
   unix: number;
   date: string;
   process: string;
-  nickname?: string;
-  id: number;
-  geo?: LogsGeoData;
-  content?: LogsContentData;
-  multiplier?: number;
+  user: LogPlayer;
+  time?: LogTime;
+  numbers?: number[];
+  subject?: LogSubject;
+  death?: string;
+  message?: string;
+  serials?: LogSerialNumbers;
+  editor?: EditorAction;
+  multi?: number;
 }
-
-export type FlatLogLine = Omit<LogLine, 'geo' | 'content'> & LogsGeoData & { cn?: string; content?: Type<unknown> };
 
 export interface LogsAppearanceSettings {
   chunkSize: number;
