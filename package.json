@@ -41,7 +41,7 @@
     "@angular/platform-browser": "~18.1.0",
     "@angular/platform-browser-dynamic": "~18.1.0",
     "@angular/router": "~18.1.0",
-    "@jsverse/transloco": "^7.4.3",
+    "@jsverse/transloco": "^8.0.0",
     "@jsverse/transloco-messageformat": "^7.0.1",
     "@ngrx/effects": "^18.1.0",
     "@ngrx/router-store": "^18.1.0",
