@@ -1,11 +1,14 @@
-<div *transloco="let i18n" class="profile-settings">
-    <h1>Профиль</h1>
+<div *transloco="let i18n" class="profile-settings page-settings">
+    <h1>{{ i18n('profile.ProfileSettings.Title') }}</h1>
     @let user = userProfile$ | async;
     @if (user) {
         <mat-card class="profile-settings-head">
             <mat-card-content>
                 <div class="profile-settings-head-info">
-                    <img class="profile-settings-head-info-avatar" [src]="user.avatar" [alt]="user.username">
+                    <picture class="profile-settings-head-info-avatar">
+                        <source [srcset]="user.avatar" media="(orientation: landscape)"/>
+                        <img src="lars://images/avatar_fallback.webp" [alt]="user.username">
+                    </picture>
                     <div class="profile-settings-head-info-credentials">
                         <h4>{{ user.username }}</h4>
                         <div class="profile-settings-head-info-roles">
@@ -17,7 +20,7 @@
                         </div>
                     </div>
                     <div class="profile-settings-head-external">
-                        <button mat-button (click)="profileSettings()">Настройки профиля</button>
+                        <button mat-button (click)="profileSettings()">{{ i18n('profile.ProfileSettings.ProfileSettingsButton') }}</button>
                     </div>
                 </div>
             </mat-card-content>
@@ -25,16 +28,16 @@
     }
     <mat-divider></mat-divider>
     <section>
-        <h2>Пароль</h2>
-        <button mat-flat-button (click)="changePassword()">Сменить пароль</button>
-        <div class="profile-settings-annotation">
-            <strong>2FA Аутентификация</strong>
-            <small>Защитите свой аккаунт с помощью двухфакторной аутентификации</small>
+        <h2>{{ i18n('profile.ProfileSettings.Password') }}</h2>
+        <button mat-flat-button (click)="changePassword()">{{ i18n('profile.ProfileSettings.ChangePassword') }}</button>
+        <div class="page-settings-annotation">
+            <strong>{{ i18n('profile.ProfileSettings.2FA') }}</strong>
+            <small>{{ i18n('profile.ProfileSettings.2FADescription') }}</small>
         </div>
-        <button mat-flat-button disabled>Добавить Google Authenticator</button>
+        <button mat-flat-button disabled>{{ i18n('profile.ProfileSettings.Add2FA') }}</button>
     </section>
     <section>
-        <h3>Токен авторизации</h3>
+        <h3>{{ i18n('profile.ProfileSettings.AuthToken') }}</h3>
         @if (isShowToken()) {
             <mat-form-field
                 appearance="outline"
@@ -53,13 +56,13 @@
                   >
                     <mat-icon>content_copy</mat-icon>
                   </button>
-                <mat-hint>Копируйте эту строку на свой страх и риск</mat-hint>
+                <mat-hint>{{ i18n('profile.ProfileSettings.ShowTokenHint') }}</mat-hint>
             </mat-form-field>
         } @else { 
-            <button mat-flat-button (click)="showToken()">Показать токен</button>
+            <button mat-flat-button (click)="showToken()">{{ i18n('profile.ProfileSettings.ShowToken') }}</button>
         }
-        <div class="profile-settings-annotation">
-            <small>Токен авторизации нужен, чтобы авторизаироваться в других приложениях инфраструктуры LARS</small>
+        <div class="page-settings-annotation">
+            <small>{{ i18n('profile.ProfileSettings.TokenDescription') }}</small>
         </div>
     </section>
 </div>

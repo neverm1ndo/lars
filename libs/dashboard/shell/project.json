@@ -4,7 +4,7 @@
   "sourceRoot": "libs/dashboard/shell/src",
   "prefix": "lars",
   "projectType": "library",
-  "tags": ["type:shell", "type:feature"],
+  "tags": ["type:shell"],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",

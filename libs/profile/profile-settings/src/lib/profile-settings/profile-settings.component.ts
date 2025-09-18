@@ -1,6 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatDivider } from '@angular/material/divider';
@@ -10,13 +9,14 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatFormField, MatHint, MatInput, MatSuffix } from '@angular/material/input';
 
-import { provideTranslocoScope, TranslocoModule, TranslocoService } from '@jsverse/transloco';
+import { filter, map } from 'rxjs';
 
-import { ElectronService, ExternalLinksService } from '@lars/core';
+import { provideTranslocoScope, TranslocoModule } from '@jsverse/transloco';
 import { ProfileDomainModule, ProfileFacade, Workgroup } from '@lars/profile/domain';
 
+import { ElectronService, ExternalLinksService } from '@lars/core';
+
 import { ProfileSettingsTokenDialogComponent } from '../profile-settings-token-dialog/profile-settings-token-dialog.component';
-import { map } from 'rxjs';
 
 const MATERIAL_MODULES = [
   MatCardModule,
@@ -35,21 +35,18 @@ const MATERIAL_MODULES = [
 ];
 
 const UCP_URL = 'https://www.gta-liberty.ru/ucp.php';
+const UCP_PROFILE_PARAMS = {
+  i: 'ucp_profile'
+};
+const CLIPBOARD_SNACKBAR_DURATION = 2000;
 
 @Component({
   selector: 'lars-profile-settings',
   standalone: true,
-  imports: [
-    CommonModule,
-    ProfileDomainModule,
-    TranslocoModule,
-    ...MATERIAL_MODULES
-  ],
-  providers: [
-    provideTranslocoScope({ scope: 'profile' })
-  ],
+  imports: [CommonModule, ProfileDomainModule, TranslocoModule, ...MATERIAL_MODULES],
+  providers: [provideTranslocoScope({ scope: 'profile' })],
   templateUrl: './profile-settings.component.html',
-  styleUrl: './profile-settings.component.scss',
+  styleUrl: './profile-settings.component.scss'
 })
 export class ProfileSettingsComponent {
   private readonly profileFacade = inject(ProfileFacade);
@@ -57,7 +54,6 @@ export class ProfileSettingsComponent {
   private readonly snackbar = inject(MatSnackBar);
   private readonly electron = inject(ElectronService);
   private readonly external = inject(ExternalLinksService);
-  private readonly transloco = inject(TranslocoService);
 
   userProfile$ = this.profileFacade.getUserProfile().pipe(
     map((profile) => ({
@@ -70,36 +66,35 @@ export class ProfileSettingsComponent {
 
   profileSettings() {
     this.external.openExternal(UCP_URL, {
-      i: '184',
+      ...UCP_PROFILE_PARAMS,
+      mode: 'profile_info'
     });
   }
 
   changePassword() {
     this.external.openExternal(UCP_URL, {
-      i: 'ucp_profile',
+      ...UCP_PROFILE_PARAMS,
       mode: 'reg_details'
     });
   }
 
   showToken() {
-    this.dialog.open(ProfileSettingsTokenDialogComponent)
+    this.dialog
+      .open(ProfileSettingsTokenDialogComponent)
       .afterClosed()
-      .subscribe((confirmed) => {
-        if (confirmed) {
-          this.isShowToken.set(true);
-        }
-      })
+      .pipe(filter((confirmed) => confirmed))
+      .subscribe(() => {
+        this.isShowToken.set(true);
+      });
   }
 
   copy(token?: string) {
     if (!token) return;
 
     this.electron.ipcRenderer.invoke('clipboard', token).then(() => {
-      this.snackbar.open('Токен авторизации скопирован в буфер обмена', 'OK', { duration: 2000 });
+      this.snackbar.open('Токен авторизации скопирован в буфер обмена', 'OK', {
+        duration: CLIPBOARD_SNACKBAR_DURATION
+      });
     });
-  }
-
-  private getWorkgroupName(workgroup: Workgroup): string {
-    return this.transloco.translate('login.Login.Form.Subtitle', { workgroup });
   }
 }

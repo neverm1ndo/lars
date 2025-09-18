@@ -1,0 +1,40 @@
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { inject, Injectable } from '@angular/core';
+
+import { Observable } from 'rxjs';
+
+import { LogLine, LogsRequestDateInterval, LogsRequestParams } from '../entities/logs';
+
+@Injectable()
+export class LogsDataService {
+  private readonly http = inject(HttpClient);
+
+  private readonly url = '/v2/lars/player-sessions';
+
+  fetchLogs(queryParams?: LogsRequestParams): Observable<LogLine[]> {
+    let params: HttpParams = new HttpParams();
+
+    console.log(queryParams?.query);
+
+    if (queryParams) {
+      params = params.appendAll({
+        q: queryParams?.query,
+        // last: queryParams?.last || '',
+        // page: queryParams?.page.toString(),
+        lim: queryParams?.limit.toString()
+      });
+
+      if (queryParams.date) {
+        for (const interval in ['from', 'to']) {
+          const date = queryParams.date[interval as keyof LogsRequestDateInterval];
+
+          if (date) {
+            params = params.append('from', new Date(date).valueOf());
+          }
+        }
+      }
+    }
+
+    return this.http.get<LogLine[]>(`${this.url}/search`, { params });
+  }
+}

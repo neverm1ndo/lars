@@ -1,4 +1,5 @@
 import { InjectionToken, NgModule } from '@angular/core';
+
 import { ElectronService, ExternalLinksService, StorageService, ThemeManagerService } from './services';
 import { LarsMenuService } from './services/menu/menu.service';
 
@@ -16,4 +17,4 @@ export const BROWSER_STORAGE = new InjectionToken<Storage>('Browser Storage');
     { provide: BROWSER_STORAGE, useFactory: () => localStorage }
   ]
 })
-export class CoreModule { }
+export class CoreModule {}

@@ -1,0 +1,15 @@
+@use '@angular/material' as mat;
+
+@mixin color($theme) {
+    .profile-settings-head {
+        background: mat.get-theme-color($theme, surface-container-high);
+        
+        &-info-avatar {
+            background: mat.get-theme-color($theme, surface-container-low);
+        }
+    }
+}
+
+@mixin theme($theme) {
+    @include color($theme);
+}

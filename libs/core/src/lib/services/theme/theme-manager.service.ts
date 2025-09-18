@@ -1,5 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { inject, Injectable, signal } from '@angular/core';
+
 import { StorageService } from '../storage/storage.service';
 
 type LarsTheme = 'dark' | 'light' | 'auto';
@@ -8,122 +9,120 @@ const STORAGE_KEY = 'lars/theme';
 
 @Injectable()
 export class ThemeManagerService {
-    private readonly document = inject(DOCUMENT);
-    private readonly storage = inject(StorageService);
-    private readonly window = this.document.defaultView;
+  private readonly document = inject(DOCUMENT);
+  private readonly storage = inject(StorageService);
+  private readonly window = this.document.defaultView;
 
-    isDark = signal(false);
+  isDark = signal(false);
 
-    constructor() {
-        this.setPrefferedTheme();
+  constructor() {
+    this.setPrefferedTheme();
 
-        if (this.window === null || !this.window.matchMedia) return;
+    if (this.window === null || !this.window.matchMedia) return;
 
-        this.window
-            .matchMedia('(prefers-color-scheme: dark)')
-            .addEventListener('change', this.changeEventHandler.bind(this));
+    this.window
+      .matchMedia('(prefers-color-scheme: dark)')
+      .addEventListener('change', this.changeEventHandler.bind(this));
+  }
+
+  getStoredTheme(): LarsTheme {
+    return this.storage.get(STORAGE_KEY, 'text');
+  }
+
+  setStoredTheme(theme: LarsTheme): void {
+    this.storage.set(STORAGE_KEY, theme, 'text');
+  }
+
+  getPreferredTheme(): LarsTheme {
+    const storedTheme = this.getStoredTheme();
+
+    if (storedTheme) {
+      return storedTheme;
     }
 
-    getStoredTheme(): LarsTheme {
-        return this.storage.get(STORAGE_KEY, 'text');
+    if (this.window !== null && this.window.matchMedia) {
+      return this.window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     }
 
-    setStoredTheme(theme: LarsTheme): void {
-        this.storage.set(STORAGE_KEY, theme, 'text');
+    return 'dark';
+  }
+
+  setTheme(theme: string): void {
+    if (this.window === null || !this.window.matchMedia) return;
+
+    const { matches } = this.window.matchMedia('(prefers-color-scheme: dark)');
+    if (theme === 'auto' && matches) {
+      this.document.documentElement.setAttribute('data-bs-theme', 'dark');
+      this.document.documentElement.setAttribute('data-ag-theme-mode', 'dark');
+      this.isDark.set(true);
+    } else {
+      this.document.documentElement.setAttribute('data-bs-theme', theme);
+      this.document.documentElement.setAttribute('data-ag-theme-mode', theme);
+      this.isDark.set(theme === 'dark');
     }
 
-    getPreferredTheme(): LarsTheme {
-        const storedTheme = this.getStoredTheme();
+    this.setMaterialTheme();
+  }
 
-        if (storedTheme) {
-            return storedTheme;
-        }
+  setMaterialTheme(): void {
+    if (this.isDark()) {
+      const href = 'dark-theme.css';
+      getLinkElementForKey('dark-theme').setAttribute('href', href);
+      this.document.documentElement.classList.add('dark-theme');
 
-        if (this.window !== null && this.window.matchMedia) {
-            return this.window.matchMedia('(prefers-color-scheme: dark)').matches
-                ? 'dark'
-                : 'light';
-            }
-            
-        return 'dark';
+      return;
     }
 
-    setTheme(theme: string): void {
-        if (this.window === null || !this.window.matchMedia) return;
-        
-        const { matches } = this.window.matchMedia('(prefers-color-scheme: dark)');
-        if (theme === 'auto' && matches) {
-            this.document.documentElement.setAttribute('data-bs-theme', 'dark');
-            this.isDark.set(true);
-        } else {
-            this.document.documentElement.setAttribute('data-bs-theme', theme);
-            this.isDark.set(theme === 'dark');
-        }
+    this.removeStyle('dark-theme');
+    this.document.documentElement.classList.remove('dark-theme');
+  }
 
-        this.setMaterialTheme();
-    }
+  removeStyle(key: string) {
+    const existingLinkElement = getExistingLinkElementByKey(key);
 
-    setMaterialTheme(): void {
-        if (this.isDark()) {
-            const href = 'dark-theme.css';
-            getLinkElementForKey('dark-theme').setAttribute('href', href);
-            this.document.documentElement.classList.add('dark-theme');
+    if (existingLinkElement) {
+      this.document.head.removeChild(existingLinkElement);
+    }
+  }
 
-            return;
-        }
-        
-        this.removeStyle('dark-theme');
-        this.document.documentElement.classList.remove('dark-theme');
-    }
+  changeTheme(theme: LarsTheme) {
+    this.setStoredTheme(theme);
+    this.setTheme(theme);
+  }
 
-    removeStyle(key: string) {
-        const existingLinkElement = getExistingLinkElementByKey(key);
-        
-        if (existingLinkElement) {
-            this.document.head.removeChild(existingLinkElement);
-        }
-    }
-    
-    changeTheme(theme: LarsTheme) {
-        this.setStoredTheme(theme);
-        this.setTheme(theme);
-    }
+  private setPrefferedTheme(): void {
+    const preferredTheme = this.getPreferredTheme();
+    this.setTheme(preferredTheme);
+  }
 
-    private setPrefferedTheme(): void {
-        const preferredTheme = this.getPreferredTheme();
-        this.setTheme(preferredTheme);
-    }
+  private changeEventHandler() {
+    const storedTheme = this.getStoredTheme();
 
-    private changeEventHandler() {
-        const storedTheme = this.getStoredTheme();
-        
-        if (storedTheme !== 'light' && storedTheme !== 'dark') {
-            this.setPrefferedTheme();
-        }
+    if (storedTheme !== 'light' && storedTheme !== 'dark') {
+      this.setPrefferedTheme();
     }
+  }
 }
 
 function getLinkElementForKey(key: string) {
-    return getExistingLinkElementByKey(key) || createLinkElementWithKey(key);
+  return getExistingLinkElementByKey(key) || createLinkElementWithKey(key);
 }
-  
+
 function getExistingLinkElementByKey(key: string) {
-    return document.head.querySelector(
-        `link[rel="stylesheet"].${getClassNameForKey(key)}`
-    );
+  return document.head.querySelector(`link[rel="stylesheet"].${getClassNameForKey(key)}`);
 }
 
 function createLinkElementWithKey(key: string) {
-    const linkEl = document.createElement('link');
+  const linkEl = document.createElement('link');
 
-    linkEl.setAttribute('rel', 'stylesheet');
-    linkEl.classList.add(getClassNameForKey(key));
+  linkEl.setAttribute('rel', 'stylesheet');
+  linkEl.classList.add(getClassNameForKey(key));
 
-    document.head.appendChild(linkEl);
+  document.head.appendChild(linkEl);
 
-    return linkEl;
+  return linkEl;
 }
-  
+
 function getClassNameForKey(key: string) {
-    return `style-manager-${key}`;
+  return `style-manager-${key}`;
 }

@@ -1,0 +1,13 @@
+@use '@angular/material' as mat;
+
+@mixin color($theme) {
+    .lars-logs-filter {
+        &-container {
+            background: mat.get-theme-color($theme, surface);
+        }
+    }
+}
+
+@mixin theme($theme) {
+    @include color($theme);
+}

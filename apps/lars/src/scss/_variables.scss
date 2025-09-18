@@ -7,7 +7,8 @@ $variables: (
     'topbar-controls-icon-size': 20px,
     'sidepanel-width': 64px,
     'sidepanel-height': 100%,
-    'sidepanel-nav-button-size': 42px
+    'sidepanel-nav-button-size': 42px,
+    'container-shape': 8px
 );
 
 $sizes: 
@@ -32,6 +33,6 @@ $sizes:
         --#{$prefix}-#{$token}: #{$value}; 
     }
     @each $size, $value in $sizes {
-        --indent-size-#{$size}: #{$value}; 
+        --lars-size-#{$size}: #{$value}; 
     }
 }

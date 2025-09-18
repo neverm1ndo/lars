@@ -1,0 +1,17 @@
+{
+    "Sidepanel": {
+        "Account": {
+            "AccountTitle": "Аккаунт",
+            "Profile": "Профиль"
+        },
+        "Logs": {
+            "LogsMonitoringTitle": "Мониторинг логов",
+            "Appearance": "Отображение",
+            "Filter": "Фильтр строк"
+        },
+        "App": {
+            "AppSettingsTitle": "Настройки приложения",
+            "Appearance": "Внешний вид"
+        }
+    }
+}

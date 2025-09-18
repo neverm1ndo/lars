@@ -4,17 +4,18 @@
     "rootDir": ".",
     "sourceMap": true,
     "declaration": false,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "target": "es2015",
+    "target": "es2022",
     "module": "esnext",
-    "lib": ["es2020", "dom"],
+    "lib": ["es2022", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@lars/ag-grid": ["libs/shared/ui/ag-grid/src/index.ts"],
       "@lars/core": ["libs/core/src/index.ts"],
       "@lars/dashboard/feature-dashboard": [
         "libs/dashboard/feature-dashboard/src/index.ts"
@@ -24,6 +25,11 @@
       "@lars/i18n/testing": ["libs/i18n/src/lib/testing/index.ts"],
       "@lars/login/domain": ["libs/login/domain/src/index.ts"],
       "@lars/login/feature-login": ["libs/login/feature-login/src/index.ts"],
+      "@lars/logs/domain": ["libs/logs/domain/src/index.ts"],
+      "@lars/logs/filter": ["libs/logs/filter/src/index.ts"],
+      "@lars/logs/list": ["libs/logs/list/src/index.ts"],
+      "@lars/logs/logs-settings": ["libs/logs/logs-settings/src/index.ts"],
+      "@lars/logs/shell": ["libs/logs/shell/src/index.ts"],
       "@lars/profile/domain": ["libs/profile/domain/src/index.ts"],
       "@lars/profile/profile-settings": [
         "libs/profile/profile-settings/src/index.ts"
@@ -31,6 +37,7 @@
       "@lars/root/domain": ["libs/root/domain/src/index.ts"],
       "@lars/root/shell": ["libs/root/shell/src/index.ts"],
       "@lars/settings/shell": ["libs/settings/shell/src/index.ts"],
+      "@lars/shared/icons": ["libs/shared/icons/src/index.ts"],
       "@lars/utils": ["libs/utils/index.ts"]
     }
   },

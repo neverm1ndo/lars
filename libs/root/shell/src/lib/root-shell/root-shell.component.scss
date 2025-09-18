@@ -8,6 +8,7 @@
 }
 
 main {
-    display: flex;
-    flex: 1 1 auto;
+    display: inherit;
+    flex: inherit;
+    border-top-left-radius: var(--lars-container-shape);
 }

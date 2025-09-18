@@ -4,7 +4,7 @@
   "sourceRoot": "libs/root/shell/src",
   "prefix": "lars",
   "projectType": "library",
-  "tags": ["type:ui"],
+  "tags": ["type:shell"],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",

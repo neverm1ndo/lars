@@ -1,0 +1,30 @@
+<div *transloco="let i18n" class="logs-settings page-settings">
+    <h1>{{ i18n('logs.Logs.Settings.Title') }}</h1>
+    <form [formGroup]="logsAppearanceSettingsForm">
+        <section>
+            <div class="page-settings-setting-control">
+                <h4>{{ i18n('logs.Logs.Settings.ChunkSize.Title') }}</h4>
+                <div class="page-settings-setting-control-grid">
+                    <div class="page-settings-annotation">
+                        <small>{{ i18n('logs.Logs.Settings.ChunkSize.Description') }}</small>
+                    </div>
+                    <mat-form-field>
+                        <mat-select formControlName="chunkSize">
+                            @for (size of chunkSizes; track size) {
+                                <mat-option [value]="size">{{ size }}</mat-option>
+                            }
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="page-settings-setting-control">
+                <h4>{{ i18n('logs.Logs.Settings.Table.Title') }}</h4>
+                <div class="page-settings-annotation">
+                    <small>{{ i18n('logs.Logs.Settings.Table.Description') }}</small>
+                </div>
+                <div class="page-settings-setting-control-grid">
+                </div>
+            </div>
+        </section>
+    </form>
+</div>

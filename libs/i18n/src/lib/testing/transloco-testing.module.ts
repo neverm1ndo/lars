@@ -2,12 +2,12 @@ import { TranslocoTestingModule, TranslocoTestingOptions } from '@jsverse/transl
 
 export function getTranslocoTestingModule(options: TranslocoTestingOptions = {}) {
   return TranslocoTestingModule.forRoot({
-    langs: { ru: {}},
+    langs: { ru: {} },
     translocoConfig: {
       availableLangs: ['ru'],
-      defaultLang: 'ru',
+      defaultLang: 'ru'
     },
     preloadLangs: true,
-    ...options,
+    ...options
   });
 }

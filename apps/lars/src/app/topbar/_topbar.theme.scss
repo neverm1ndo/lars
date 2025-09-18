@@ -1,0 +1,11 @@
+@use '@angular/material' as mat;
+
+@mixin color($theme) {
+    .lars-topbar {
+        background: mat.get-theme-color($theme, surface-container);
+    }
+}
+
+@mixin theme($theme) {
+    @include color($theme);
+}

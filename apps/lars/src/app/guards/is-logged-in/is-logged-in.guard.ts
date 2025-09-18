@@ -8,11 +8,10 @@ import { ProfileFacade } from '@lars/profile/domain';
 export const isLoggedInGuard: CanActivateFn = () => {
   const router = inject(Router);
   const profile = inject(ProfileFacade);
-  
-  return profile.isAuthenticated()
-    .pipe(
-      tap((isAuthenticated) => {
-        if (!isAuthenticated) router.navigate(['/login']);
-      })
-    );
+
+  return profile.isAuthenticated().pipe(
+    tap((isAuthenticated) => {
+      if (!isAuthenticated) router.navigate(['/login']);
+    })
+  );
 };

@@ -1,0 +1,25 @@
+<div class="lars-logs-filter-container">
+    <button mat-icon-button>
+        <mat-icon>arrow_backward</mat-icon>
+    </button>
+    <button mat-icon-button>
+        <mat-icon>history</mat-icon>
+    </button>
+    <mat-form-field class="lars-logs-filter-search">
+        <input
+            (keydown.enter)="search()"
+            [(ngModel)]="query"
+            matInput
+            type="text"
+            placeholder="Поиск...">
+    </mat-form-field>
+    <button mat-icon-button>
+        <mat-icon>calendar_month</mat-icon>
+    </button>
+    <button mat-icon-button>
+        <mat-icon>filter_list</mat-icon>
+    </button>
+    <button mat-icon-button (click)="refresh()" [disabled]="isListLoading$ | async">
+        <mat-icon>refresh</mat-icon>
+    </button>
+</div>

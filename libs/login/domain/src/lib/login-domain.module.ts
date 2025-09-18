@@ -7,13 +7,7 @@ import { LoginFacade } from './application/login.facade';
 import { LoginService } from './infrastructure/login.service';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    ProfileDomainModule
-  ],
-  providers: [
-    LoginService,
-    LoginFacade
-  ]
+  imports: [CommonModule, ProfileDomainModule],
+  providers: [LoginService, LoginFacade]
 })
 export class LoginDomainModule {}

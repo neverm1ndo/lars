@@ -15,6 +15,10 @@
             background: mat.get-theme-color($theme, surface-variant);
         }
     }
+
+    .lars-settings-main {
+        background: mat.get-theme-color($theme, surface);
+    }
 }
 
 @mixin theme($theme) {

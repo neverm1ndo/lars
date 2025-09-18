@@ -18,8 +18,10 @@
                   "type:api",
                   "type:feature",
                   "type:ui",
+                  "type:core-domain",
                   "type:domain-logic",
-                  "type:util"
+                  "type:util",
+                  "type:shell"
                 ]
               },
               {
@@ -31,10 +33,21 @@
                 ]
               },
               {
+                "sourceTag": "type:shell",
+                "onlyDependOnLibsWithTags": [
+                  "type:core-domain",
+                  "type:api",
+                  "type:feature",
+                  "type:util",
+                  "type:ui"
+                ]
+              },
+              {
                 "sourceTag": "type:domain-logic",
                 "onlyDependOnLibsWithTags": [
                   "type:api",
                   "type:domain-logic",
+                  "type:core-domain",
                   "type:util"
                 ]
               },
@@ -43,12 +56,17 @@
                 "onlyDependOnLibsWithTags": [
                   "type:ui",
                   "type:domain-logic",
+                  "type:core-domain",
                   "type:util"
                 ]
               },
               {
                 "sourceTag": "type:ui",
                 "onlyDependOnLibsWithTags": ["type:domain-logic", "type:util"]
+              },
+              {
+                "sourceTag": "type:core-domain",
+                "onlyDependOnLibsWithTags": ["type:util"]
               }
             ]
           }
@@ -57,11 +75,72 @@
     },
     {
       "files": ["*.ts"],
+      "parser": "@typescript-eslint/parser",
+      "plugins": ["@typescript-eslint"],
+      "parserOptions": {
+        "ecmaVersion": 2022,
+        "project": [
+          "tsconfig.*?.json"
+        ],
+        "sourceType": "module"
+      },
       "extends": [
+        "plugin:@nx/typescript",
         "plugin:@nx/angular",
+        "plugin:import/typescript",
+        "plugin:import/recommended",
+        "plugin:rxjs/recommended",
+        "plugin:prettier/recommended",
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
+        "arrow-parens": ["error", "always"],
+        "no-debugger": "error",
+        "no-duplicate-imports": "error",
+        "no-trailing-spaces": "error",
+        "object-curly-spacing": ["error", "always"],
+        "no-multiple-empty-lines": ["error", { "max": 1 }],
+        "prefer-arrow-callback": ["error", { "allowNamedFunctions": true }],
+        "quotes": ["error", "single", { "avoidEscape": true }],
+        "padding-line-between-statements": [
+          "error",
+          { "blankLine": "always", "prev": "*", "next": "return" }
+        ],
+        "comma-dangle": "error",
+        "semi": ["error", "always"],
+        "eqeqeq": ["error", "smart"],
+        "rxjs/no-implicit-any-catch": "off",
+        "import/named": "off",
+        "import/no-unresolved": "off",
+        "import/no-deprecated": "warn",
+        "import/order": [
+          "error",
+          {
+            "newlines-between": "always",
+            "groups": [
+              "internal",
+              "unknown",
+              "external",
+              "builtin",
+              ["parent", "sibling", "index"]
+            ],
+            "pathGroups": [
+              {
+                "pattern": "rxjs",
+                "group": "unknown"
+              },
+              {
+                "pattern": "rxjs/*",
+                "group": "unknown"
+              },
+              {
+                "pattern": "@lars/*",
+                "group": "builtin"
+              }
+            ],
+            "pathGroupsExcludedImportTypes": ["type", "object"]
+          }
+        ],
         "@angular-eslint/directive-selector": [
           "error",
           {
@@ -78,6 +157,10 @@
             "style": "kebab-case"
           }
         ]
+      },
+      "settings": {
+        "import/internal-regex": "@angular/*",
+        "import/external-module-folders": ["node_modules"]
       }
     },
     {

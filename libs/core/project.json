@@ -1,10 +1,10 @@
 {
-  "name": "core",
+  "name": "lars-core",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/core/src",
   "prefix": "lars",
   "projectType": "library",
-  "tags": ["type:util"],
+  "tags": ["type:core-domain"],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",

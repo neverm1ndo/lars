@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+
 import { GridsterConfig, GridsterItem } from 'angular-gridster2';
 
 @Component({
   selector: 'lars-feature-dashboard',
   templateUrl: './feature-dashboard.component.html',
-  styleUrl: './feature-dashboard.component.scss',
+  styleUrl: './feature-dashboard.component.scss'
 })
 export class DashboardComponent implements OnInit {
   options!: GridsterConfig;

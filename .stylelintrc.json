@@ -1,0 +1,23 @@
+{
+  "ignoreFiles": ["/*"],
+  "overrides": [
+    {
+      "files": ["/*.scss"],
+      "extends": ["stylelint-config-standard-scss"],
+      "rules": {
+        "scss/at-mixin-argumentless-call-parentheses": null,
+        "declaration-block-no-duplicate-properties": true,
+        "selector-class-pattern": [
+          "^([a-z][a-z0-9]*)([-_]+[a-z0-9]+)*$",
+          {
+            "message": "Expected property name to be kebab-case or BEM convension style",
+            "resolveNestedSelectors": true
+          }
+        ],
+        "no-empty-source": null
+      },
+      "customSyntax": "postcss-scss"
+    }
+  ],
+  "rules": {}
+}

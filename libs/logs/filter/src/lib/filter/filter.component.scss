@@ -1,0 +1,25 @@
+.lars-logs-filter {
+    &-container {
+        --lars-logs-filter-container-height: 46px;
+
+        display: flex;
+        align-items: center;
+        border-radius: var(--lars-container-shape);
+        gap: var(--lars-size-m);
+        padding: var(--lars-size-xxs) var(--lars-size-m);
+        height: var(--lars-logs-filter-container-height);
+
+        mat-icon {
+            margin: 0;
+            font-size: 20px;
+            height: 1.225rem;
+            width: 1.225rem;
+        }
+    }
+    &-search {
+        flex: 1 1 auto;
+        --mat-form-field-container-height: 16px;
+        --mat-form-field-container-vertical-padding: var(--lars-size-sm);
+        font-size: small;
+    }
+}

@@ -1,0 +1,19 @@
+<!-- @switch (true) {
+    @case (value?.numbers?.length !== 0) {
+        <mat-chip-set aria-label="numbers tuple">
+            @for (number of value?.numbers; track $index) {
+                 <mat-chip>{{ number }}</mat-chip>
+            }
+        </mat-chip-set>
+    }
+    @case (!!value?.message) {
+        <span>{{ value?.message }}</span>
+    }
+    @default {
+        <span>{{ value | json }}</span>
+    }
+} -->
+    <!-- @if (value?.message) {
+        <span>{{ value?.message }}</span>
+    } -->
+    {{ value }}

@@ -42,6 +42,15 @@
           "codeCoverage": true
         }
       }
+    },
+    "stylelint": {
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "formatter": "string",
+        "args": ["--allow-empty-input", "--report-descriptionless-disables"]
+      },
+      "inputs": ["default", "{workspaceRoot}/.stylelintrc(.(json|yml|yaml|js))?"],
+      "cache": true
     }
   },
   "plugins": [
@@ -49,6 +58,13 @@
       "plugin": "@nx/playwright/plugin",
       "options": {
         "targetName": "e2e"
+      }
+    },
+    {
+      "plugin": "nx-stylelint/plugin",
+      "options": {
+        "targetName": "stylelint",
+        "extensions": ["scss"]
       }
     },
     {
@@ -65,12 +81,14 @@
       "style": "scss",
       "unitTestRunner": "jest"
     },
-    "@nx/angular:library": {
-      "linter": "eslint",
-      "unitTestRunner": "jest"
-    },
     "@nx/angular:component": {
       "style": "scss"
+    },
+    "@nx/angular:library": {
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "style": "scss",
+      "prefix": "lars"
     }
   }
 }
