@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 
-import { catchError, combineLatest, filter, map, of, switchMap, tap } from 'rxjs';
+import { catchError, map, of, switchMap, tap, withLatestFrom, zip } from 'rxjs';
 
 import { Actions, createEffect, ofType, OnInitEffects } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
@@ -23,10 +23,25 @@ export class LogsEffects implements OnInitEffects {
   fetchLogsEffect$ = createEffect(() =>
     this.actions$.pipe(
       ofType(actions.fetchLogs),
-      switchMap(() => combineLatest([this.logsFacade.getLogsAppearanceSettings(), this.logsFacade.last$])),
+      switchMap(() => zip([this.logsFacade.getLogsAppearanceSettings(), this.logsFacade.last$])),
       tap(() => this.logsFacade.setIsLoadingState(true)),
       switchMap(([settings, last]) =>
         this.logsDataService.fetchLogs({ query: '', last, limit: settings.chunkSize }).pipe(
+          map((lines) => actions.fetchLogsListSuccess({ lines })),
+          catchError(({ message }) => of(actions.fetchLogsListError({ message }))),
+          tap(() => this.logsFacade.setIsLoadingState(false))
+        )
+      )
+    )
+  );
+
+  searchLogsEffect$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(actions.search),
+      tap(() => this.logsFacade.setIsLoadingState(true)),
+      withLatestFrom(this.logsFacade.getLogsAppearanceSettings()),
+      switchMap(([{ query }, settings]) =>
+        this.logsDataService.fetchLogs({ query, limit: settings.chunkSize }).pipe(
           map((lines) => actions.fetchLogsListSuccess({ lines })),
           catchError(({ message }) => of(actions.fetchLogsListError({ message }))),
           tap(() => this.logsFacade.setIsLoadingState(false))

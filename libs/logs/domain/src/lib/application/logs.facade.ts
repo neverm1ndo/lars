@@ -33,6 +33,10 @@ export class LogsFacade {
     this.store.dispatch(LogsActions.fetchLogs());
   }
 
+  search(query: string) {
+    this.store.dispatch(LogsActions.search({ query }));
+  }
+
   getLogsList(): Observable<LogLine[]> {
     return this.store.select(LogsSelectors.selectLogsList);
   }

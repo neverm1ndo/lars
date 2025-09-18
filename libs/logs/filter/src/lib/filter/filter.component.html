@@ -6,7 +6,9 @@
         <mat-icon>history</mat-icon>
     </button>
     <mat-form-field class="lars-logs-filter-search">
-        <input 
+        <input
+            (keydown.enter)="search()"
+            [(ngModel)]="query"
             matInput
             type="text"
             placeholder="Поиск...">

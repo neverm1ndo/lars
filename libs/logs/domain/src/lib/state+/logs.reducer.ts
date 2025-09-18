@@ -5,6 +5,7 @@ import { LogLine, LogsAppearanceSettings } from '../entities/logs';
 import { DEFAULT_CHUNK_SIZE } from '../config/logs-default-settings';
 
 export interface LogsState {
+  searchQueryHistory: string[];
   listItems: LogLine[];
   filter: string[];
   isLoading: boolean;
@@ -15,6 +16,7 @@ export interface LogsState {
 export const featureKey = 'Logs';
 
 const initialState: LogsState = {
+  searchQueryHistory: [],
   listItems: [],
   filter: [],
   isLoading: true,
@@ -34,7 +36,7 @@ export const logsReducer = createReducer(
     LogsActions.fetchLogsListSuccess,
     (state, { lines }): LogsState => ({
       ...state,
-      listItems: [...state.listItems, ...lines]
+      listItems: lines
     })
   ),
   on(LogsActions.setLogsAppearanceSettings, (state, settings) => ({ ...state, settings }))

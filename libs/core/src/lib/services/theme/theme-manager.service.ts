@@ -53,9 +53,11 @@ export class ThemeManagerService {
     const { matches } = this.window.matchMedia('(prefers-color-scheme: dark)');
     if (theme === 'auto' && matches) {
       this.document.documentElement.setAttribute('data-bs-theme', 'dark');
+      this.document.documentElement.setAttribute('data-ag-theme-mode', 'dark');
       this.isDark.set(true);
     } else {
       this.document.documentElement.setAttribute('data-bs-theme', theme);
+      this.document.documentElement.setAttribute('data-ag-theme-mode', theme);
       this.isDark.set(theme === 'dark');
     }
 

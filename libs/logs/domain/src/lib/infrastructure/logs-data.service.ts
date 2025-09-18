@@ -14,16 +14,15 @@ export class LogsDataService {
   fetchLogs(queryParams?: LogsRequestParams): Observable<LogLine[]> {
     let params: HttpParams = new HttpParams();
 
+    console.log(queryParams?.query);
+
     if (queryParams) {
       params = params.appendAll({
         q: queryParams?.query,
+        // last: queryParams?.last || '',
         // page: queryParams?.page.toString(),
         lim: queryParams?.limit.toString()
       });
-
-      // if (queryParams.filter) {
-      //   params = params.append('filter', queryParams.filter.join(','));
-      // }
 
       if (queryParams.date) {
         for (const interval in ['from', 'to']) {

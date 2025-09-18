@@ -44,10 +44,11 @@ export class LogsListComponent implements OnInit {
   colDefs: ColDef[] = [...logsColDefs];
 
   refresh() {
-    this.logsFacade.fetchLogsList();
+    // this.logsFacade.fetchLogsList();
   }
 
   ngOnInit(): void {
+    console.log(123);
     this.logsFacade.fetchLogsList();
   }
 }

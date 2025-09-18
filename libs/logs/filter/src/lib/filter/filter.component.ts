@@ -1,5 +1,6 @@
-import { Component, inject } from '@angular/core';
-import { MatButton, MatIconButton } from '@angular/material/button';
+import { Component, inject, model } from '@angular/core';
+import { MatIconButton } from '@angular/material/button';
+import { FormsModule } from '@angular/forms';
 import { MatIcon } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule } from '@angular/material/form-field';
@@ -12,7 +13,7 @@ const MATERIAL_MODULES = [MatIcon, MatIconButton, MatInputModule, MatFormFieldMo
 @Component({
   selector: 'lars-logs-filter',
   standalone: true,
-  imports: [LogsDomainModule, AsyncPipe, ...MATERIAL_MODULES],
+  imports: [FormsModule, LogsDomainModule, AsyncPipe, ...MATERIAL_MODULES],
   providers: [
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
@@ -30,7 +31,17 @@ export class LogsFilterComponent {
 
   isListLoading$ = this.logsFacade.getIsLoadingState();
 
+  query = model<string>('');
+
+  search() {
+    this.logsFacade.search(this.query());
+  }
+
   refresh() {
+    if (this.query()) {
+      return void this.search();
+    }
+
     this.logsFacade.fetchLogsList();
   }
 }

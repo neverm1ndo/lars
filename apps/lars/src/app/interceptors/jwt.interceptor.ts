@@ -9,7 +9,7 @@ const bearer = (token?: string) => `Bearer ${token}` || 'noop';
 
 export const jwtInterceptor: HttpInterceptorFn = (req, next) => {
   /** Bypass localization files request */
-  if (req.url.includes('i18n')) {
+  if (req.url.includes('i18n') || req.url.includes('svg')) {
     return next(req);
   }
 

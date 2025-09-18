@@ -5,7 +5,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 /** Material modules */
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { MAT_ICON_DEFAULT_OPTIONS, MatIconModule } from '@angular/material/icon';
+import { MAT_ICON_DEFAULT_OPTIONS, MatIcon, MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
 /** LARS modules */
@@ -26,7 +26,7 @@ import { AppComponent } from './app.component';
 import { TopbarComponent } from './topbar/topbar.component';
 import { jwtInterceptor } from './interceptors/jwt.interceptor';
 
-const MATERIAL_MODULES = [MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule];
+const MATERIAL_MODULES = [MatSidenavModule, MatToolbarModule, MatIcon, MatButtonModule];
 
 const NGRX_MODULES = [
   StoreModule.forRoot({ router: routerReducer }, {}),
